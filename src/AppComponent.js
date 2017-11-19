@@ -1,13 +1,27 @@
 'use strict';
 
-import css from './AppComponent.css';
+import { Component } from './shared/component';
 import html from './AppComponent.html';
+import css from './AppComponent.css';
 
-export class AppComponent extends HTMLElement {
+export const AppComponentState = {
+  Loaded: 'Loaded',
+  Error: 'Error'
+};
+
+export class AppComponent extends Component {
   constructor() {
-    super();
-    const shadow = this.attachShadow({ mode: 'open' });
-    shadow.innerHTML = '<style>' + css + '</style>' + html;
+    super(html, css);
+
+    setTimeout(() => {
+      this.setState({
+        type: AppComponentState.Loaded
+      });
+    }, 3000);
+  }
+
+  onStateUpdate(state) {
+    console.log('State updated to', state);
   }
 }
 
