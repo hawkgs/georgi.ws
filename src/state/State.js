@@ -10,14 +10,17 @@ class StateManager {
     return this._state;
   }
 
-  setInitialState(componentName, component) {
+  setInitialState(componentName) {
     this._state[componentName] = null;
+  }
 
-    const onStateUpdate = component.onStateUpdate;
+  subscribe(componentName, onStateUpdate) {
+    this._subscriptions[componentName] = onStateUpdate;
+  }
 
-    if (onStateUpdate) {
-      this._subscriptions[componentName] = onStateUpdate;
-    }
+  unsubscribe(componentName) {
+    this._state[componentName] = undefined;
+    this._subscriptions[componentName] = null;
   }
 
   updateState(componentName, newState) {
@@ -29,10 +32,10 @@ class StateManager {
     }
 
     this._state[componentName] = newState;
-    const subFunc = this._subscriptions[componentName];
+    const notify = this._subscriptions[componentName];
 
-    if (subFunc) {
-      subFunc(newState);
+    if (notify) {
+      notify(newState);
     } else {
       console.warn(`${componentName}: Doesn't have onStateUpdate method`);
     }

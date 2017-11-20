@@ -4,6 +4,8 @@ import { Component } from './shared/component';
 import html from './AppComponent.html';
 import css from './AppComponent.css';
 
+import './site/RandomComponent';
+
 export const AppComponentState = {
   Loaded: 'Loaded',
   Error: 'Error'
@@ -22,6 +24,13 @@ export class AppComponent extends Component {
 
   onStateUpdate(state) {
     console.log('State updated to', state);
+  }
+
+  onComponentAttach() {
+    const random = this.shadowRoot.querySelector('random-cmp');
+    setTimeout(() => {
+      random.setAttribute('ivan', 'milko');
+    }, 3000);
   }
 }
 
