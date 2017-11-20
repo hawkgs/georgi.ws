@@ -8,8 +8,10 @@ export class Component extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
     const template = document.createElement('template');
+    html = html.replace(/{{\s*children\s*}}/, this.innerHTML);
     template.innerHTML = `<style>${css}</style>${html}`;
     shadow.appendChild(template.content.cloneNode(true));
+    this.innerHTML = '';
 
     // Not sure if this is a good idea
     this._attr = {};

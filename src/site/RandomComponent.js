@@ -8,7 +8,7 @@ export class RandomComponent extends Component {
   }
 
   constructor() {
-    super('html', null);
+    super('<div>html {{ children }}</div>', null);
     console.log(this.attr);
   }
 
