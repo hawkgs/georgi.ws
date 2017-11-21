@@ -6,15 +6,16 @@ export class Component extends HTMLElement {
   constructor(html, css) {
     super();
 
-    const shadow = this.attachShadow({ mode: 'open' });
-    const template = this._createTemplate(html, css);
-    shadow.appendChild(template.content.cloneNode(true));
-    this.innerHTML = '';
-
-    this._attr = {};
     this._name = this.constructor.name;
     this._stateManager = getStateManager();
     this._stateManager.setInitialState(this._name);
+
+    const shadow = this.attachShadow({ mode: 'open' });
+    this._template = this._createTemplate(html, css);
+    shadow.appendChild(this._template.content.cloneNode(true));
+    this.innerHTML = '';
+
+    this._attr = {};
     this._loadAttributeValues();
   }
 
@@ -57,7 +58,7 @@ export class Component extends HTMLElement {
   }
 
   connectedCallback() {
-    this._stateManager.subscribe(this._name, this.onStateUpdate);
+    this._stateManager.subscribe(this._name, this._onStateUpdateInternal, this);
 
     if (this.onComponentAttach) {
       this.onComponentAttach();
@@ -65,10 +66,21 @@ export class Component extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this._stateManager.unsubscribe(this._name);
+    // this._stateManager.unsubscribe(this._name);
 
     if (this.onComponentDetach) {
       this.onComponentDetach();
+    }
+  }
+
+  _onStateUpdateInternal(state) {
+    console.log(this._name, state);
+    this.shadowRoot.innerHTML = this._renderTemplate(state);
+
+    if (this.onStateUpdate) {
+      this.onStateUpdate(state);
+    } else {
+      console.warn(`${this._name}: Doesn't have onStateUpdate method`);
     }
   }
 
@@ -81,8 +93,12 @@ export class Component extends HTMLElement {
   _createTemplate(html, css) {
     const template = document.createElement('template');
 
-    html = html.replace(/<!--\s*{\s*children\s*}\s*-->/, this.innerHTML);
-    this._processTemplateStates(html);
+    html = html || '';
+    if (html) {
+      html = html.replace(/<!--\s*{\s*children\s*}\s*-->/, this.innerHTML);
+      this._processTemplateStates(html);
+      html = this._renderTemplate(this.state);
+    }
 
     let styles = '';
     if (css) {
@@ -98,23 +114,35 @@ export class Component extends HTMLElement {
     this._initialHTML = html;
     this._templateStates = {};
 
-    const regex = /<!--\s*{\s*if state\s*==\s*([A-Za-z]+)\s*}\s*-->((.|\n|\r\n)*?)<!--\s*{\s*endif\s*}\s*-->/g;
+    const regex = /<!--\s*{\s*if state\s*==\s*([A-Za-z]+)\s*}\s*-->(.|\n|\r\n)*?<!--\s*{\s*endif\s*}\s*-->/g;
     let matches;
 
     while ((matches = regex.exec(html)) !== null) {
       const markup = matches[0];
       const state = matches[1];
-      const content = matches[2].trim();
 
       if (!this._templateStates[state]) {
         this._templateStates[state] = [];
       }
 
-      this._templateStates[state].push({ markup, content });
+      this._templateStates[state].push({ markup });
     }
   }
 
-  _templateRender() {
-    // todo on state change
+  _renderTemplate(state) {
+    const templateForStateExist = !!this._templateStates[state];
+    let html = this._initialHTML;
+
+    Object.keys(this._templateStates).forEach((key) => {
+      if (templateForStateExist && state === key) {
+        return;
+      }
+
+      this._templateStates[key].forEach((t) => {
+        html = html.replace(t.markup, '');
+      });
+    });
+
+    return html;
   }
 }

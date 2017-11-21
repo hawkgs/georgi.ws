@@ -3,6 +3,11 @@
 import { Component } from '../shared/component';
 import html from './RandomComponent.html';
 
+const RandomComponentState = {
+  Default: 'Default',
+  Loading: 'Loading'
+};
+
 export class RandomComponent extends Component {
   static get observedAttributes() {
     return ['ivan'];
@@ -10,6 +15,11 @@ export class RandomComponent extends Component {
 
   constructor() {
     super(html, null);
+
+    setTimeout(() => {
+      this.setState({ type: RandomComponentState.Loading });
+    }, 2000);
+
     console.log(this.attr);
   }
 

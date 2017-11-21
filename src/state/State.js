@@ -14,8 +14,8 @@ class StateManager {
     this._state[componentName] = null;
   }
 
-  subscribe(componentName, onStateUpdate) {
-    this._subscriptions[componentName] = onStateUpdate;
+  subscribe(componentName, onStateUpdate, thisCmp) {
+    this._subscriptions[componentName] = onStateUpdate.bind(thisCmp);
   }
 
   unsubscribe(componentName) {
@@ -33,12 +33,7 @@ class StateManager {
 
     this._state[componentName] = newState;
     const notify = this._subscriptions[componentName];
-
-    if (notify) {
-      notify(newState);
-    } else {
-      console.warn(`${componentName}: Doesn't have onStateUpdate method`);
-    }
+    notify(newState);
   }
 }
 
