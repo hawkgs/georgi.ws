@@ -11,11 +11,15 @@ export class Component extends HTMLElement {
     this._stateManager = getStateManager();
     this._stateManager.setInitialState(this._name, initialState);
 
+    this._templateUuids = {};
+    this._stateTemplates = {};
+
     const shadow = this.attachShadow({ mode: 'open' });
     this._template = this._createTemplate(html, css);
     shadow.appendChild(this._template.content.cloneNode(true));
     this._gatherStateTemplates();
     this._renderTemplate(this.state);
+    this.content = this.innerHTML;
     this.innerHTML = '';
 
     this._attr = {};
@@ -110,7 +114,6 @@ export class Component extends HTMLElement {
   }
 
   _processTemplate(html) {
-    this._templateUuids = {};
     let parsedHtml = html;
 
     const regex = /<!--\s*{\s*if state\s*==\s*([A-Za-z]+)\s*}\s*-->((.|\n|\r\n)*?)<!--\s*{\s*endif\s*}\s*-->/g;
@@ -140,8 +143,6 @@ export class Component extends HTMLElement {
   }
 
   _gatherStateTemplates() {
-    this._stateTemplates = {};
-
     Object.keys(this._templateUuids).forEach(s => {
       this._templateUuids[s].forEach(uuid => {
         const element = this.shadowRoot.querySelector(`[data-eid="${uuid}"]`);
@@ -159,6 +160,7 @@ export class Component extends HTMLElement {
 
     Object.keys(this._stateTemplates).forEach(s => {
       const elements = this._stateTemplates[s];
+
       if (templateForStateExist && state === s) {
         elements.forEach(elObj => {
           if (elObj.html) {
