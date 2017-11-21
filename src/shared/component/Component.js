@@ -1,18 +1,21 @@
 'use strict';
 
 import { getStateManager } from '../../state/State';
+import { uuid } from '../../utils/Helpers';
 
 export class Component extends HTMLElement {
-  constructor(html, css) {
+  constructor(html, css, initialState) {
     super();
 
     this._name = this.constructor.name;
     this._stateManager = getStateManager();
-    this._stateManager.setInitialState(this._name);
+    this._stateManager.setInitialState(this._name, initialState);
 
     const shadow = this.attachShadow({ mode: 'open' });
     this._template = this._createTemplate(html, css);
     shadow.appendChild(this._template.content.cloneNode(true));
+    this._gatherStateTemplates();
+    this._renderTemplate(this.state);
     this.innerHTML = '';
 
     this._attr = {};
@@ -66,7 +69,7 @@ export class Component extends HTMLElement {
   }
 
   disconnectedCallback() {
-    // this._stateManager.unsubscribe(this._name);
+    this._stateManager.unsubscribe(this._name);
 
     if (this.onComponentDetach) {
       this.onComponentDetach();
@@ -74,13 +77,10 @@ export class Component extends HTMLElement {
   }
 
   _onStateUpdateInternal(state) {
-    console.log(this._name, state);
-    this.shadowRoot.innerHTML = this._renderTemplate(state);
+    this._renderTemplate(state);
 
     if (this.onStateUpdate) {
       this.onStateUpdate(state);
-    } else {
-      console.warn(`${this._name}: Doesn't have onStateUpdate method`);
     }
   }
 
@@ -96,8 +96,7 @@ export class Component extends HTMLElement {
     html = html || '';
     if (html) {
       html = html.replace(/<!--\s*{\s*children\s*}\s*-->/, this.innerHTML);
-      this._processTemplateStates(html);
-      html = this._renderTemplate(this.state);
+      html = this._processTemplate(html);
     }
 
     let styles = '';
@@ -110,39 +109,68 @@ export class Component extends HTMLElement {
     return template;
   }
 
-  _processTemplateStates(html) {
-    this._initialHTML = html;
-    this._templateStates = {};
+  _processTemplate(html) {
+    this._templateUuids = {};
+    let parsedHtml = html;
 
-    const regex = /<!--\s*{\s*if state\s*==\s*([A-Za-z]+)\s*}\s*-->(.|\n|\r\n)*?<!--\s*{\s*endif\s*}\s*-->/g;
+    const regex = /<!--\s*{\s*if state\s*==\s*([A-Za-z]+)\s*}\s*-->((.|\n|\r\n)*?)<!--\s*{\s*endif\s*}\s*-->/g;
     let matches;
 
     while ((matches = regex.exec(html)) !== null) {
       const markup = matches[0];
       const state = matches[1];
+      let content = matches[2];
 
-      if (!this._templateStates[state]) {
-        this._templateStates[state] = [];
+      if (!/<[a-z]+>(.|\n|\r\n)*?<\/[a-z]+>/.test(content)) {
+        console.error(markup);
+        throw new Error(`${this._name}: The state template should be wrapped in HTML element`);
       }
 
-      this._templateStates[state].push({ markup });
+      const id = uuid();
+      content = content.replace('>', ` data-eid="${id}">`);
+      parsedHtml = parsedHtml.replace(markup, content);
+
+      if (!this._templateUuids[state]) {
+        this._templateUuids[state] = [];
+      }
+      this._templateUuids[state].push(id);
     }
+
+    return parsedHtml;
+  }
+
+  _gatherStateTemplates() {
+    this._stateTemplates = {};
+
+    Object.keys(this._templateUuids).forEach(s => {
+      this._templateUuids[s].forEach(uuid => {
+        const element = this.shadowRoot.querySelector(`[data-eid="${uuid}"]`);
+
+        if (!this._stateTemplates[s]) {
+          this._stateTemplates[s] = [];
+        }
+        this._stateTemplates[s].push({ element });
+      });
+    });
   }
 
   _renderTemplate(state) {
-    const templateForStateExist = !!this._templateStates[state];
-    let html = this._initialHTML;
+    const templateForStateExist = !!this._stateTemplates[state];
 
-    Object.keys(this._templateStates).forEach((key) => {
-      if (templateForStateExist && state === key) {
-        return;
+    Object.keys(this._stateTemplates).forEach(s => {
+      const elements = this._stateTemplates[s];
+      if (templateForStateExist && state === s) {
+        elements.forEach(elObj => {
+          if (elObj.html) {
+            elObj.element.innerHTML = elObj.html;
+          }
+        });
+      } else {
+        elements.forEach(elObj => {
+          elObj.html = elObj.element.innerHTML;
+          elObj.element.innerHTML = '';
+        });
       }
-
-      this._templateStates[key].forEach((t) => {
-        html = html.replace(t.markup, '');
-      });
     });
-
-    return html;
   }
 }

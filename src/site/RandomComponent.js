@@ -14,11 +14,15 @@ export class RandomComponent extends Component {
   }
 
   constructor() {
-    super(html, null);
+    super(html, null, RandomComponentState.Default);
 
     setTimeout(() => {
       this.setState({ type: RandomComponentState.Loading });
     }, 2000);
+
+    setTimeout(() => {
+      this.setState({ type: RandomComponentState.Default });
+    }, 6000);
 
     console.log(this.attr);
   }

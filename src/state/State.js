@@ -10,8 +10,9 @@ class StateManager {
     return this._state;
   }
 
-  setInitialState(componentName) {
-    this._state[componentName] = null;
+  setInitialState(componentName, initialState) {
+    initialState = initialState || null;
+    this._state[componentName] = initialState;
   }
 
   subscribe(componentName, onStateUpdate, thisCmp) {
