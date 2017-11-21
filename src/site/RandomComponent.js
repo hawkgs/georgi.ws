@@ -1,6 +1,7 @@
 'use strict';
 
 import { Component } from '../shared/component';
+import html from './RandomComponent.html';
 
 export class RandomComponent extends Component {
   static get observedAttributes() {
@@ -8,7 +9,7 @@ export class RandomComponent extends Component {
   }
 
   constructor() {
-    super('<div>html {{ children }}</div>', null);
+    super(html, null);
     console.log(this.attr);
   }
 

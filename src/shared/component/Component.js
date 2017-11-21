@@ -7,13 +7,10 @@ export class Component extends HTMLElement {
     super();
 
     const shadow = this.attachShadow({ mode: 'open' });
-    const template = document.createElement('template');
-    html = html.replace(/{{\s*children\s*}}/, this.innerHTML);
-    template.innerHTML = `<style>${css}</style>${html}`;
+    const template = this._createTemplate(html, css);
     shadow.appendChild(template.content.cloneNode(true));
     this.innerHTML = '';
 
-    // Not sure if this is a good idea
     this._attr = {};
     this._name = this.constructor.name;
     this._stateManager = getStateManager();
@@ -79,5 +76,45 @@ export class Component extends HTMLElement {
     [].slice.call(this.attributes).map((a) => {
       this._attr[a.name] = a.value;
     });
+  }
+
+  _createTemplate(html, css) {
+    const template = document.createElement('template');
+
+    html = html.replace(/<!--\s*{\s*children\s*}\s*-->/, this.innerHTML);
+    this._processTemplateStates(html);
+
+    let styles = '';
+    if (css) {
+      styles += `<style>${css}</style>`;
+    }
+
+    template.innerHTML = styles + html;
+
+    return template;
+  }
+
+  _processTemplateStates(html) {
+    this._initialHTML = html;
+    this._templateStates = {};
+
+    const regex = /<!--\s*{\s*if state\s*==\s*([A-Za-z]+)\s*}\s*-->((.|\n|\r\n)*?)<!--\s*{\s*endif\s*}\s*-->/g;
+    let matches;
+
+    while ((matches = regex.exec(html)) !== null) {
+      const markup = matches[0];
+      const state = matches[1];
+      const content = matches[2].trim();
+
+      if (!this._templateStates[state]) {
+        this._templateStates[state] = [];
+      }
+
+      this._templateStates[state].push({ markup, content });
+    }
+  }
+
+  _templateRender() {
+    // todo on state change
   }
 }
