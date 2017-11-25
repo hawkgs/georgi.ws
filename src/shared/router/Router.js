@@ -9,7 +9,7 @@ export class Router extends Component {
     super('<!--{children}-->');
 
     this._routingService = new RoutingService(this._loadRoute.bind(this));
-    getInjector().addDependency(ROUTING_SERVICE, this._routingService);
+    getInjector().addInstanceOf(ROUTING_SERVICE, this._routingService);
 
     this._routes = [];
 

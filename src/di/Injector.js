@@ -1,23 +1,28 @@
 'use strict';
 
-import { InitialDeps } from './Deps';
+import { Deps } from './Deps';
 
 class Injector {
   constructor() {
-    this._deps = InitialDeps;
+    this._instances = {};
     this._subscribers = [];
   }
 
-  addDependency(name, instance) {
-    this._deps[name] = instance;
+  getIntanceOf(name, args) {
+    return new Deps[name](...args);
+  }
+
+  addInstanceOf(name, instance) {
+    if (!(instance instanceof Deps[name])) {
+      console.error('Not an instance of ' + Deps[name]);
+      return;
+    }
+
+    this._instances[name] = instance;
 
     this._subscribers
       .filter(s => s.name === name)
       .forEach(s => s.cb(instance));
-  }
-
-  getDependency(name) {
-    return this._deps[name];
   }
 
   subscribe(name, cb) {
