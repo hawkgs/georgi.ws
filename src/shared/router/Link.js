@@ -19,10 +19,8 @@ export class Link extends Component {
     const link = this.shadowRoot.children[0];
 
     link.addEventListener('click', () => {
-      window.history.pushState({}, 'Title', `/#${this.attr.url}`);
-
       if (this._routingService) {
-        // do
+        this._routingService.push(this.attr.url);
       }
     });
 

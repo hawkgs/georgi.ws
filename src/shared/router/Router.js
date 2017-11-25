@@ -8,7 +8,7 @@ export class Router extends Component {
   constructor() {
     super('<!--{children}-->');
 
-    this._routingService = new RoutingService();
+    this._routingService = new RoutingService(this._loadRoute.bind(this));
     getInjector().addDependency(ROUTING_SERVICE, this._routingService);
 
     this._routes = [];
@@ -35,8 +35,8 @@ export class Router extends Component {
   }
 
   _loadRoute() {
-    const loc = window.location;
-    const route = loc.href.replace(loc.origin + '/#', '');
+    const location = window.location;
+    const route = location.href.replace(location.origin + '/#', '');
     this._renderRoute(route);
   }
 
