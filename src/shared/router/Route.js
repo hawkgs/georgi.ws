@@ -1,6 +1,6 @@
 'use strict';
 
-import { Component } from '../component/Component';
+import { Component } from '../component';
 
 export class Route extends Component {
   get data() {

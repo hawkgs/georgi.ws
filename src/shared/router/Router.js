@@ -1,13 +1,16 @@
 'use strict';
 
-import { Component } from '../component/Component';
+import { Component } from '../component';
 import { RoutingService } from './RoutingService';
+import { getInjector, ROUTING_SERVICE } from '../../di';
 
 export class Router extends Component {
   constructor() {
     super('<!--{children}-->');
 
     this._routingService = new RoutingService();
+    getInjector().addDependency(ROUTING_SERVICE, this._routingService);
+
     this._routes = [];
 
     [].slice.call(this.shadowRoot.children).forEach(r => {
@@ -19,10 +22,6 @@ export class Router extends Component {
     this.shadowRoot.appendChild(this._render);
     this._listenForRouteChanges();
     this._loadRoute();
-  }
-
-  get routingService() {
-    return this._routingService;
   }
 
   onComponentDetach() {

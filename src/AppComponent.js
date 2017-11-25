@@ -5,7 +5,7 @@ import html from './AppComponent.html';
 import css from './AppComponent.css';
 
 import './site/RandomComponent';
-import './shared/router/index';
+import './shared/router';
 
 export const AppComponentState = {
   Loaded: 'Loaded',
