@@ -30,6 +30,19 @@ module.exports = {
             attrs: false
           }
         }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|ico)$/i,
+        loader: 'file-loader?name=[name].[ext]'
       }
     ]
   },

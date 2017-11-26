@@ -1,11 +1,11 @@
 'use strict';
 
-import { Component } from './shared/component';
+import { Component } from '../core/component';
 import html from './AppComponent.html';
 import css from './AppComponent.css';
 
-import './site/RandomComponent';
-import './shared/router';
+import './RandomComponent';
+import '../core/router';
 
 export const AppComponentState = {
   Loaded: 'Loaded',

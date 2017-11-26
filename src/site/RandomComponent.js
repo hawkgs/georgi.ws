@@ -1,6 +1,6 @@
 'use strict';
 
-import { Component } from '../shared/component';
+import { Component } from '../core/component';
 import html from './RandomComponent.html';
 
 const RandomComponentState = {

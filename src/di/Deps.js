@@ -1,6 +1,6 @@
 'use strict';
 
-import { RoutingService } from '../shared/router/RoutingService';
+import { RoutingService } from '../core/router/RoutingService';
 
 export const ROUTING_SERVICE = 'routing_service';
 

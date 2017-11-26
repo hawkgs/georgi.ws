@@ -1,6 +1,7 @@
 'use strict';
 
-import { AppComponent } from './AppComponent';
+import './favicon.png';
+import { AppComponent } from './site/AppComponent';
 
 function init() {
   const element = document.createElement('div');
