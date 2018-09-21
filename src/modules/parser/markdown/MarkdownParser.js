@@ -1,6 +1,7 @@
 'use strict';
 
-import { AbstractParser } from '../parser/index';
+import { AbstractParser } from '../index';
+import { markdownLexer } from './Lexer';
 import {
   BoldReader,
   H1Reader,
@@ -11,7 +12,7 @@ import {
   H6Reader
 } from './Readers';
 
-export class MarkdownParser extends AbstractParser {
+class MarkdownParser extends AbstractParser {
   get readers() {
     return [
       new BoldReader(),
@@ -23,4 +24,10 @@ export class MarkdownParser extends AbstractParser {
       new H6Reader()
     ];
   }
+
+  parser(tree) {
+    // return
+  }
 }
+
+export const markdownParser = new MarkdownParser(markdownLexer);

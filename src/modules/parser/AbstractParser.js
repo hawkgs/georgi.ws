@@ -4,6 +4,10 @@ import { Tree } from './Tree';
 import { Stack } from './Stack';
 
 export class AbstractParser {
+  constructor(lexer) {
+    this._lexer = lexer;
+  }
+
   get readers() {
     throw new Error('The readers getter is not implemented.');
   }
@@ -13,17 +17,16 @@ export class AbstractParser {
   }
 
   parse(string) {
+    const tokens = this._lexer(string);
     const tree = new Tree();
     const stack = new Stack();
 
-    for (let i = 0; i < string.length; i += 1) {
-      this._executeReaders(string[i], stack);
-    }
+    tokens.forEach((t) => this._executeReaders(t, stack));
 
     return this.parser(tree);
   }
 
-  _executeReaders(char, stack) {
-    this.readers.forEach((r) => r.read(char, stack));
+  _executeReaders(token, stack) {
+    this.readers.forEach((r) => r.read(token, stack));
   }
 }
