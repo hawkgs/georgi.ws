@@ -18,7 +18,7 @@ const createSignToken = (s, t) => {
 
 // Disclaimer: MD not-fully-compliant parser; Not super optimized; Probably buggy
 const MarkdownToHTML = (md) => {
-  const lexer = /(^(#+)\s?([\w\s]+)\n)|(^(>)\s?([\w\s]+)\n)|((\*\*|__|~~)([\w\s]+)(\*\*|__|~~))|((\*|_|`)([\w\s]+)(\*|_|`))|(!\[([\w\s]+)\]\(([:/\w%?&=\.]+)\))/gm;
+  const lexer = /(^(#+)\s?([\w\s]+)\n)|(^(>)\s?([\w\s]+)\n)|((\*\*|__|~~)([\w\s]+)(\*\*|__|~~))|((\*|_|`)([\w\s]+)(\*|_|`))|((!?)\[([\w\s]+)\]\(([:/\w%?&=\.]+)\))/gm;
 
   md = md.replace('\r\n', '\n');
   const listCache = [];
@@ -31,7 +31,7 @@ const MarkdownToHTML = (md) => {
     const quotes = createSignValueToken(token[5], token[6], token);
     const doubleSymboled = createSignValueToken(token[8], token[9], token);
     const singleSymboled = createSignValueToken(token[12], token[13], token);
-    const image = createSignValueToken('![]()', { attr: token[16], img: token[17] }, token);
+    const link = createSignValueToken(token[16] ? 'img' : 'link', { attr: token[17], src: token[18] }, token);
     // const hline = createSignToken(token[16], token);
 
     if (headings) {
@@ -42,8 +42,8 @@ const MarkdownToHTML = (md) => {
       printToken(doubleSymboled);
     } else if (singleSymboled) {
       printToken(singleSymboled);
-    } else if (image) {
-      printToken(image);
+    } else if (link) {
+      printToken(link);
     }
   }
 };
@@ -57,7 +57,7 @@ const file = `
 ==
 > this is a new text ![img_atr](http://google.com)
 ###### jjaja divan
-this is some **sort** of a ~~text~~ __ur__ where something \`lol\` _lmao_ rstar
+this [linky](http://link.com) is some **sort** of a ~~text~~ __ur__ where something \`lol\` _lmao_ rstar
 `;
 
 MarkdownToHTML(file);
