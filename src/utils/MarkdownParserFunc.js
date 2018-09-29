@@ -19,7 +19,7 @@ const MarkdownToHTML = md =>
   [
     // Headings
     operation(
-      /^(#+)\s?([\w ]+)\n/gm,
+      /^(#+) ?([\w ]+)\n/gm,
       (text, token, idx, raw) => {
         const type = 6 - token[1].length;
         if (0 < type && type < 7) {
@@ -31,7 +31,7 @@ const MarkdownToHTML = md =>
     ),
     // Blockquotes
     operation(
-      /^>\s?([\w\n ]+)\n\n/gm,
+      /^> ?([\w\n ]+)\n\n/gm,
       (text, token, idx, raw) => {
         const parsed = `<blockquote>\n${token[1]}\n</blockquote>\n`;
         return replace(text, parsed, idx, idx + raw.length);
@@ -60,11 +60,26 @@ const MarkdownToHTML = md =>
     operation(
       /(\*|_|`)([A-Za-z0-9 ]+)(\*|_|`)/gm,
       (text, token, idx, raw) => {
-        if (token[1] === '*' || token[1] === '_') {
-          const parsed = `<i>${token[2]}</i>`;
-          return replace(text, parsed, idx, idx + raw.length);
+        let parsed = '';
+        switch (token[1]) {
+          case '*': case '_':
+            parsed = `<i>${token[2]}</i>`;
+            break;
+          case '`':
+            parsed = `<span class="code">${token[2]}</span>`;
+            break;
+          default:
+            return text;
         }
-        return text;
+        return replace(text, parsed, idx, idx + raw.length);
+      }
+    ),
+    // Code blocks
+    operation(
+      /^```([a-z\-])?\n([\w\n ]+)^```\n\n/gm,
+      (text, token, idx, raw) => {
+        const parsed = `<code${token[1] ? `data-lang="${token[1]}"` : ''}>\n${token[2]}</code>\n`;
+        return replace(text, parsed, idx, idx + raw.length);
       }
     ),
     // Links and images
@@ -79,6 +94,37 @@ const MarkdownToHTML = md =>
         }
         return replace(text, parsed, idx, idx + raw.length);
       }
+    ),
+    // Horizontal lines
+    operation(
+      /\n^(-|=){3,}\n\n/gm,
+      (text, _, idx, raw) => {
+        return replace(text, '<hr />\n', idx, idx + raw.length);
+      }
+    ),
+    // Lists
+    operation(
+      /(^(-|(\d\.)) ([\w ]+)\n)|(\n\n)/gm,
+      (text, token, idx, raw, cache) => {
+        if (token[1]) {
+          cache.type = token[2] === '-' ? 'ul' : 'ol';
+          if (!cache.rows.length) {
+            cache.idx = idx;
+          }
+          cache.rows.push(`<li>${token[4]}</li>`);
+        } else if (token[5] && cache.rows.length) {
+          const { type, rows } = cache;
+          const parsed = `<${type}>\n${rows.join('\n')}\n</${type}>\n`
+
+          text = replace(text, parsed, cache.idx, idx + raw.length);
+
+          cache.type = '';
+          cache.rows = [];
+          cache.idx = 0;
+        }
+        return text;
+      },
+      { type: '', rows: [], idx: 0 }
     )
   ]
   .reduce(
@@ -93,9 +139,36 @@ this is a random string **should be bold** and hahaha **and this** **too** thats
 > this is something special
 test one two three
 
-another row with some data _italics_ and _another italics_
+another \`code\` with some data _italics_ and _another italics_
 a text with [a link](https://goo.gl) or a link with [target](https://goo.gl){_target="blank"}
 or a an ![image](https://goo.gl/logo.png) test
+\`\`\`
+some code here
+you know
+\`\`\`
+
+some text again
+
+---
+
+another one
+test two
+
+====
+
+some text
+
+- list item 1
+- list item 2
+- list item 3
+
+
+1. List or 1
+2. List or 2
+3. List or 3
+
+
+some text
 `;
 
 console.log(MarkdownToHTML(text));
