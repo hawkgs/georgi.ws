@@ -1,6 +1,6 @@
 'use strict';
 
-const operation = (lexer, parser, cacheInit) => (text) => {
+const construction = (lexer, parser, cacheInit) => (text) => {
   let cache = cacheInit;
   let token;
 
@@ -20,7 +20,7 @@ const replace = (text, witht, from, to) =>
 export const MarkdownToHTML = md =>
   [
     // Headings
-    operation(
+    construction(
       /^(#+) ?([\w ]+)\n/gm,
       (text, token, idx, raw) => {
         const type = 6 - token[1].length;
@@ -32,7 +32,7 @@ export const MarkdownToHTML = md =>
       }
     ),
     // Blockquotes
-    operation(
+    construction(
       /^> ?([\w\n ]+)\n\n/gm,
       (text, token, idx, raw) => {
         const parsed = `<blockquote>\n${token[1]}\n</blockquote>\n`;
@@ -40,7 +40,7 @@ export const MarkdownToHTML = md =>
       }
     ),
     // Double-symboled
-    operation(
+    construction(
       /(\*\*|__|~~)([\w ]+)(\*\*|__|~~)/gm,
       (text, token, idx, raw) => {
         let type;
@@ -59,7 +59,7 @@ export const MarkdownToHTML = md =>
       }
     ),
     // Single-symboled
-    operation(
+    construction(
       /(\*|_|`)([A-Za-z0-9 ]+)(\*|_|`)/gm,
       (text, token, idx, raw) => {
         let parsed = '';
@@ -77,7 +77,7 @@ export const MarkdownToHTML = md =>
       }
     ),
     // Code blocks
-    operation(
+    construction(
       /^```([a-z\-])?\n([\w\n ]+)^```\n\n/gm,
       (text, token, idx, raw) => {
         const parsed = `<code${token[1] ? `data-lang="${token[1]}"` : ''}>\n${token[2]}</code>\n`;
@@ -85,7 +85,7 @@ export const MarkdownToHTML = md =>
       }
     ),
     // Links and images
-    operation(
+    construction(
       /(!?)\[([\w ]+)\]\(([:/\w%?&=\.]+)\)({([a-z_=" ]+)})?/gm,
       (text, token, idx, raw) => {
         let parsed;
@@ -98,14 +98,14 @@ export const MarkdownToHTML = md =>
       }
     ),
     // Horizontal lines
-    operation(
+    construction(
       /\n^(-|=){3,}\n\n/gm,
       (text, _, idx, raw) => {
         return replace(text, '<hr />\n', idx, idx + raw.length);
       }
     ),
     // Lists
-    operation(
+    construction(
       /(^(-|(\d\.)) ([\w ]+)\n)|(\n\n)/gm,
       (text, token, idx, raw, cache) => {
         if (token[1]) {
