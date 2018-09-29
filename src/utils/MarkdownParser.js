@@ -14,8 +14,10 @@ const operation = (lexer, parser, cacheInit) => (text) => {
 const replace = (text, witht, from, to) =>
   text.substring(0, from) + witht + text.substring(to, text.length);
 
-// More functionally-inspired parser
-const MarkdownToHTML = md =>
+// More functionally-inspired parser; Probably not-fully-compliant with standard
+// Notable issues: Lists require one additional new line in the end in (regexp)
+// To-dos: Improve content regexp
+export const MarkdownToHTML = md =>
   [
     // Headings
     operation(
@@ -131,44 +133,3 @@ const MarkdownToHTML = md =>
     (prev, next) => next(prev),
     md.replace(/\r\n/g, '\n')
   );
-
-const text = `
-this is a random string **should be bold** and hahaha **and this** **too** thats it
-#### heading somehting
-# some text
-> this is something special
-test one two three
-
-another \`code\` with some data _italics_ and _another italics_
-a text with [a link](https://goo.gl) or a link with [target](https://goo.gl){_target="blank"}
-or a an ![image](https://goo.gl/logo.png) test
-\`\`\`
-some code here
-you know
-\`\`\`
-
-some text again
-
----
-
-another one
-test two
-
-====
-
-some text
-
-- list item 1
-- list item 2
-- list item 3
-
-
-1. List or 1
-2. List or 2
-3. List or 3
-
-
-some text
-`;
-
-console.log(MarkdownToHTML(text));
