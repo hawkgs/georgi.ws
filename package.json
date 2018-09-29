@@ -24,6 +24,7 @@
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.1",
+    "raw-loader": "^0.5.1",
     "to-string-loader": "^1.1.5",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"

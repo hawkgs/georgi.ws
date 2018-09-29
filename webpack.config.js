@@ -23,7 +23,7 @@ module.exports = {
         use: ['to-string-loader', 'css-loader']
       },
       {
-        test: /\.(html)$/,
+        test: /\.html$/,
         use: {
           loader: 'html-loader',
           options: {
@@ -32,13 +32,17 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|md)$/,
         use: [
           {
             loader: 'file-loader',
             options: {}
           }
         ]
+      },
+      {
+        test: /.(txt|md|markdown)$/,
+        use: 'raw-loader'
       },
       {
         test: /\.(jpe?g|png|gif|ico)$/i,

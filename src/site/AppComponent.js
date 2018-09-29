@@ -5,7 +5,10 @@ import html from './AppComponent.html';
 import css from './AppComponent.css';
 
 import './RandomComponent';
+import './shared/markdown-reader/MarkdownReader';
 import '../core/router';
+
+import test from './test.markdown';
 
 export const AppComponentState = {
   Loaded: 'Loaded',
@@ -32,6 +35,10 @@ export class AppComponent extends Component {
     setTimeout(() => {
       random.setAttribute('ivan', 'milko');
     }, 3000);
+
+    // markdown
+    const mdReader = this.shadowRoot.querySelector('markdown-reader');
+    mdReader.setAttribute('md', test);
   }
 }
 
