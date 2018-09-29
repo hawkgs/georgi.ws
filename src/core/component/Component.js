@@ -8,8 +8,9 @@ export class Component extends HTMLElement {
     super();
 
     this._name = this.constructor.name;
+    this._smEntryName = this._name + '-' + uuid();
     this._stateManager = getStateManager();
-    this._stateManager.setInitialState(this._name, initialState);
+    this._stateManager.setInitialState(this._smEntryName, initialState);
 
     this._templateUuids = {};
     this._stateTemplates = {};
@@ -27,7 +28,7 @@ export class Component extends HTMLElement {
   }
 
   get state() {
-    return this._stateManager.state[this._name];
+    return this._stateManager.state[this._smEntryName];
   }
 
   get attr() {
@@ -41,16 +42,16 @@ export class Component extends HTMLElement {
     }
 
     const component = state.component;
-    let cmpName = this._name;
+    let entryName = this._smEntryName;
 
     if (component && typeof component === 'string') {
-      cmpName = component;
+      entryName = component;
     } else if (component) {
-      cmpName = component.constructor.name;
+      entryName = component.constructor.name;
     }
 
-    if (state && cmpName && state.type) {
-      this._stateManager.updateState(cmpName, state.type);
+    if (state && entryName && state.type) {
+      this._stateManager.updateState(entryName, state.type);
     }
   }
 
@@ -65,7 +66,7 @@ export class Component extends HTMLElement {
   }
 
   connectedCallback() {
-    this._stateManager.subscribe(this._name, this._onStateUpdateInternal, this);
+    this._stateManager.subscribe(this._smEntryName, this._onStateUpdateInternal, this);
 
     if (this.onComponentAttach) {
       this.onComponentAttach();
@@ -73,7 +74,7 @@ export class Component extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this._stateManager.unsubscribe(this._name);
+    this._stateManager.unsubscribe(this._smEntryName);
 
     if (this.onComponentDetach) {
       this.onComponentDetach();
