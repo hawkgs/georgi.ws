@@ -75,7 +75,7 @@ const MarkdownToHTML = md =>
         if (token[1]) {
           parsed = `<img src="${token[3]}" alt="${token[2]}" />`;
         } else {
-          parsed = `<a href="${token[3]}" ${token[5] || ''}>${token[2]}</a>`
+          parsed = `<a href="${token[3]}"${token[5] ? ' ' + token[5] : ''}>${token[2]}</a>`;
         }
         return replace(text, parsed, idx, idx + raw.length);
       }
