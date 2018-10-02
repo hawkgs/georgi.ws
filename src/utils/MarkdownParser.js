@@ -21,11 +21,11 @@ export const MarkdownToHTML = md =>
   [
     // Headings
     construction(
-      /^\s+?(#+) ?([\w ]+)\n/gm,
+      /^(\s+)?(#+) ?([\w ]+)\n/gm,
       (text, token, idx, raw) => {
-        const type = token[1].length;
+        const type = token[2].length;
         if (0 < type && type < 7) {
-          const parsed = `<h${type}>${token[2]}</h${type}>\n`;
+          const parsed = `<h${type}>${token[3]}</h${type}>\n`;
           return replace(text, parsed, idx, idx + raw.length);
         }
         return text;
