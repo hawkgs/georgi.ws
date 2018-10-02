@@ -7,6 +7,7 @@ import css from './AppComponent.css';
 import '../core/router';
 
 import './shared/projects/Projects';
+import './shared/stack/Stack';
 import './shared/timeline/Timeline';
 import './shared/about/About';
 
