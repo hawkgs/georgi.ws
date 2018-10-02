@@ -1,3 +1,27 @@
 strong {
   background: red;
 }
+
+app-link {
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  display: inline-block;
+}
+
+app-link::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 10px;
+  background: red;
+  opacity: 0.3;
+  left: 0;
+  bottom: 0;
+  margin-bottom: -3px;
+  transition: 0.2s width ease;
+}
+
+app-link:hover::before {
+  width: 100%;
+}

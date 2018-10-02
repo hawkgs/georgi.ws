@@ -21,9 +21,9 @@ export const MarkdownToHTML = md =>
   [
     // Headings
     construction(
-      /^(#+) ?([\w ]+)\n/gm,
+      /^\s+?(#+) ?([\w ]+)\n/gm,
       (text, token, idx, raw) => {
-        const type = 6 - token[1].length;
+        const type = token[1].length;
         if (0 < type && type < 7) {
           const parsed = `<h${type}>${token[2]}</h${type}>\n`;
           return replace(text, parsed, idx, idx + raw.length);
@@ -97,7 +97,7 @@ export const MarkdownToHTML = md =>
         return replace(text, parsed, idx, idx + raw.length);
       }
     ),
-    // Horizontal lines
+    // Horizontal rulers
     construction(
       /\n^(-|=){3,}\n\n/gm,
       (text, _, idx, raw) => {
@@ -127,6 +127,14 @@ export const MarkdownToHTML = md =>
         return text;
       },
       { type: '', rows: [], idx: 0 }
+    ),
+    // Boxes (custom)
+    construction(
+      /^::{([:/\w%?&=\.]+)}\(([#\w\n</> ]+)\)/gm,
+      (text, token, idx, raw) => {
+        const parsed = `<div class="box"><img src="${token[1]}" /><div class="ctnt">${token[2]}</div></div>`;
+        return replace(text, parsed, idx, idx + raw.length);
+      }
     )
   ]
   .reduce(
