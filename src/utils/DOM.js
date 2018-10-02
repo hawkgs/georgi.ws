@@ -2,12 +2,16 @@
 
 export const DOM = {
   addClasses: (element, classes) => {
-    throw new Error('not implemented');
+    if (!DOM.hasClass(element, classes)) {
+      element.className += ` ${classes}`;
+    }
   },
   removeClasses: (element, classes) => {
-    throw new Error('not implemented');
+    if (DOM.hasClass(element, classes)) {
+      element.className = element.className.replace(classes, '').trim();
+    }
   },
   hasClass: (element, className) => {
-    throw new Error('not implemented');
+    return element.className.indexOf(className) > -1;
   }
 };

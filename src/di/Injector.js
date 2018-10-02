@@ -9,6 +9,7 @@ class Injector {
   }
 
   getInstanceOf(name, args) {
+    args = args || [];
     return new Deps[name](...args);
   }
 
