@@ -1,18 +1,15 @@
 <div class="app-cmp">
   <header>
-    <div>logo</div>
+    <div id="logo"></div>
     <nav>
-      <app-link url="/">Home</app-link>
-      <app-link url="/skills">Skills</app-link>
+      <app-link url="/projects">Projects</app-link>
+      <app-link url="/timeline">Timeline</app-link>
       <app-link url="/about">About</app-link>
     </nav>
   </header>
-  <strong>App Working</strong>
-  <random-cmp id="random" cmp="my-cmp">Data</random-cmp>
-  <markdown-reader></markdown-reader>
   <app-router id="app-router">
-    <app-route url="/" component="ul"></app-route>
-    <app-route url="/skills" component="audio"></app-route>
-    <app-route url="/about" component="table"></app-route>
+    <app-route url="/projects" component="page-projects"></app-route>
+    <app-route url="/timeline" component="page-timeline"></app-route>
+    <app-route url="/about" component="page-about"></app-route>
   </app-router>
 </div>
