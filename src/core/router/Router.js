@@ -25,18 +25,18 @@ export class Router extends Component {
   }
 
   onComponentDetach() {
-    window.removeEventListener('popstate', this._popStateCb);
+    this._routeListener();
   }
 
   _listenForRouteChanges() {
-    window.addEventListener('popstate', this._popStateCb = () => {
+    this._routeListener = this._routingService.listen(() => {
       this._loadRoute();
     });
   }
 
   _loadRoute() {
     const location = window.location;
-    const route = location.href.replace(location.origin + '/#', '');
+    const route = location.href.replace(location.origin + RoutingService.strategy, '');
     this._renderRoute(route);
   }
 

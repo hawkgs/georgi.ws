@@ -4,17 +4,19 @@ export class RoutingService {
   constructor(loadRoute) {
     this._loadRoute = loadRoute;
     this._listeners = [];
+    this._popStateListener();
+  }
+
+  static get strategy() {
+    return '/#';
   }
 
   get path() {
-    if (!this._route) {
-      this._route = document.location.href.split('#')[1];
-    }
-    return this._route;
+    return document.location.href.split('#')[1];
   }
 
   push(url, pageTitle) {
-    const route = `/#${url}`;
+    const route = `${RoutingService.strategy}${url}`;
     const fullUrl = `${window.location.protocol}//${window.location.host}${route}`;
 
     if (window.location.href === fullUrl) {
@@ -24,7 +26,7 @@ export class RoutingService {
     this._route = route;
     window.history.pushState({}, pageTitle, route);
     this._loadRoute();
-    this._listeners.forEach(cb => cb(url));
+    this._listeners.forEach(cb => cb(this.path));
   }
 
   back() {
@@ -48,5 +50,11 @@ export class RoutingService {
         console.error('RoutingService: Could not remove listener.');
       }
     };
+  }
+
+  _popStateListener() {
+    window.addEventListener('popstate', this._popStateCb = () => {
+      this._listeners.forEach(cb => cb(this.path));
+    });
   }
 }
