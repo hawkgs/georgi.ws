@@ -1,5 +1,7 @@
 'use strict';
 
+const RoutingStrategy = '/#';
+
 export class RoutingService {
   constructor(loadRoute) {
     this._loadRoute = loadRoute;
@@ -7,16 +9,12 @@ export class RoutingService {
     this._popStateListener();
   }
 
-  static get strategy() {
-    return '/#';
-  }
-
   get path() {
     return document.location.href.split('#')[1];
   }
 
   push(url, pageTitle) {
-    const route = `${RoutingService.strategy}${url}`;
+    const route = `${RoutingStrategy}${url}`;
     const fullUrl = `${window.location.protocol}//${window.location.host}${route}`;
 
     if (window.location.href === fullUrl) {

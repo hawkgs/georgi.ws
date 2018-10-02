@@ -35,9 +35,7 @@ export class Router extends Component {
   }
 
   _loadRoute() {
-    const location = window.location;
-    const route = location.href.replace(location.origin + RoutingService.strategy, '');
-    this._renderRoute(route);
+    this._renderRoute(this._routingService.path);
   }
 
   _renderRoute(route) {
