@@ -1,7 +1,7 @@
 'use strict';
 
 import { Component } from '../../../core/component';
-import html from './Stack.html'
+import html from './Stack.html';
 import css from './Stack.css';
 
 export class Stack extends Component {

@@ -4,12 +4,12 @@ const construction = (lexer, parser, cacheInit) => (text) => {
   let cache = cacheInit;
   let token;
 
-  while (token = lexer.exec(text)) {
+  while ((token = lexer.exec(text))) {
     text = parser(text, token, token.index, token[0], cache);
   }
 
   return text;
-}
+};
 
 const replace = (text, witht, from, to) =>
   text.substring(0, from) + witht + text.substring(to, text.length);
@@ -116,7 +116,7 @@ export const MarkdownToHTML = md =>
           cache.rows.push(`<li>${token[4]}</li>`);
         } else if (token[5] && cache.rows.length) {
           const { type, rows } = cache;
-          const parsed = `<${type}>\n${rows.join('\n')}\n</${type}>\n`
+          const parsed = `<${type}>\n${rows.join('\n')}\n</${type}>\n`;
 
           text = replace(text, parsed, cache.idx, idx + raw.length);
 

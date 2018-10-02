@@ -47,6 +47,6 @@ export class RoutingService {
       } else {
         console.error('RoutingService: Could not remove listener.');
       }
-    }
+    };
   }
 }
