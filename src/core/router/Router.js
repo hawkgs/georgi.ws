@@ -14,30 +14,13 @@ export class Router extends Component {
   constructor() {
     super('<!--{children}-->');
 
-    if (instantiated) {
-      throw new Error('Router: The router already has an instance in the app.');
-    }
-    instantiated = true;
+    this._handleInstance();
 
     this._routingService = new RoutingService(this._loadRoute.bind(this));
     getInjector().addInstanceOf(ROUTING_SERVICE, this._routingService);
 
-    this._routes = [];
-
-    [].slice.call(this.shadowRoot.children).forEach(r => {
-      if (r instanceof Route) {
-        this._routes.push(r.data);
-      }
-    });
-    this.shadowRoot.innerHTML = '';
-
-    const animationStyles = document.createElement('style');
-    animationStyles.innerHTML = animations;
-    this.shadowRoot.appendChild(animationStyles);
-
-    this._render = document.createElement('div');
-    this.shadowRoot.appendChild(this._render);
-
+    this._getRoutes();
+    this._prepareTemplate();
     this._listenForRouteChanges();
     this._loadRoute();
   }
@@ -71,6 +54,34 @@ export class Router extends Component {
 
   _animate(component) {
     animateFadeIn(component);
+  }
+
+  _getRoutes() {
+    this._routes = [];
+
+    [].slice.call(this.shadowRoot.children).forEach(r => {
+      if (r instanceof Route) {
+        this._routes.push(r.data);
+      }
+    });
+  }
+
+  _prepareTemplate() {
+    this.shadowRoot.innerHTML = '';
+
+    const animationStyles = document.createElement('style');
+    animationStyles.innerHTML = animations;
+    this.shadowRoot.appendChild(animationStyles);
+
+    this._render = document.createElement('div');
+    this.shadowRoot.appendChild(this._render);
+  }
+
+  _handleInstance() {
+    if (instantiated) {
+      throw new Error('Router: The router already has an instance in the app.');
+    }
+    instantiated = true;
   }
 }
 
