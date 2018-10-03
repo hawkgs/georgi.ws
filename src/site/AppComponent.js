@@ -6,10 +6,10 @@ import css from './AppComponent.css';
 
 import '../core/router';
 
-import './shared/projects/Projects';
-import './shared/stack/Stack';
-import './shared/timeline/Timeline';
-import './shared/about/About';
+import './projects/Projects';
+import './stack/Stack';
+import './timeline/Timeline';
+import './about/About';
 
 import { DOM } from '../utils/DOM';
 import { getInjector, ROUTING_SERVICE } from '../di';

@@ -1,10 +1,10 @@
 'use strict';
 
-import { Component } from '../../../core/component';
+import { Component } from '../../core/component';
 import css from './About.css';
 import md from './about.markdown';
 
-import '../markdown-reader/MarkdownReader';
+import '../shared/markdown-reader/MarkdownReader';
 
 export class About extends Component {
   constructor() {
