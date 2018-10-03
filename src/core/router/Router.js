@@ -4,9 +4,16 @@ import { Component } from '../component';
 import { RoutingService } from './RoutingService';
 import { getInjector, ROUTING_SERVICE } from '../../di';
 
+let instantiated = false;
+
 export class Router extends Component {
   constructor() {
     super('<!--{children}-->');
+
+    if (instantiated) {
+      throw new Error('Router: The router already has an instance in the app.');
+    }
+    instantiated = true;
 
     this._routingService = new RoutingService(this._loadRoute.bind(this));
     getInjector().addInstanceOf(ROUTING_SERVICE, this._routingService);

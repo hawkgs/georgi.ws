@@ -1,8 +1,15 @@
 'use strict';
 
-const RoutingStrategy = '/#';
+const RoutingStrategyType = {
+  HashBased: '/#',
+  PathBased: ''
+};
 
 export class RoutingService {
+  static get RoutingStrategy() {
+    return RoutingStrategyType.HashBased;
+  }
+
   constructor(loadRoute) {
     this._loadRoute = loadRoute;
     this._listeners = [];
@@ -10,11 +17,14 @@ export class RoutingService {
   }
 
   get path() {
-    return document.location.href.split('#')[1];
+    if (RoutingService.RoutingStrategy === RoutingStrategyType.HashBased) {
+      return document.location.href.split('#')[1];
+    }
+    return document.location.pathname;
   }
 
   push(url, pageTitle) {
-    const route = `${RoutingStrategy}${url}`;
+    const route = `${RoutingService.RoutingStrategy}${url}`;
     const fullUrl = `${window.location.protocol}//${window.location.host}${route}`;
 
     if (window.location.href === fullUrl) {
@@ -51,8 +61,8 @@ export class RoutingService {
   }
 
   _popStateListener() {
-    window.addEventListener('popstate', this._popStateCb = () => {
+    window.onpopstate = () => {
       this._listeners.forEach(cb => cb(this.path));
-    });
+    };
   }
 }
