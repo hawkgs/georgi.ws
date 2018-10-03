@@ -6,6 +6,7 @@ import css from './AppComponent.css';
 
 import '../core/router';
 
+import './shared/interactive-logo/InteractiveLogo';
 import './projects/Projects';
 import './stack/Stack';
 import './timeline/Timeline';
