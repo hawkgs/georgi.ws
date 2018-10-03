@@ -15,17 +15,28 @@ import './about/About';
 import { DOM } from '../utils/DOM';
 import { getInjector, ROUTING_SERVICE } from '../di';
 
+const DefaultTitle = 'georgi.ws';
+const RouteToTitleMap = {
+  '/': DefaultTitle,
+  '/projects': `${DefaultTitle} // Projects`,
+  '/stack': `${DefaultTitle} // Stack`,
+  '/timeline': `${DefaultTitle} // Timeline`,
+  '/about': `${DefaultTitle} // About`
+};
+
 export class AppComponent extends Component {
   constructor() {
     super(html, css);
   }
 
   onComponentAttach() {
-    this._updateSelectedLink();
+    getInjector().subscribe(ROUTING_SERVICE, (routingService) => {
+      this._updateSelectedLink(routingService);
+      this._updateTitle(routingService);
+    });
   }
 
-  _updateSelectedLink() {
-    getInjector().subscribe(ROUTING_SERVICE, (routingService) => {
+  _updateSelectedLink(routingService) {
       const links = [].slice.call(this.shadowRoot.querySelectorAll('app-link'));
 
       const updateLinks = (url) => {
@@ -40,7 +51,16 @@ export class AppComponent extends Component {
 
       routingService.listen(updateLinks);
       updateLinks(routingService.path);
-    });
+  }
+
+  _updateTitle(routingService) {
+    const updateTitle = (url) => {
+      const title = RouteToTitleMap[url] || DefaultTitle;
+      document.title = title;
+    };
+
+    routingService.listen(updateTitle);
+    updateTitle(routingService.path);
   }
 }
 
