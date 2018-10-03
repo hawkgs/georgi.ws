@@ -120,12 +120,12 @@ export class Component extends HTMLElement {
     const regex = /<!--\s*{\s*if state\s*==\s*([A-Za-z]+)\s*}\s*-->((.|\n|\r\n)*?)<!--\s*{\s*endif\s*}\s*-->/g;
     let matches;
 
-    while ((matches = regex.exec(html)) !== null) {
+    while ((matches = regex.exec(html))) {
       const markup = matches[0];
       const state = matches[1];
       let content = matches[2];
 
-      if (!/<[a-z]+>(.|\n|\r\n)*?<\/[a-z]+>/.test(content)) {
+      if (!/<[a-z=" ]+>(.|\n|\r\n)*?<\/[a-z]+>/.test(content)) {
         console.error(markup);
         throw new Error(`${this._name}: The state template should be wrapped in HTML element`);
       }

@@ -1,8 +1,12 @@
 'use strict';
 
 import { Component } from '../component';
+import { Route } from './Route';
 import { RoutingService } from './RoutingService';
 import { getInjector, ROUTING_SERVICE } from '../../di';
+
+import animations from './animations/animations.css';
+import { animateFadeIn } from './animations/Animate';
 
 let instantiated = false;
 
@@ -21,12 +25,19 @@ export class Router extends Component {
     this._routes = [];
 
     [].slice.call(this.shadowRoot.children).forEach(r => {
-      this._routes.push(r.data);
+      if (r instanceof Route) {
+        this._routes.push(r.data);
+      }
     });
     this.shadowRoot.innerHTML = '';
 
+    const animationStyles = document.createElement('style');
+    animationStyles.innerHTML = animations;
+    this.shadowRoot.appendChild(animationStyles);
+
     this._render = document.createElement('div');
     this.shadowRoot.appendChild(this._render);
+
     this._listenForRouteChanges();
     this._loadRoute();
   }
@@ -53,8 +64,13 @@ export class Router extends Component {
       this._render.innerHTML = '';
 
       const component = document.createElement(name);
+      this._animate(component);
       this._render.appendChild(component);
     }
+  }
+
+  _animate(component) {
+    animateFadeIn(component);
   }
 }
 
