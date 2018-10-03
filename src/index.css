@@ -1,7 +1,12 @@
 body {
   /* font-family: 'Barlow Semi Condensed', sans-serif; */
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Raleway', sans-serif;
   user-select: none;
+  font-size: 18px;
+  word-spacing: 0.13em;
+  /* background: #f6f6f6; */
+  background: #fafafa;
+  color: #343434;
 }
 
 code, pre {

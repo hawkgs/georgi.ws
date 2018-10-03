@@ -1,0 +1,15 @@
+.interactive-logo {
+  font-size: 20px;
+}
+
+.interactive-logo > .initial {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  color: #fafafa;
+  background-color: #ea5242;
+  font-size: 18px;
+  box-sizing: border-box;
+}

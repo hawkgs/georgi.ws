@@ -1,5 +1,8 @@
-strong {
-  background: red;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0;
 }
 
 app-link {
@@ -7,22 +10,29 @@ app-link {
   cursor: pointer;
   font-size: 20px;
   display: inline-block;
+  margin-left: 10px;
 }
 
 app-link::before {
   content: '';
   position: absolute;
   width: 0;
-  height: 10px;
-  background: red;
-  opacity: 0.3;
+  height: 5px;
   left: 0;
   bottom: 0;
   margin-bottom: -3px;
-  transition: 0.2s width ease;
+  transition: 0.2s width ease, 0.3s background-color ease;
 }
 
 app-link:hover::before,
 app-link.selected::before {
   width: 100%;
+}
+
+app-link.selected::before {
+  background-color: #8f8f8f;
+}
+
+app-link:hover::before {
+  background-color: #ea5242;
 }
