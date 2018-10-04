@@ -3,6 +3,7 @@ header {
   align-items: center;
   justify-content: space-between;
   margin: 25px 0;
+  font-weight: 600;
 }
 
 app-link {
@@ -20,7 +21,7 @@ app-link::before {
   height: 5px;
   left: 0;
   bottom: 0;
-  margin-bottom: -3px;
+  margin-bottom: -5px;
   transition: 0.2s width ease, 0.3s background-color ease;
 }
 

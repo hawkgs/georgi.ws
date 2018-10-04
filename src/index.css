@@ -1,6 +1,5 @@
 body {
-  /* font-family: 'Barlow Semi Condensed', sans-serif; */
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   user-select: none;
   font-size: 18px;
   word-spacing: 0.13em;
@@ -9,11 +8,33 @@ body {
   color: #343434;
 }
 
+#root {
+  width: 800px;
+  margin: 0 auto;
+}
+
 code, pre {
   font-family: 'Fira Mono', monospace;
 }
 
-#root {
-  width: 800px;
-  margin: 0 auto;
+a {
+  position: relative;
+  display: inline-block;
+  color: #3687cc;
+  text-decoration: none;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  border-bottom: 3px dotted #3687cc;
+  width: 0;
+  transition: width 0.2s ease;
+  left: 0;
+  bottom: 0;
+  margin-bottom: -2px;
+}
+
+a:hover::after {
+  width: 100%;
 }

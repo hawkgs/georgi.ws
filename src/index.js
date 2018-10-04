@@ -10,7 +10,7 @@ function init() {
     const AppComponent = require('./site/AppComponent').default;
     element.appendChild(new AppComponent());
   } else {
-    element.innerHTML = `<p>Sorry but your browser is not supported </p>`;
+    element.innerHTML = require('./unsupported.html');
   }
 
   return element;
