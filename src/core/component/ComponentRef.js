@@ -1,7 +1,7 @@
 'use strict';
 
 export const ComponentRef = {
-  _store: Map([]),
+  _store: new Map([]),
   get: (element) => {
     const id = element.attr['data-cid'];
     const ref = ComponentRef._store.get(id);
