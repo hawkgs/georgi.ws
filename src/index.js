@@ -1,12 +1,17 @@
 'use strict';
 
 import './favicon.png';
-import { AppComponent } from './site/AppComponent';
 
 function init() {
   const element = document.createElement('div');
   element.id = 'root';
-  element.appendChild(new AppComponent());
+
+  if ('customElements' in window) {
+    const AppComponent = require('./site/AppComponent').default;
+    element.appendChild(new AppComponent());
+  } else {
+    element.innerHTML = `<p>Sorry but your browser is not supported </p>`;
+  }
 
   return element;
 }

@@ -2,14 +2,30 @@
   font-size: 20px;
 }
 
-.interactive-logo > .initial {
+.interactive-logo .initial {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 30px;
   height: 30px;
   color: #fafafa;
-  background-color: #ea5242;
   font-size: 18px;
   box-sizing: border-box;
+  animation: fade-in 1s ease;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.interactive-logo .initial.g {
+  background-color: #ea5242;
+}
+
+.interactive-logo .initial.h {
+  border: 2px solid #343434;
+  color: #343434;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

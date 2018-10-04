@@ -24,7 +24,7 @@ const RouteToTitleMap = {
   '/about': `${DefaultTitle} // About`
 };
 
-export class AppComponent extends Component {
+export default class AppComponent extends Component {
   constructor() {
     super(html, css);
   }

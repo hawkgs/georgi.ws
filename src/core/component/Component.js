@@ -2,15 +2,19 @@
 
 import { getStateManager } from '../../state/State';
 import { uuid } from '../../utils/Helpers';
+import { ComponentRef } from './ComponentRef';
 
 export class Component extends HTMLElement {
   constructor(html, css, initialState) {
     super();
 
     this._name = this.constructor.name;
-    this._smEntryName = this._name + '-' + uuid();
+    this._id = uuid();
+    this._smEntryName = this._name + '-' + this._id;
     this._stateManager = getStateManager();
     this._stateManager.setInitialState(this._smEntryName, initialState);
+
+    ComponentRef.set(this);
 
     this._templateUuids = {};
     this._stateTemplates = {};
@@ -27,6 +31,10 @@ export class Component extends HTMLElement {
     this._loadAttributeValues();
   }
 
+  get id() {
+    return this._id;
+  }
+
   get state() {
     return this._stateManager.state[this._smEntryName];
   }
@@ -41,17 +49,8 @@ export class Component extends HTMLElement {
       return;
     }
 
-    const component = state.component;
-    let entryName = this._smEntryName;
-
-    if (component && typeof component === 'string') {
-      entryName = component;
-    } else if (component) {
-      entryName = component.constructor.name;
-    }
-
-    if (state && entryName && state.type) {
-      this._stateManager.updateState(entryName, state.type);
+    if (state && state.type) {
+      this._stateManager.updateState(this._smEntryName, state.type);
     }
   }
 
@@ -75,6 +74,7 @@ export class Component extends HTMLElement {
 
   disconnectedCallback() {
     this._stateManager.unsubscribe(this._smEntryName);
+    ComponentRef.remove(this);
 
     if (this.onComponentDetach) {
       this.onComponentDetach();
