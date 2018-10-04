@@ -4,6 +4,7 @@ import { Component } from '../../../core/component';
 import html from './InteractiveLogo.html';
 import css from './InteractiveLogo.css';
 
+const SwitchInitialsAfter = 10 * 1000;
 const State = {
   InitialG: 'InitialG',
   InitialH: 'InitialH'
@@ -18,9 +19,12 @@ export class InteractiveLogo extends Component {
     const switchInitial = () => {
       const next = this.state === State.InitialG ? State.InitialH : State.InitialG;
       this.setState({ type: next });
-      setTimeout(switchInitial, 10000);
     };
-    setTimeout(switchInitial, 10000);
+    this._interval = setInterval(switchInitial, SwitchInitialsAfter);
+  }
+
+  onComponentDetach() {
+    clearInterval(this._interval);
   }
 }
 
