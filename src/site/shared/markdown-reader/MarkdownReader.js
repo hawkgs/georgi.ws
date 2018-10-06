@@ -12,7 +12,7 @@ export class MarkdownReader extends Component {
   }
 
   constructor() {
-    super(html, css);
+    super(html, [css]);
   }
 
   onAttributeChange(newAttrs) {

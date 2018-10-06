@@ -26,7 +26,7 @@ const RouteToTitleMap = {
 
 export default class AppComponent extends Component {
   constructor() {
-    super(html, css);
+    super(html, [css]);
   }
 
   onComponentAttach() {

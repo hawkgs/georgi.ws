@@ -8,7 +8,7 @@ import './shared/technology/Technology';
 
 export class Stack extends Component {
   constructor() {
-    super(html, css);
+    super(html, [css]);
   }
 }
 

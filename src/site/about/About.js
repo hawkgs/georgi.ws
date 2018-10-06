@@ -10,7 +10,7 @@ export class About extends Component {
   constructor() {
     super(
       '<markdown-reader></markdown-reader>',
-      css
+      [css]
     );
   }
 

@@ -6,7 +6,7 @@ import css from './Technology.html';
 
 export class Technology extends Component {
   constructor() {
-    super(html, css);
+    super(html, [css]);
   }
 }
 

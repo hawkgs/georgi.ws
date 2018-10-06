@@ -12,7 +12,7 @@ const State = {
 
 export class InteractiveLogo extends Component {
   constructor() {
-    super(html, css, State.InitialG);
+    super(html, [css], State.InitialG);
   }
 
   onComponentAttach() {

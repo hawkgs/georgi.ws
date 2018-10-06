@@ -5,7 +5,7 @@ import { uuid } from '../../utils/Helpers';
 import { ComponentRef } from './ComponentRef';
 
 export class Component extends HTMLElement {
-  constructor(html, css, initialState) {
+  constructor(html, styles, initialState) {
     super();
 
     this._name = this.constructor.name;
@@ -20,7 +20,7 @@ export class Component extends HTMLElement {
     this._stateTemplates = {};
 
     const shadow = this.attachShadow({ mode: 'open' });
-    this._template = this._createTemplate(html, css);
+    this._template = this._createTemplate(html, styles);
     shadow.appendChild(this._template.content.cloneNode(true));
     this._gatherStateTemplates();
     this._renderTemplate(this.state);
@@ -99,7 +99,7 @@ export class Component extends HTMLElement {
     });
   }
 
-  _createTemplate(html, css) {
+  _createTemplate(html, styles) {
     const template = document.createElement('template');
 
     html = html || '';
@@ -108,12 +108,13 @@ export class Component extends HTMLElement {
       html = this._processTemplate(html);
     }
 
-    let styles = '';
-    if (css) {
-      styles += `<style>${css}</style>`;
+    let css = '';
+    if (styles && styles instanceof Array) {
+      styles = styles.reduce((p, c) => p + c, '');
+      css += `<style>${styles}</style>`;
     }
 
-    template.innerHTML = styles + html;
+    template.innerHTML = css + html;
 
     return template;
   }

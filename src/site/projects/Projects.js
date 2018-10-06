@@ -7,7 +7,7 @@ import css from './Projects.css';
 
 export class Projects extends Component {
   constructor() {
-    super(html, css);
+    super(html, [css]);
   }
 }
 

@@ -6,7 +6,7 @@ import css from './Timeline.css';
 
 export class Timeline extends Component {
   constructor() {
-    super(html, css);
+    super(html, [css]);
   }
 }
 
