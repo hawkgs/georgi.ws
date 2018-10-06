@@ -15,7 +15,7 @@ export class About extends Component {
   }
 
   onComponentAttach() {
-    const reader = this.shadowRoot.querySelector('markdown-reader');
+    const reader = this.root.querySelector('markdown-reader');
     reader.setAttribute('md', md);
   }
 }

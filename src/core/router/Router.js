@@ -59,7 +59,7 @@ export class Router extends Component {
   _getRoutes() {
     this._routes = [];
 
-    [].slice.call(this.shadowRoot.children).forEach(r => {
+    [].slice.call(this.root.children).forEach(r => {
       if (r instanceof Route) {
         this._routes.push(r.data);
       }
@@ -67,14 +67,14 @@ export class Router extends Component {
   }
 
   _prepareTemplate() {
-    this.shadowRoot.innerHTML = '';
+    this.root.innerHTML = '';
 
     const animationStyles = document.createElement('style');
     animationStyles.innerHTML = animations;
-    this.shadowRoot.appendChild(animationStyles);
+    this.root.appendChild(animationStyles);
 
     this._render = document.createElement('div');
-    this.shadowRoot.appendChild(this._render);
+    this.root.appendChild(this._render);
   }
 
   _handleInstance() {

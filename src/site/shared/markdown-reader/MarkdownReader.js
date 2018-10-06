@@ -27,7 +27,7 @@ export class MarkdownReader extends Component {
 
   _setBody() {
     if (!this._body) {
-      this._body = this.shadowRoot.querySelector('.markdown');
+      this._body = this.root.querySelector('.markdown');
     }
   }
 }

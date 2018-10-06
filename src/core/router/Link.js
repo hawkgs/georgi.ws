@@ -16,7 +16,7 @@ export class Link extends Component {
   }
 
   onComponentAttach() {
-    const link = this.shadowRoot.children[0];
+    const link = this.root.children[0];
 
     link.addEventListener('click', () => {
       if (this._routingService) {

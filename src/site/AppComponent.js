@@ -37,7 +37,7 @@ export default class AppComponent extends Component {
   }
 
   _updateSelectedLink(routingService) {
-      const links = [].slice.call(this.shadowRoot.querySelectorAll('app-link'));
+      const links = [].slice.call(this.root.querySelectorAll('app-link'));
 
       const updateLinks = (url) => {
         links.forEach(l => {

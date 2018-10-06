@@ -24,7 +24,7 @@ export class Component extends HTMLElement {
     shadow.appendChild(this._template.content.cloneNode(true));
     this._gatherStateTemplates();
     this._renderTemplate(this.state);
-    this.content = this.innerHTML;
+    // this.content = this.innerHTML;
     this.innerHTML = '';
 
     this._attr = {};
@@ -41,6 +41,10 @@ export class Component extends HTMLElement {
 
   get attr() {
     return this._attr;
+  }
+
+  get root() {
+    return this.shadowRoot;
   }
 
   setState(state) {
