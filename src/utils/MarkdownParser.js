@@ -86,7 +86,7 @@ export const MarkdownToHTML = md =>
     ),
     // Links and images
     construction(
-      /(!?)\[([\w ]+)\]\(([:/\w%?&=\.]+)\)({([a-z_=" ]+)})?/gm,
+      /(!?)\[([@.\w ]+)\]\(([:/\w%?&=\.]+)\)({([a-z_=" ]+)})?/gm,
       (text, token, idx, raw) => {
         let parsed;
         if (token[1]) {
@@ -106,10 +106,10 @@ export const MarkdownToHTML = md =>
     ),
     // Lists
     construction(
-      /(^(-|(\d\.)) ([\w ]+)\n)|(\n\n)/gm,
+      /(^(-|\*|(\d\.)) ([\w ]+)\n)|(\n\n)/gm,
       (text, token, idx, raw, cache) => {
         if (token[1]) {
-          cache.type = token[2] === '-' ? 'ul' : 'ol';
+          cache.type = token[2] === '-' || token[2] === '*' ? 'ul' : 'ol';
           if (!cache.rows.length) {
             cache.idx = idx;
           }
@@ -127,6 +127,13 @@ export const MarkdownToHTML = md =>
         return text;
       },
       { type: '', rows: [], idx: 0 }
+    ),
+    // Line breaks
+    construction(
+      /\n\n/gm,
+      (text, _, idx, raw) => {
+        return replace(text, '<p class="br"></p>', idx, idx + raw.length);
+      }
     )
   ]
   .reduce(
