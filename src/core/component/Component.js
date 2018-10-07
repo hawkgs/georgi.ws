@@ -26,13 +26,13 @@ export class Component extends HTMLElement {
 
     this._html = html;
     this._styles = styles;
-    this._domType = dom;
+    this._domType = dom || DOMType.Shadow;
 
     this._templateUuids = {};
     this._stateTemplates = {};
     this._attr = {};
 
-    this._createDom(dom, html, styles)
+    this._createDom(this._domType, html, styles)
       .then(() => {
         this._processor.gatherStateTemplates();
         this._processor.renderTemplate(this.state);
@@ -60,7 +60,6 @@ export class Component extends HTMLElement {
 
   get root() {
     switch (this._domType) {
-      default:
       case DOMType.Shadow:
         return this.shadowRoot;
       case DOMType.Standard:
@@ -123,7 +122,6 @@ export class Component extends HTMLElement {
   _createDom(dom, html, styles) {
     return new Promise((res) => {
       switch (dom) {
-        default:
         case DOMType.Shadow:
           const template = this._createTemplate(html, styles);
           const shadow = this.attachShadow({ mode: 'open' });
@@ -134,6 +132,8 @@ export class Component extends HTMLElement {
         case DOMType.Standard:
           this._domReadyResolver = res;
           break;
+        default:
+          throw new Error('Component: Undefined DOM.');
       }
     });
   }
