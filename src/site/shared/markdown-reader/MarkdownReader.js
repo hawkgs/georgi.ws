@@ -1,7 +1,6 @@
 'use strict';
 
-import { Component } from '../../../core/component';
-import html from './MarkdownReader.html';
+import { Component, DOMType } from '../../../core/component';
 import css from './MarkdownReader.css';
 
 import { MarkdownToHTML } from '../../../utils/MarkdownParser';
@@ -12,7 +11,7 @@ export class MarkdownReader extends Component {
   }
 
   constructor() {
-    super(html, [css]);
+    super('<div class="markdown"></div>', [css], null, DOMType.Standard);
   }
 
   onAttributeChange(newAttrs) {

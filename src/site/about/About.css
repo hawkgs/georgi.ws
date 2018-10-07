@@ -1,0 +1,21 @@
+a {
+  position: relative;
+  display: inline-block;
+  color: #3687cc;
+  text-decoration: none;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  border-bottom: 3px dotted #3687cc;
+  width: 0;
+  transition: width 0.2s ease;
+  left: 0;
+  bottom: 0;
+  margin-bottom: -2px;
+}
+
+a:hover::after {
+  width: 100%;
+}
