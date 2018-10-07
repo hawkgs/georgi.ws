@@ -16,6 +16,10 @@ header {
   font-weight: 600;
 }
 
+interactive-logo {
+  display: block;
+}
+
 app-link, a {
   position: relative;
   cursor: pointer;
@@ -59,4 +63,18 @@ footer {
   padding-top: 7px;
   color: #8f8f8f;
   text-align: center;
+}
+
+@media (max-width: 680px) {
+  header {
+    display: block;
+  }
+
+  interactive-logo {
+    margin-bottom: 20px;
+  }
+
+  app-link, a {
+    margin: 0 15px 15px 0;
+  }
 }

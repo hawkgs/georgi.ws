@@ -14,7 +14,8 @@ body {
 }
 
 #root {
-  width: 850px;
+  max-width: 850px;
+  padding: 0 20px;
   margin: 0 auto;
 }
 
