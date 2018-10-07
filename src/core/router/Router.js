@@ -16,7 +16,7 @@ export class Router extends Component {
     this._handleInstance();
 
     const injector = getInjector();
-    this._routingService = injector.getInstanceOf(ROUTING_SERVICE, [this._loadRoute.bind(this)]);
+    this._routingService = injector.createInstanceOf(ROUTING_SERVICE, [this._loadRoute.bind(this)]);
     injector.addInstanceOf(ROUTING_SERVICE, this._routingService);
   }
 

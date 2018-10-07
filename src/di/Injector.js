@@ -8,7 +8,7 @@ class Injector {
     this._subscribers = [];
   }
 
-  getInstanceOf(name, args) {
+  createInstanceOf(name, args) {
     args = args || [];
     return new Deps[name](...args);
   }
