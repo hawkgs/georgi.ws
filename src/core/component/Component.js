@@ -4,8 +4,13 @@ import { getStateManager } from '../../state/State';
 import { uuid } from '../../utils/Helpers';
 import { ComponentRef } from './ComponentRef';
 
+export const DOMType = {
+  Standard: 'Standard',
+  Shadow: 'Shadow'
+};
+
 export class Component extends HTMLElement {
-  constructor(html, styles, initialState) {
+  constructor(html, styles, initialState, dom) {
     super();
 
     this._name = this.constructor.name;
@@ -13,22 +18,30 @@ export class Component extends HTMLElement {
     this._smEntryName = this._name + '-' + this._id;
     this._stateManager = getStateManager();
     this._stateManager.setInitialState(this._smEntryName, initialState);
+    this._connectedPromise = new Promise(r => this._connectedResolver = r);
 
     ComponentRef.set(this);
 
+    this._html = html;
+    this._styles = styles;
+    this._domType = dom;
+
     this._templateUuids = {};
     this._stateTemplates = {};
-
-    const shadow = this.attachShadow({ mode: 'open' });
-    this._template = this._createTemplate(html, styles);
-    shadow.appendChild(this._template.content.cloneNode(true));
-    this._gatherStateTemplates();
-    this._renderTemplate(this.state);
-    // this.content = this.innerHTML;
-    this.innerHTML = '';
-
     this._attr = {};
-    this._loadAttributeValues();
+
+    this._createDom(dom, html, styles)
+      .then(() => {
+        this._gatherStateTemplates();
+        this._renderTemplate(this.state);
+        this._loadAttributeValues();
+      })
+      .then(this._connectedPromise)
+      .then(() => {
+        if (this.onComponentAttach) {
+          this.onComponentAttach();
+        }
+      });
   }
 
   get id() {
@@ -44,7 +57,13 @@ export class Component extends HTMLElement {
   }
 
   get root() {
-    return this.shadowRoot;
+    switch (this._domType) {
+      default:
+      case DOMType.Shadow:
+        return this.shadowRoot;
+      case DOMType.Standard:
+        return this;
+    }
   }
 
   setState(state) {
@@ -71,9 +90,11 @@ export class Component extends HTMLElement {
   connectedCallback() {
     this._stateManager.subscribe(this._smEntryName, this._onStateUpdateInternal, this);
 
-    if (this.onComponentAttach) {
-      this.onComponentAttach();
+    if (this._domType === DOMType.Standard) {
+      this.innerHTML = this._generateHtml(this._html, this._styles);
+      this._domReadyResolver();
     }
+    this._connectedResolver();
   }
 
   disconnectedCallback() {
@@ -99,9 +120,25 @@ export class Component extends HTMLElement {
     });
   }
 
-  _createTemplate(html, styles) {
-    const template = document.createElement('template');
+  _createDom(dom, html, styles) {
+    return new Promise((res) => {
+      switch (dom) {
+        default:
+        case DOMType.Shadow:
+          const template = this._createTemplate(html, styles);
+          const shadow = this.attachShadow({ mode: 'open' });
+          shadow.appendChild(template.content.cloneNode(true));
+          this.innerHTML = '';
+          res();
+          break;
+        case DOMType.Standard:
+          this._domReadyResolver = res;
+          break;
+      }
+    });
+  }
 
+  _generateHtml(html, styles) {
     html = html || '';
     if (html) {
       html = html.replace(/<!--\s*{\s*children\s*}\s*-->/, this.innerHTML);
@@ -114,7 +151,12 @@ export class Component extends HTMLElement {
       css += `<style>${styles}</style>`;
     }
 
-    template.innerHTML = css + html;
+    return css + html;
+  }
+
+  _createTemplate(html, styles) {
+    const template = document.createElement('template');
+    template.innerHTML = this._generateHtml(html, styles);
 
     return template;
   }
@@ -151,7 +193,7 @@ export class Component extends HTMLElement {
   _gatherStateTemplates() {
     Object.keys(this._templateUuids).forEach(s => {
       this._templateUuids[s].forEach(uuid => {
-        const element = this.shadowRoot.querySelector(`[data-eid="${uuid}"]`);
+        const element = this.root.querySelector(`[data-eid="${uuid}"]`);
 
         if (!this._stateTemplates[s]) {
           this._stateTemplates[s] = [];

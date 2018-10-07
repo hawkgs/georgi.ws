@@ -27,6 +27,10 @@ class Injector {
   }
 
   subscribe(name, cb) {
+    const instance = this._instances[name];
+    if (instance) {
+      cb(instance);
+    }
     this._subscribers.push({ name, cb });
   }
 

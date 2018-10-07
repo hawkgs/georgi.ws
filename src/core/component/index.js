@@ -1,3 +1,3 @@
 // jshint ignore:start
-export { Component } from './Component';
+export { Component, DOMType } from './Component';
 export { ComponentRef } from './ComponentRef';

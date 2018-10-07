@@ -1,21 +1,21 @@
 'use strict';
 
-import { Component } from '../component';
+import { Component, DOMType } from '../component';
 import { getInjector, ROUTING_SERVICE } from '../../di';
 
 export class Link extends Component {
   constructor() {
-    super('<span class="link"><!--{children}--></span>', null);
+    super('<span class="link"><!--{children}--></span>', null, null, DOMType.Standard);
 
     this._injector = getInjector();
     this._routingService = null;
-
-    if (!this.attr.url) {
-      console.error('Link: The URL is not specified');
-    }
   }
 
   onComponentAttach() {
+    if (!this.attr.url) {
+      console.error('Link: The URL is not specified');
+    }
+
     const link = this.root.children[0];
 
     link.addEventListener('click', () => {

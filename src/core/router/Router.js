@@ -18,7 +18,9 @@ export class Router extends Component {
 
     this._routingService = new RoutingService(this._loadRoute.bind(this));
     getInjector().addInstanceOf(ROUTING_SERVICE, this._routingService);
+  }
 
+  onComponentAttach() {
     this._getRoutes();
     this._prepareTemplate();
     this._listenForRouteChanges();
