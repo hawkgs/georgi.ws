@@ -4,11 +4,11 @@ import { Component } from '../../../../../core/component';
 import html from './AutoTyper.html';
 import css from './AutoTyper.css';
 
-const DelayBetweenText = 250;
+import { random } from '../../../../../utils/Helpers';
+
+const DelayBetweenInputs = 250;
 const TypeSpeed = { from: 50, to: 200 };
 const DeleteSpeed = 50;
-
-const random = (min, max) => Math.random() * (max - min) + min;
 
 const State = {
   NoCaret: 'NoCaret',
@@ -89,7 +89,7 @@ export class AutoTyper extends Component {
           this._content.innerHTML = txt.substring(0, txt.length - 1);
           setTimeout(deleteLetter, DeleteSpeed);
         } else {
-          setTimeout(res, DelayBetweenText);
+          setTimeout(res, DelayBetweenInputs);
         }
       };
       deleteLetter();

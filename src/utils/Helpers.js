@@ -9,3 +9,5 @@ export const uuid = () => {
 
   return `${s4()}${s4()}${s4()}${s4()}`;
 };
+
+export const random = (min, max) => Math.random() * (max - min) + min;
