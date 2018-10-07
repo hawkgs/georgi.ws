@@ -10,30 +10,30 @@ class StateManager {
     return this._state;
   }
 
-  setInitialState(componentName, initialState) {
+  setInitialState(componentId, initialState) {
     initialState = initialState || null;
-    this._state[componentName] = initialState;
+    this._state[componentId] = initialState;
   }
 
-  subscribe(componentName, onStateUpdate, thisCmp) {
-    this._subscriptions[componentName] = onStateUpdate.bind(thisCmp);
+  subscribe(componentId, onStateUpdate, thisCmp) {
+    this._subscriptions[componentId] = onStateUpdate.bind(thisCmp);
   }
 
-  unsubscribe(componentName) {
-    this._state[componentName] = undefined;
-    this._subscriptions[componentName] = null;
+  unsubscribe(componentId) {
+    this._state[componentId] = undefined;
+    this._subscriptions[componentId] = null;
   }
 
-  updateState(componentName, newState) {
-    const state = this._state[componentName];
+  updateState(componentId, newState) {
+    const state = this._state[componentId];
 
     if (state === undefined) {
-      console.error(`${componentName}: No such component`);
+      console.error(`${componentId}: No such component`);
       return;
     }
 
-    this._state[componentName] = newState;
-    const notify = this._subscriptions[componentName];
+    this._state[componentId] = newState;
+    const notify = this._subscriptions[componentId];
     notify(newState);
   }
 }
