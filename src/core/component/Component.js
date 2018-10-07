@@ -18,7 +18,7 @@ export class Component extends HTMLElement {
     this._id = uuid();
     this._smEntryName = this._name + '-' + this._id;
     this._stateManager = getStateManager();
-    this._stateManager.setInitialState(this._smEntryName, initialState);
+    this._stateManager.setInitialState(this._smEntryName, initialState || null);
     this._connectedPromise = new Promise(r => this._connectedResolver = r);
     this._processor = new TemplateProcessor(this);
 
