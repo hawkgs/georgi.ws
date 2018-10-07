@@ -18,7 +18,7 @@ export class InteractiveLogo extends Component {
   onComponentAttach() {
     const switchInitial = () => {
       const next = this.state === State.InitialG ? State.InitialH : State.InitialG;
-      this.setState({ type: next });
+      this.setState(next);
     };
     this._interval = setInterval(switchInitial, SwitchInitialsAfter);
   }

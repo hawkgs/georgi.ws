@@ -5,7 +5,7 @@ import { getInjector, ROUTING_SERVICE } from '../../di';
 
 export class Link extends Component {
   constructor() {
-    super('<span class="link"><!--{children}--></span>', null, null, DOMType.Standard);
+    super('<span class="link"><!--{children}--></span>', [], null, DOMType.Standard);
 
     this._injector = getInjector();
     this._routingService = null;
