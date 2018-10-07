@@ -2,7 +2,6 @@
 
 import { Component } from '../component';
 import { Route } from './Route';
-import { RoutingService } from './RoutingService';
 import { getInjector, ROUTING_SERVICE } from '../../di';
 
 import animations from './animations/animations.css';
@@ -16,8 +15,9 @@ export class Router extends Component {
 
     this._handleInstance();
 
-    this._routingService = new RoutingService(this._loadRoute.bind(this));
-    getInjector().addInstanceOf(ROUTING_SERVICE, this._routingService);
+    const injector = getInjector();
+    this._routingService = injector.getInstanceOf(ROUTING_SERVICE, [this._loadRoute.bind(this)]);
+    injector.addInstanceOf(ROUTING_SERVICE, this._routingService);
   }
 
   onComponentAttach() {
