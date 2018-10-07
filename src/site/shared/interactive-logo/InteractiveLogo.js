@@ -1,8 +1,10 @@
 'use strict';
 
-import { Component } from '../../../core/component';
+import { Component, ComponentRef } from '../../../core/component';
 import html from './InteractiveLogo.html';
 import css from './InteractiveLogo.css';
+
+import './shared/auto-typer/AutoTyper';
 
 const SwitchInitialsAfter = 10 * 1000;
 const State = {
@@ -16,7 +18,10 @@ export class InteractiveLogo extends Component {
   }
 
   onComponentAttach() {
+    const autoTyperRef = ComponentRef.get(this.root.querySelector('auto-typer'));
     const switchInitial = () => {
+      autoTyperRef.typeNext();
+
       const next = this.state === State.InitialG ? State.InitialH : State.InitialG;
       this.setState(next);
     };

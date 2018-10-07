@@ -87,6 +87,7 @@ export class Component extends HTMLElement {
   }
 
   connectedCallback() {
+    this.setAttribute('data-cid', this._id);
     this._stateManager.subscribe(this._smEntryName, this._onStateUpdateInternal, this);
 
     if (this._domType === DOMType.Standard) {
