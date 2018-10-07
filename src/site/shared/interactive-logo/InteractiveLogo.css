@@ -1,5 +1,5 @@
 .interactive-logo {
-  font-size: 20px;
+  font-size: 19px;
 }
 
 .interactive-logo .initial {
@@ -9,7 +9,7 @@
   width: 30px;
   height: 30px;
   color: #fafafa;
-  font-size: 18px;
+  font-size: 19px;
   box-sizing: border-box;
   animation: fade-in 1s ease;
   animation-fill-mode: forwards;

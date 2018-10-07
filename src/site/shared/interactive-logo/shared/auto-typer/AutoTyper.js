@@ -1,6 +1,6 @@
 'use strict';
 
-import { Component } from '../../../../../core/component';
+import { Component, DOMType } from '../../../../../core/component';
 import html from './AutoTyper.html';
 import css from './AutoTyper.css';
 
@@ -23,7 +23,7 @@ function* makeTextGenerator(text) {
 
 export class AutoTyper extends Component {
   constructor() {
-    super(html, [css], State.NoCaret);
+    super(html, [css], State.NoCaret, DOMType.Standard);
   }
 
   onComponentAttach() {

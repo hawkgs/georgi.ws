@@ -30,6 +30,8 @@ export default class AppComponent extends Component {
   }
 
   onComponentAttach() {
+    this._copyrightYear();
+
     getInjector().subscribe(ROUTING_SERVICE, (routingService) => {
       this._updateSelectedLink(routingService);
       this._updateTitle(routingService);
@@ -61,6 +63,10 @@ export default class AppComponent extends Component {
 
     routingService.listen(updateTitle);
     updateTitle(routingService.path);
+  }
+
+  _copyrightYear() {
+    this.root.querySelector('.copy').innerHTML = new Date().getFullYear();
   }
 }
 
