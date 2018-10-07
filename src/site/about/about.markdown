@@ -1,6 +1,6 @@
 # About
 
-I am a developer specializing primarily in web and front-end technologies, named Georgi. In various internet communities, I am also known as "hawk" or "hAWK". My interests vary from programming, design and drawing to acrobatics and Subarus.
+My name is Georgi (if that's not obvious yet) a.k.a. "hawk" or "hAWK" in various internet communities. I am a developer specializing primarily in web and front-end technologies. Apart from programming, my interests vary from design to acrobatics and Subarus. You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
 
 Currently part of [rhyme.com](https://rhyme.com){target="_blank"}
 
