@@ -43,12 +43,12 @@ export class Router extends Component {
 
   _renderRoute(route) {
     const routeComponent = this._routes.find(r => r.url === route);
+    this._render.innerHTML = '';
 
     if (routeComponent) {
-      let name = routeComponent.component;
-      this._render.innerHTML = '';
-
+      const name = routeComponent.component;
       const component = document.createElement(name);
+
       this._animate(component);
       this._render.appendChild(component);
     }

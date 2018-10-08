@@ -18,7 +18,7 @@ export class RoutingService {
 
   get path() {
     if (RoutingService.RoutingStrategy === RoutingStrategyType.HashBased) {
-      return document.location.href.split('#')[1];
+      return document.location.href.split('#')[1] || '/';
     }
     return document.location.pathname;
   }
