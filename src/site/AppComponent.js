@@ -31,28 +31,35 @@ export default class AppComponent extends Component {
 
   onComponentAttach() {
     this._copyrightYear();
+    this._content = this.root.querySelector('.content');
 
     getInjector().subscribe(ROUTING_SERVICE, (routingService) => {
-      this._updateSelectedLink(routingService);
+      this._updateHeaderUI(routingService);
       this._updateTitle(routingService);
     });
   }
 
-  _updateSelectedLink(routingService) {
-      const links = [].slice.call(this.root.querySelectorAll('app-link'));
+  _updateHeaderUI(routingService) {
+    const links = [].slice.call(this.root.querySelectorAll('app-link'));
 
-      const updateLinks = (url) => {
-        links.forEach(l => {
-          if (l.attr.url === url) {
-            DOM.addClasses(l, 'selected');
-          } else {
-            DOM.removeClasses(l, 'selected');
-          }
-        });
-      };
+    const updateHeaderUI = (url) => {
+      if (routingService.path === '/') {
+        DOM.addClasses(this._content, 'home');
+      } else {
+        DOM.removeClasses(this._content, 'home');
+      }
 
-      routingService.listen(updateLinks);
-      updateLinks(routingService.path);
+      links.forEach(l => {
+        if (l.attr.url === url) {
+          DOM.addClasses(l, 'selected');
+        } else {
+          DOM.removeClasses(l, 'selected');
+        }
+      });
+    };
+
+    routingService.listen(updateHeaderUI);
+    updateHeaderUI(routingService.path);
   }
 
   _updateTitle(routingService) {

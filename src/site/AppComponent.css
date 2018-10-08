@@ -20,6 +20,25 @@ interactive-logo {
   display: block;
 }
 
+.content.home interactive-logo {
+  position: absolute;
+  transform: translateX(-50%) scale(3);
+  top: 200px;
+  left: 51%;
+}
+
+.content.home nav {
+  position: absolute;
+  top: 305px;
+  left: 50%;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+nav > app-link:first-child {
+  margin-left: 0;
+}
+
 app-link, a {
   position: relative;
   cursor: pointer;
@@ -76,5 +95,22 @@ footer {
 
   app-link, a {
     margin: 0 15px 15px 0;
+  }
+
+  .content.home interactive-logo {
+    top: 150px;
+    transform: translateX(-50%) scale(1.5);
+  }
+
+  .content.home nav {
+    top: 230px;
+  }
+
+  .content.home app-link,
+  .content.home a {
+    display: block;
+    margin: 0;
+    margin-bottom: 15px;
+    text-align: center;
   }
 }
