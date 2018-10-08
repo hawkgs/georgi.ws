@@ -10,7 +10,7 @@ Email: hawk.dvp at google mail
 
 GitHub: [hawkgs](https://github.com){target="_blank"}
 
-Twitter: [@gserev](https://twitter.com/gserev){target="_blank"} (I rarely use it 🤷)
+Twitter: [@gserev](https://twitter.com/gserev){target="_blank"} (I rarely use it)
 
 LinkedIn: [Georgi Serev](https://linkedin.com){target="_blank"} (I rarely check it 🤯)
 
