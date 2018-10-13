@@ -1,11 +1,11 @@
 .content {
   min-height: calc(100% - 1px);
-  margin-bottom: -50px;
+  margin-bottom: -75px;
   padding-top: 1px;
 }
 
 .push, footer {
-  height: 50px;
+  height: 75px;
 }
 
 header {
@@ -79,7 +79,7 @@ a:hover::after {
 footer {
   font-size: 12px;
   box-sizing: border-box;
-  padding-top: 7px;
+  padding-top: 20px;
   color: var(--app-grey);
   text-align: center;
 }
