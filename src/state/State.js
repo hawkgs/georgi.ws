@@ -20,7 +20,7 @@ class StateManager {
   }
 
   unsubscribe(componentId) {
-    this._state[componentId] = undefined;
+    delete this._state[componentId];
     this._subscriptions[componentId] = null;
   }
 
