@@ -1,0 +1,35 @@
+.project {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: 1px solid var(--app-grey);
+}
+
+.project::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: width 0.2s ease;
+  background: var(--text-color)
+}
+
+.project:hover {
+  transform: scale(1.05);
+}
+
+.project:hover::after {
+  width: 100%;
+}
