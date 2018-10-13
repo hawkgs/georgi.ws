@@ -1,3 +1,12 @@
+:root {
+  /* --app-background: #f6f6f6; */
+  --app-background: #fafafa;
+  --text-color: #343434;
+  --link-color: #3687cc;
+  --app-red: #ea5242;
+  --app-grey: #8f8f8f;
+}
+
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -8,9 +17,8 @@ body {
   user-select: none;
   font-size: 18px;
   word-spacing: 0.13em;
-  /* background: #f6f6f6; */
-  background: #fafafa;
-  color: #343434;
+  background: var(--app-background);
+  color: var(--text-color);
 }
 
 #root {
@@ -26,14 +34,14 @@ code, pre {
 a {
   position: relative;
   display: inline-block;
-  color: #3687cc;
+  color: var(--link-color);
   text-decoration: none;
 }
 
 a::after {
   content: '';
   position: absolute;
-  border-bottom: 3px dotted #3687cc;
+  border-bottom: 3px dotted var(--link-color);
   width: 0;
   transition: width 0.2s ease;
   left: 0;

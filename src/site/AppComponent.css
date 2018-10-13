@@ -68,19 +68,19 @@ a:hover::after {
 }
 
 app-link.selected::after {
-  background-color: #8f8f8f;
+  background-color: var(--app-grey);
 }
 
 app-link:hover::after,
 a:hover::after {
-  background-color: #ea5242;
+  background-color: var(--app-red);
 }
 
 footer {
   font-size: 12px;
   box-sizing: border-box;
   padding-top: 7px;
-  color: #8f8f8f;
+  color: var(--app-grey);
   text-align: center;
 }
 

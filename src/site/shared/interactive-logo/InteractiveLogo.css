@@ -9,7 +9,7 @@
   align-items: center;
   width: 30px;
   height: 30px;
-  color: #fafafa;
+  color: var(--app-background);
   font-size: 19px;
   box-sizing: border-box;
   animation: fade-in 1s ease;
@@ -18,12 +18,12 @@
 }
 
 .interactive-logo .initial.g {
-  background-color: #ea5242;
+  background-color: var(--app-red);
 }
 
 .interactive-logo .initial.h {
-  border: 2px solid #343434;
-  color: #343434;
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
 }
 
 @keyframes fade-in {
