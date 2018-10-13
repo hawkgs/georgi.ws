@@ -15,6 +15,7 @@ const State = {
 export class InteractiveLogo extends Component {
   constructor() {
     super(html, [css], State.InitialG);
+    this._lightTheme = true;
   }
 
   onComponentAttach() {
@@ -26,10 +27,23 @@ export class InteractiveLogo extends Component {
       this.setState(next);
     };
     this._interval = setInterval(switchInitial, SWITCH_INITIAL_STATE_AFTER);
+
+    this._themeSwitcher();
   }
 
   onComponentDetach() {
     clearInterval(this._interval);
+  }
+
+  _themeSwitcher() {
+    this.root.addEventListener('click', () => {
+      if (this._lightTheme) {
+        window.switchToDarkTheme();
+      } else {
+        window.switchToLightTheme();
+      }
+      this._lightTheme = !this._lightTheme;
+    });
   }
 }
 
