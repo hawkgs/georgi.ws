@@ -6,7 +6,7 @@ import css from './InteractiveLogo.css';
 
 import './shared/auto-typer/AutoTyper';
 
-const SwitchInitialsAfter = 10 * 1000;
+const SWITCH_INITIAL_STATE_AFTER = 10 * 1000;
 const State = {
   InitialG: 'InitialG',
   InitialH: 'InitialH'
@@ -25,7 +25,7 @@ export class InteractiveLogo extends Component {
       const next = this.state === State.InitialG ? State.InitialH : State.InitialG;
       this.setState(next);
     };
-    this._interval = setInterval(switchInitial, SwitchInitialsAfter);
+    this._interval = setInterval(switchInitial, SWITCH_INITIAL_STATE_AFTER);
   }
 
   onComponentDetach() {

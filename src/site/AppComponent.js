@@ -16,13 +16,13 @@ import './about/About';
 import { DOM } from '../utils/DOM';
 import { getInjector, ROUTING_SERVICE } from '../di';
 
-const DefaultTitle = 'georgi.ws';
+const DEFAULT_TITLE = 'georgi.ws';
 const RouteToTitleMap = {
-  '/': DefaultTitle,
-  '/projects': `${DefaultTitle} // Projects`,
-  '/stack': `${DefaultTitle} // Stack`,
-  '/timeline': `${DefaultTitle} // Timeline`,
-  '/about': `${DefaultTitle} // About`
+  '/': DEFAULT_TITLE,
+  '/projects': `${DEFAULT_TITLE} // Projects`,
+  '/stack': `${DEFAULT_TITLE} // Stack`,
+  '/timeline': `${DEFAULT_TITLE} // Timeline`,
+  '/about': `${DEFAULT_TITLE} // About`
 };
 
 export default class AppComponent extends Component {
@@ -65,7 +65,7 @@ export default class AppComponent extends Component {
 
   _updateTitle(routingService) {
     const updateTitle = (url) => {
-      const title = RouteToTitleMap[url] || DefaultTitle;
+      const title = RouteToTitleMap[url] || DEFAULT_TITLE;
       document.title = title;
     };
 

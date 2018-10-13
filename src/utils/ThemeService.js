@@ -1,6 +1,6 @@
 'use strict';
 
-const LightTheme = {
+const LIGHT_THEME = {
   '--app-background': '#fafafa',
   '--text-color': '#343434',
   '--link-color': '#3687cc',
@@ -9,7 +9,7 @@ const LightTheme = {
   '--app-light-grey': '#f1f1f1'
 };
 
-const DarkTheme = {
+const DARK_THEME = {
   '--app-background': '#343434',
   '--text-color': '#fafafa',
   '--link-color': '#53abf6',
@@ -25,5 +25,5 @@ const setTheme = (theme) => {
   });
 };
 
-window.switchToLightTheme = () => setTheme(LightTheme);
-window.switchToDarkTheme = () => setTheme(DarkTheme);
+window.switchToLightTheme = () => setTheme(LIGHT_THEME);
+window.switchToDarkTheme = () => setTheme(DARK_THEME);

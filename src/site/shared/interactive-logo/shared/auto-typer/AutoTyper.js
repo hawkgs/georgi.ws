@@ -6,9 +6,9 @@ import css from './AutoTyper.css';
 
 import { random } from '../../../../../utils/Helpers';
 
-const DelayBetweenInputs = 250;
-const TypeSpeed = { from: 50, to: 200 };
-const DeleteSpeed = 50;
+const DELAY_BETWEEN_INPUTS = 250;
+const TYPE_SPEED = { from: 50, to: 200 };
+const DELETE_SPEED = 50;
 
 const State = {
   NoCaret: 'NoCaret',
@@ -67,7 +67,7 @@ export class AutoTyper extends Component {
 
             if (!next.done) {
               this._content.innerHTML += next.value;
-              this._timeout = setTimeout(printLetter, random(TypeSpeed.from, TypeSpeed.to));
+              this._timeout = setTimeout(printLetter, random(TYPE_SPEED.from, TYPE_SPEED.to));
             } else {
               this.setState(State.NoCaret);
               res();
@@ -87,9 +87,9 @@ export class AutoTyper extends Component {
         const txt = this._content.innerHTML;
         if (txt) {
           this._content.innerHTML = txt.substring(0, txt.length - 1);
-          setTimeout(deleteLetter, DeleteSpeed);
+          setTimeout(deleteLetter, DELETE_SPEED);
         } else {
-          setTimeout(res, DelayBetweenInputs);
+          setTimeout(res, DELAY_BETWEEN_INPUTS);
         }
       };
       deleteLetter();
