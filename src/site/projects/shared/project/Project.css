@@ -4,7 +4,7 @@
   height: 200px;
   margin: 6px;
   box-sizing: border-box;
-  border: 2px solid #f1f1f1;
+  border: 2px solid var(--app-light-grey);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +24,8 @@
 .project > .logo {
   width: 50px;
   height: 50px;
-  background: #000;
+  border-radius: 50%;
+  background: var(--app-light-grey);
 }
 
 .project > p {
