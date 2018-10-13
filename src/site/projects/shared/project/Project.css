@@ -2,8 +2,9 @@
   position: relative;
   width: 200px;
   height: 200px;
-  margin: 5px;
+  margin: 7px;
   box-sizing: border-box;
+  border: 2px solid #f1f1f1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,25 +12,30 @@
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: 1px solid var(--app-grey);
-}
-
-.project::after {
-  content: '';
-  position: absolute;
-  display: block;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  transition: width 0.2s ease;
-  background: var(--text-color)
+  padding: 30px 10px 10px 10px;
 }
 
 .project:hover {
-  transform: scale(1.05);
+  transform: translateY(-7px);
 }
 
-.project:hover::after {
-  width: 100%;
+.project > .logo {
+  width: 50px;
+  height: 50px;
+  background: #000;
+}
+
+.project > p {
+  margin: 0;
+}
+
+.project > .name {
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.project > .descr {
+  margin-top: 5px;
+  font-size: 12px;
+  height: 43px;
 }
