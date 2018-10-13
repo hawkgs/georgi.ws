@@ -1,7 +1,6 @@
 .technology {
   width: 90px;
   height: 90px;
-  margin: 10px;
   transition: transform 0.2s ease;
   text-align: center;
 }

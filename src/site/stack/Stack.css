@@ -1,4 +1,17 @@
-.langs-n-technologies {
+.stack > .langs-n-technologies {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.stack technology-cmp {
+  margin: 10px 9px;
+}
+
+.stack technology-cmp:nth-child(8n - 7) {
+  margin-left: 0;
+}
+
+.stack technology-cmp:nth-child(8n) {
+  margin-right: 0;
 }
