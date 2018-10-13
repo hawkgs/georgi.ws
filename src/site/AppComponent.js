@@ -5,6 +5,7 @@ import html from './AppComponent.html';
 import css from './AppComponent.css';
 
 import '../core/router';
+import '../utils/ThemeService';
 
 import './shared/interactive-logo/InteractiveLogo';
 import './projects/Projects';

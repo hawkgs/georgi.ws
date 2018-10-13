@@ -18,8 +18,9 @@ body {
   user-select: none;
   font-size: 18px;
   word-spacing: 0.13em;
-  background: var(--app-background);
+  background-color: var(--app-background);
   color: var(--text-color);
+  transition: background-color 0.2s ease;
 }
 
 #root {
