@@ -23,4 +23,4 @@ LinkedIn: [Georgi Serev](https://linkedin.com){target="_blank"} (I rarely check 
 
 ### The website
 
-During the development of this website I had one rule - don't use libraries apart from Webpack and Babel. This resulted in a small not-so-rich framework. It was purely a test for me, trying to build something without the common and conventional tools and frameworks available nowdays. You can check the whole source code at [GitHub](https://github.com/hawkgs/georgi.ws){target="_blank"}.
+During the development of this website I had one rule - don't use libraries apart from Webpack and Babel. This resulted in a small not-so-rich single-page framework. It was purely a test for me, trying to build something without the common and conventional tools and frameworks available nowdays. You can check the whole source code at [GitHub](https://github.com/hawkgs/georgi.ws){target="_blank"}.
