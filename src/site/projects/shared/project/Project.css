@@ -2,7 +2,7 @@
   position: relative;
   width: 200px;
   height: 200px;
-  margin: 7px;
+  margin: 6px;
   box-sizing: border-box;
   border: 2px solid #f1f1f1;
   display: flex;
@@ -12,11 +12,13 @@
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s ease;
-  padding: 30px 10px 10px 10px;
+  padding: 30px 15px 15px 15px;
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .project:hover {
-  transform: translateY(-7px);
+  transform: translateY(-5px);
 }
 
 .project > .logo {
