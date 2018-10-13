@@ -106,7 +106,7 @@ export const MarkdownToHTML = md =>
     ),
     // Lists
     construction(
-      /(^(-|\*|(\d\.)) ([\w ]+)\n)|(\n\n)/gm,
+      /(^(-|\*|(\d\.)) ([\w(){}<>:\/="'-. ]+)\n)|(\n\n)/gm,
       (text, token, idx, raw, cache) => {
         if (token[1]) {
           cache.type = token[2] === '-' || token[2] === '*' ? 'ul' : 'ol';
