@@ -15,3 +15,13 @@
 .stack technology-cmp:nth-child(8n) {
   margin-right: 0;
 }
+
+@media (max-width: 910px) {
+  .stack > .langs-n-technologies {
+    justify-content: center;
+  }
+
+  .stack technology-cmp {
+    margin: 10px 9px !important;
+  }
+}
