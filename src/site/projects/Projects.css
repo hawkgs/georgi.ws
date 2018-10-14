@@ -3,3 +3,25 @@
   margin-top: 25px;
   flex-wrap: wrap;
 }
+
+@media (max-width: 910px) {
+  .content {
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .content {
+    width: 430px;
+  }
+}
+
+@media (max-width: 460px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+  }
+}
