@@ -14,7 +14,8 @@ html, body, #root {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Karla', sans-serif;
   user-select: none;
   font-size: 18px;
   word-spacing: 0.13em;
@@ -27,10 +28,6 @@ body {
   max-width: 850px;
   padding: 0 20px;
   margin: 0 auto;
-}
-
-code, pre {
-  font-family: 'Fira Mono', monospace;
 }
 
 a {
