@@ -6,31 +6,73 @@
 .timeline > .content {
   position: absolute;
   width: 100%;
-  top: 50px;
-  bottom: 10px;
+  top: 60px;
+  bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.timeline > .content::after,
+.timeline > .content::before {
+  content: '';
+  position: absolute;
+  width: inherit;
+  height: 50px;
+}
+
+.timeline > .content::after {
+  top: 0;
+  box-shadow: inset 0 0 10px 0 red;
+}
+
+.timeline > .content::before {
+  bottom: 0;
 }
 
 .timeline .line {
   position: absolute;
   left: 50%;
   border-right: 5px dashed var(--text-color);
-  height: 2000px;
-  top: 20px;
+  top: 75px;
+  height: 1550px;
+}
+
+.timeline .year {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: var(--text-color);
+  left: 50%;
+  border-radius: 50%;
+  margin-left: -7px;
+  color: var(--app-grey);
+  margin-top: 50px; /* tmp */
+}
+
+.timeline .year::after {
+  content: attr(data-year);
+  position: absolute;
+  font-size: 22px;
+  left: 38px;
+  font-weight: 600;
+  margin-top: -4px;
+  white-space: nowrap;
 }
 
 .timeline event-cmp {
   width: 40%;
   display: block;
   margin-left: 5%;
+  margin-top: 50px; /* tmp */
 }
 
-.timeline event-cmp:nth-child(2n + 1) > .event > .wrapper {
+.timeline event-cmp:nth-of-type(2n + 1) > .event > .wrapper {
   flex-direction: row-reverse;
   text-align: right;
 }
 
-.timeline event-cmp:nth-child(2n) {
+.timeline event-cmp:nth-of-type(2n) {
   margin-left: 55%;
 }
+
+/* Top margins */
