@@ -1,3 +1,36 @@
-.content {
-  border: 1px solid red;
+.timeline {
+  position: relative;
+  height: calc(100vh - 170px);
+}
+
+.timeline > .content {
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.timeline .line {
+  position: absolute;
+  left: 50%;
+  border-right: 5px dashed var(--text-color);
+  height: 2000px;
+  top: 20px;
+}
+
+.timeline event-cmp {
+  width: 40%;
+  display: block;
+  margin-left: 5%;
+}
+
+.timeline event-cmp:nth-child(2n + 1) > .event > .wrapper {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.timeline event-cmp:nth-child(2n) {
+  margin-left: 55%;
 }
