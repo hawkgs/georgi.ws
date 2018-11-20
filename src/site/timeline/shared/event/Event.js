@@ -6,7 +6,7 @@ import css from './Event.css';
 
 export class Project extends Component {
   static get observedAttributes() {
-    return ['title', 'time', 'description'];
+    return ['name', 'time', 'description'];
   }
 
   constructor() {
@@ -14,7 +14,7 @@ export class Project extends Component {
   }
 
   onComponentAttach() {
-    this.root.querySelector('.title').innerHTML = this.attr.title || 'N/A';
+    this.root.querySelector('.name').innerHTML = this.attr.name || 'N/A';
     this.root.querySelector('.time').innerHTML = this.attr.time || new Date().getFullYear();
     this.root.querySelector('.description').innerHTML = this.attr.description || '';
   }

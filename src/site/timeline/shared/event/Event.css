@@ -44,7 +44,7 @@
   width: 100%;
 }
 
-.event .title {
+.event .name {
   color: var(--text-color);
   font-weight: 600;
   font-size: 18px;
@@ -62,7 +62,7 @@
   width: inherit;
   max-height: 15px;
   margin-top: -13px;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.5s ease;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
