@@ -39,6 +39,11 @@
   margin: 0 15px;
 }
 
+.event .data {
+  position: relative;
+  width: 100%;
+}
+
 .event .title {
   color: var(--text-color);
   font-weight: 600;
@@ -47,11 +52,23 @@
 
 .event .time {
   font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .event .description {
   color: var(--app-grey);
   font-size: 14px;
-  height: 20px;
-  margin-top: 7px;
+  position: absolute;
+  width: inherit;
+  max-height: 15px;
+  margin-top: -13px;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.event:hover .description {
+  max-height: 200px;
+  white-space: initial;
 }
