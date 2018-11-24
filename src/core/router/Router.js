@@ -3,6 +3,7 @@
 import { Component } from '../component';
 import { Route } from './Route';
 import { getInjector, ROUTING_SERVICE } from '../../di';
+import { Routing } from './Routing';
 
 import animations from './animations/animations.css';
 import { animateFadeIn } from './animations/Animate';
@@ -32,8 +33,10 @@ export class Router extends Component {
   }
 
   _listenForRouteChanges() {
-    this._routeListener = this._routingService.listen(() => {
-      this._loadRoute();
+    this._routeListener = this._routingService.listen((_, routing) => {
+      if (routing === Routing.PopState) {
+        this._loadRoute();
+      }
     });
   }
 

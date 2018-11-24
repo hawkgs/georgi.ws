@@ -1,5 +1,7 @@
 'use strict';
 
+import { Routing } from './Routing';
+
 const RoutingStrategyType = {
   HashBased: '/#',
   PathBased: ''
@@ -34,7 +36,7 @@ export class RoutingService {
     this._route = route;
     window.history.pushState({}, pageTitle, route);
     this._loadRoute();
-    this._listeners.forEach(cb => cb(this.path));
+    this._listeners.forEach(cb => cb(this.path, Routing.Push));
   }
 
   back() {
@@ -62,7 +64,7 @@ export class RoutingService {
 
   _popStateListener() {
     window.onpopstate = () => {
-      this._listeners.forEach(cb => cb(this.path));
+      this._listeners.forEach(cb => cb(this.path, Routing.PopState));
     };
   }
 }

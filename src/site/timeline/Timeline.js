@@ -16,10 +16,7 @@ export class Timeline extends Component {
   onComponentAttach() {
     const scrollbar = this.root.querySelector('scrollbar-cmp');
     const content = this.root.querySelector('.content');
-    // debugger;
-    // if (!ComponentRef.get(scrollbar)) {
-    //   debugger;
-    // }
+
     ComponentRef.get(scrollbar).observeElement(content);
   }
 }
