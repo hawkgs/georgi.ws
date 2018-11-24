@@ -18,11 +18,24 @@ export const DARK_THEME = {
   '--app-light-grey': '#3a3a3a'
 };
 
+let meta;
+
 export const setTheme = (theme) => {
   Object.keys(theme).forEach((prop) => {
     const value = theme[prop];
     document.documentElement.style.setProperty(prop, value);
   });
+
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('name', 'theme-color');
+    document.head.appendChild(meta);
+  }
+  if (theme['--app-background'] === '#343434') {
+    meta.setAttribute('content', theme['--app-background']);
+  } else {
+    meta.setAttribute('content', 'white');
+  }
 };
 
 window.switchToLightTheme = () => setTheme(LIGHT_THEME);
