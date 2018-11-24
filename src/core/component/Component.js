@@ -5,6 +5,8 @@ import { uuid } from '../../utils/Helpers';
 import { ComponentRef } from './ComponentRef';
 import { TemplateProcessor } from './TemplateProcessor';
 
+let loadedStandardStyles = new Set();
+
 export const DOMType = {
   Standard: 'Standard',
   Shadow: 'Shadow'
@@ -90,7 +92,10 @@ export class Component extends HTMLElement {
     this._stateManager.subscribe(this._smEntryName, this._onStateUpdateInternal, this);
 
     if (this._domType === DOMType.Standard) {
-      this.innerHTML = this._generateHtml(this._html, this._styles);
+      const styles = !loadedStandardStyles.has(this._name) ? this._styles : null;
+      this.innerHTML = this._generateHtml(this._html, styles);
+      loadedStandardStyles.add(this._name);
+
       this._domReadyResolver();
     }
     this._connectedResolver();
@@ -99,6 +104,7 @@ export class Component extends HTMLElement {
   disconnectedCallback() {
     this._stateManager.unsubscribe(this._smEntryName);
     ComponentRef.remove(this);
+    loadedStandardStyles.delete(this._name);
 
     if (this.onComponentDetach) {
       this.onComponentDetach();
