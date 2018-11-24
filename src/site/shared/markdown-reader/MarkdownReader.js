@@ -18,7 +18,13 @@ export class MarkdownReader extends Component {
     const { md } = newAttrs;
     if (md) {
       this._setBody();
-      this._body.innerHTML = MarkdownToHTML(md);
+
+      new Promise((res) => {
+        setTimeout(() => res(MarkdownToHTML(md)));
+      }).then((html) => {
+        this._body.innerHTML = html;
+      });
+
       // Clean attribute
       setTimeout(() => this.setAttribute('md', ''));
     }
