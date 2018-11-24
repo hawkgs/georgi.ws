@@ -4,7 +4,7 @@ import { Component } from '../../../../core/component';
 import html from './Scrollbar.html';
 import css from './Scrollbar.css';
 
-const perc = (pos, height) => Math.round((pos / height) * 100);
+const perc = (part, total) => Math.round((part / total) * 100);
 
 export class Scrollbar extends Component {
   constructor() {
@@ -21,7 +21,6 @@ export class Scrollbar extends Component {
   onComponentDetach() {
     document.removeEventListener('mousemove', this._docMouseMove);
     document.removeEventListener('mouseup', this._docMouseUp);
-    console.log('remove');
   }
 
   observeElement(el) {

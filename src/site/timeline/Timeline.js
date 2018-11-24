@@ -13,11 +13,11 @@ export class Timeline extends Component {
     super(html, [css, common]);
   }
 
-  onComponentAttach() {
-    const scrollbar = this.root.querySelector('scrollbar-cmp');
-    const content = this.root.querySelector('.content');
-    ComponentRef.get(scrollbar).observeElement(content);
-  }
+  // onComponentAttach() {
+  //   const scrollbar = this.root.querySelector('scrollbar-cmp');
+  //   const content = this.root.querySelector('.content');
+  //   ComponentRef.get(scrollbar).observeElement(content);
+  // }
 }
 
 customElements.define('page-timeline', Timeline);
