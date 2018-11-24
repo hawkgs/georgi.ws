@@ -15,7 +15,7 @@ export class SvgLoader extends Component {
     const { path } = newAttrs;
     if (path) { // jshint ignore:line
       // jshint ignore:start
-      import(`../../${path}.svg`)
+      import(/* webpackMode: "lazy-once", webpackChunkName: "svgs" */`../../${path}.svg`)
         .then((m) => {
           this.root.innerHTML = m.default;
         });
