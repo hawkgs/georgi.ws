@@ -1,0 +1,18 @@
+.scrollbar {
+  position: absolute;
+  background-color: var(--app-background);
+  width: 25px;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  z-index: 1;
+  transition: background-color 0.2s ease;
+}
+
+.scroller {
+  position: absolute;
+  background-color: var(--app-light-grey);
+  width: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}

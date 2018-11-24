@@ -4,7 +4,7 @@ import { Component, DOMType } from '../../../../core/component';
 import html from './Event.html';
 import css from './Event.css';
 
-export class Project extends Component {
+export class Event extends Component {
   static get observedAttributes() {
     return ['name', 'time', 'description'];
   }
@@ -20,4 +20,4 @@ export class Project extends Component {
   }
 }
 
-customElements.define('event-cmp', Project);
+customElements.define('event-cmp', Event);
