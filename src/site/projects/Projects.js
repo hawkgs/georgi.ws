@@ -6,6 +6,7 @@ import css from './Projects.css';
 import common from '../shared/common.css';
 
 import './shared/project/Project';
+import '../shared/svg-loader/SvgLoader';
 
 export class Projects extends Component {
   constructor() {

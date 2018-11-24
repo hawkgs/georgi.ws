@@ -42,7 +42,7 @@ module.exports = {
         ]
       },
       {
-        test: /.(txt|md|markdown)$/,
+        test: /.(txt|md|markdown|svg)$/,
         use: 'raw-loader'
       },
       {
