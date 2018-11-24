@@ -9,6 +9,7 @@
 }
 
 header {
+  position: relative;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   align-items: center;
@@ -38,6 +39,10 @@ interactive-logo {
 
 nav > app-link:first-child {
   margin-left: 0;
+}
+
+.mobile-nav-btn {
+  display: none;
 }
 
 app-link, a {
@@ -113,5 +118,78 @@ footer {
     margin: 0;
     margin-bottom: 15px;
     text-align: center;
+  }
+
+  .content:not(.home) .mobile-nav-btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    right: 0;
+    top: 0;
+    display: block;
+    z-index: 2;
+  }
+
+  .content:not(.home) .mobile-nav-btn::after,
+  .content:not(.home) .mobile-nav-btn::before {
+    content: '';
+    width: inherit;
+    height: 3px;
+    margin: 5px 0;
+    background-color: var(--text-color);
+    transform-origin: 69% 50%;
+    display: block;
+  }
+
+  .content:not(.home) nav.visible + .mobile-nav-btn::after {
+    transform: rotate(45deg);
+  }
+
+  .content:not(.home) nav.visible + .mobile-nav-btn::before {
+    transform: rotate(-45deg);
+  }
+
+  .content:not(.home) nav {
+    position: fixed;
+    background-color: var(--app-background);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    padding: 70px 0 20px 0;
+    box-sizing: border-box;
+  }
+
+  .content:not(.home) nav::before {
+    content: '';
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .content:not(.home) nav,
+  .content:not(.home) nav::before {
+    width: 0;
+    transition: width 0.2s ease;
+  }
+
+  .content:not(.home) nav.visible {
+    width: 250px;
+  }
+
+  .content:not(.home) nav.visible::before {
+    width: calc(100% - 250px);
+  }
+
+  .content:not(.home) nav app-link,
+  .content:not(.home) nav a {
+    margin-left: 25px;
+    margin-bottom: 20px;
+    float: left;
+    clear: left;
   }
 }

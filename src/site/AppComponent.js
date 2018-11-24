@@ -37,6 +37,7 @@ export default class AppComponent extends Component {
     getInjector().subscribe(ROUTING_SERVICE, (routingService) => {
       this._updateHeaderUI(routingService);
       this._updateTitle(routingService);
+      this._mobileNavHandler();
     });
   }
 
@@ -75,6 +76,28 @@ export default class AppComponent extends Component {
 
   _copyrightYear() {
     this.root.querySelector('.copy').innerHTML = new Date().getFullYear();
+  }
+
+  _mobileNavHandler() {
+    const nav = this.root.querySelector('nav');
+    let clickFlag = false;
+
+    this.root.querySelector('.mobile-nav-btn').addEventListener('click', () => {
+      if (!DOM.hasClass(nav, 'visible')) {
+        clickFlag = true;
+      }
+      DOM.addClasses(nav, 'visible');
+      document.body.style.overflow = 'hidden';
+    });
+
+    document.addEventListener('click', () => {
+      if (clickFlag) {
+        clickFlag = false;
+      } else {
+        DOM.removeClasses(nav, 'visible');
+        document.body.style.overflow = 'auto';
+      }
+    });
   }
 }
 
