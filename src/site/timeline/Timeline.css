@@ -35,6 +35,11 @@
   padding-bottom: 50px;
 }
 
+.timeline scrollbar-cmp {
+  top: 100px;
+  display: block;
+}
+
 .timeline .line {
   position: absolute;
   left: 50%;
@@ -92,15 +97,9 @@
   }
 
   .timeline .line,
+  .timeline .year,
+  .timeline scrollbar-cmp,
   .timeline event-cmp > .event::after {
-    display: none;
-  }
-
-  .timeline .year {
-    /* width: 100%;
-    background: none;
-    margin-left: 0;
-    left: 0; */
     display: none;
   }
 
