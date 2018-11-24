@@ -8,7 +8,7 @@ export class SvgLoader extends Component {
   }
 
   constructor() {
-    super(null, [], null);
+    super('', []);
   }
 
   onAttributeChange(newAttrs) {

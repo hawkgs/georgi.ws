@@ -24,7 +24,8 @@ export class Component extends HTMLElement {
     this._connectedPromise = new Promise(r => this._connectedResolver = r);
     this._processor = new TemplateProcessor(this);
 
-    ComponentRef.set(this);
+    this._innerHtml = this.innerHTML;
+    this._cleanRawChildren();
 
     this._html = html;
     this._styles = styles;
@@ -40,7 +41,7 @@ export class Component extends HTMLElement {
         this._processor.renderTemplate(this.state);
         this._loadAttributeValues();
       })
-      .then(this._connectedPromise)
+      .then(() => this._connectedPromise)
       .then(() => {
         if (this.onComponentAttach) {
           this.onComponentAttach();
@@ -88,6 +89,7 @@ export class Component extends HTMLElement {
   }
 
   connectedCallback() {
+    ComponentRef.set(this);
     this.setAttribute('data-cid', this._id);
     this._stateManager.subscribe(this._smEntryName, this._onStateUpdateInternal, this);
 
@@ -132,14 +134,13 @@ export class Component extends HTMLElement {
           const template = this._createTemplate(html, styles);
           const shadow = this.attachShadow({ mode: 'open' });
           shadow.appendChild(template.content.cloneNode(true));
-          this.innerHTML = '';
           res();
           break;
         case DOMType.Standard:
           this._domReadyResolver = res;
           break;
         default:
-          throw new Error('Component: Undefined DOM.');
+          throw new Error('Component: Undefined DOM type.');
       }
     });
   }
@@ -147,7 +148,7 @@ export class Component extends HTMLElement {
   _generateHtml(html, styles) {
     html = html || '';
     if (html) {
-      html = html.replace(/<!--\s*{\s*children\s*}\s*-->/, this.innerHTML);
+      html = html.replace(/<!--\s*{\s*children\s*}\s*-->/, this._innerHtml);
       html = this._processor.processTemplate(html);
     }
 
@@ -165,5 +166,12 @@ export class Component extends HTMLElement {
     template.innerHTML = this._generateHtml(html, styles);
 
     return template;
+  }
+
+  _cleanRawChildren() {
+    let child;
+    while ((child = this.firstChild)) {
+      this.removeChild(child);
+    }
   }
 }
