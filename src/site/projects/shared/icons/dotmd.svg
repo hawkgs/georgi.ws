@@ -4,61 +4,15 @@
  <defs>
   <style type="text/css">
    <![CDATA[
-    .str1 {stroke:var(--text-color);stroke-width:41.6654}
-    .str3 {stroke:var(--text-color);stroke-width:41.6654;stroke-linejoin:round}
-    .str0 {stroke:var(--text-color);stroke-width:41.6654;stroke-linecap:round}
-    .str2 {stroke:var(--text-color);stroke-width:41.6654;stroke-linecap:round}
-    .str4 {stroke:var(--text-color);stroke-width:41.6654;stroke-linecap:round;stroke-linejoin:round}
-    .fil1 {fill:none}
-    .fil0 {fill:var(--text-color)}
-    .fil3 {fill:var(--text-color)}
-    .fil2 {fill:white}
+    .str0 {stroke:var(--text-color);stroke-width:41.6654;stroke-linejoin:round}
+    .str1 {stroke:var(--text-color);stroke-width:41.6654;stroke-linecap:round;stroke-linejoin:round}
+    .fil0 {fill:none}
+    .fil1 {fill:var(--text-color)}
    ]]>
   </style>
  </defs>
-   <path class="fil0" d="m1251-1451h-156-156c-9 0-17 2-25 6s-17 11-24 19c-13 12-18 32-23 52-2 11-5 21-8 31-4 12-7 24-10 36-4 16-8 32-14 48 0 2 0 3-1 5-1 7 0 13 2 18 2 3 4 6 7 7h345c9-1 18-5 25-12 10-10 18-24 22-38 0-1 35-126 35-127 2-8 3-16 3-22 0-8-1-14-3-17-2-2-5-4-9-5-3-1-6-1-10-1zm0-41c-104-1-208-1-312 0-32 0-57 15-79 36-27 28-29 66-40 100-9 27-14 56-24 83-12 36 3 78 42 86h350c45-2 77-42 87-82 0 0 35-126 35-127 15-63-10-96-59-96zm-828 474c9-30 28-104 34-129 16-63 29-130 94-165 19-10 41-17 63-19 40-3 80-1 120-1 17 0 23 7 19 21-8 34-17 66-26 99-12 42 8 86 69 87 75 2 151 0 226 1h86c16 0 24 5 19 21-8 31-36 140-73 171-26 22-54 37-90 37h-231 1c-80 0-160 1-240-1-64-1-89-40-71-122zm239 81h72 230c12 1 22-2 32-6 11-5 21-12 32-21 20-17 39-78 51-119h-57-69c-53 0-106 1-158-1-13 0-25-2-36-5-26-7-45-21-58-40-13-18-19-40-19-63 1-11 2-21 5-32 5-16 9-32 13-48 1-4 3-11 5-19h-16c-24 0-47 0-72 1-8 1-16 3-23 5-8 2-16 6-23 10-45 24-58 76-71 127l-3 11c-3 14-10 41-17 68-6 22-12 45-16 60-7 30-7 50-1 61 4 7 15 10 32 11 56 1 111 1 167 0z"/>
-   <path class="fil1 str0" d="m-2861-854c-157-157-157-412 0-569s412-157 569 0c158 157 158 412 0 569"/>
-   <path class="fil1 str0" d="m-2576-1139l227-227"/>
-   <path class="fil1 str0" d="m-2803-913l40-40"/>
-   <path class="fil1 str0" d="m-2897-1139h57"/>
-   <path class="fil1 str0" d="m-2803-1366l40 40"/>
-   <path class="fil1 str0" d="m-2576-1460v57"/>
-   <path class="fil1 str0" d="m-2255-1139h-57"/>
-   <path class="fil1 str0" d="m-2349-913l-41-40"/>
-   <rect class="fil1 str1" x="1594" y="-1516" width="790" height="189"/>
-   <rect class="fil1 str1" x="1594" y="-1251" width="790" height="189"/>
-   <rect class="fil1 str1" x="1594" y="-1251" width="790" height="189"/>
-   <rect class="fil1 str1" x="1594" y="-987" width="790" height="189"/>
-   <rect class="fil1 str1" x="1594" y="-987" width="790" height="189"/>
-   <path class="fil1 str0" d="m1674-1421h154"/>
-   <path class="fil1 str0" d="m1674-1157h402"/>
-   <path class="fil1 str0" d="m1674-892h253"/>
-    <path class="fil1 str0" d="m3368-1423c57 49 103 103 84 181-28 83-94 141-146 209-45 58-93 128-163 157-74 31-153-14-207-65-43-39-83-99-73-160 12-72 86-130 133-180 56-60 90-138 163-181 75-44 144-9 209 39z"/>
-   <path class="fil1 str0" d="m2961-1304c-12 15 9 21 20 22 10 2 8 7 17-1 1-2 3-4 4-5 4-4 7-8 11-12-9-9-21-16-34-17-7 0-22 2-18 13z"/>
-   <path class="fil1 str0" d="m3146-1454c-37-63 64-96 83-28-23 0-46 6-70 20-4 3-9 5-13 8z"/>
-   <path class="fil1 str0" d="m3455-1296c71 7 51 112-16 86 5-10 9-21 13-32 5-19 5-37 3-54z"/>
-   <path class="fil1 str0" d="m3099-866c5 17 7 56-19 51-29 1-11-38-21-55 13 3 26 4 40 4z"/>
-   <path class="fil1 str0" d="m2875-1019c-15-9-33-3-50-7-16-3-13-15-12-17-1-2-2-1-3-5 4-24 34-18 51-17 0 1 1 1 2 2 2 13 6 27 12 40v4z"/>
-   <path class="fil1 str0" d="m3321-995c-13 14-22-6-25-16-1-3-2-5-2-6 4-6 8-11 12-16 2-4 5-7 7-10 9 7 16 17 18 28 2 7 1 23-10 20z"/>
-   <path class="fil2 str0" d="m3301-1319c-41 68 69 136 107 64 34-64-63-122-107-64z"/>
-   <path class="fil2 str0" d="m3177-1409c-31 62 62 121 104 66 50-65-62-141-104-66z"/>
-   <path class="fil2 str0" d="m3242-1237c-6 8-12 17-20 24-5 2-9-1-14-2-4-5-5-12-3-17 6-10 15-17 23-26 1 1 2 1 2 2 6 5 9 13 12 19z"/>
-   <path class="fil0" d="m3221-1386c7-8 7-21-1-27-8-7-20-6-27 3-7 8-7 20 1 27s20 5 27-3z"/>
-   <ellipse class="fil0" transform="matrix(.090059 .07808 -.07808 .090059 3326.8 -1300.8)" rx="152" ry="167"/>
-   <path class="fil2 str0" d="m3201-1271c-17 11-30 44 3 37 7-9 15-16 23-25-7-5-19-7-26-12z"/>
-   <path class="fil1 str2" d="m3231-1300c-12-9-33-3-37 13-4 20 27 20 36 31 12 11 11 33 31 31 21-3 16-28 8-44l-38-31z"/>
-   <circle class="fil1 str1" cx="3157" cy="-1163" r="423"/>
-   <rect class="fil1 str1" x="3808" y="-1445" width="748" height="564" rx="125" ry="125"/>
-   <circle class="fil3" cx="4182" cy="-1163" r="42"/>
-   <circle class="fil3" cx="4010" cy="-1163" r="42"/>
-   <circle class="fil3" cx="4354" cy="-1163" r="42"/>
-   <rect class="fil1 str1" x="-1828" y="-1559" width="776" height="776" rx="118" ry="118"/>
-   <rect class="fil1 str1" x="-1716" y="-1486" width="552" height="552" rx="84" ry="84"/>
-   <path class="fil1 str0" d="m-1613-1344h71v149c-6 39-36 55-82 82"/>
-   <rect class="fil1 str0" x="-1473" y="-1394" width="118" height="205" rx="118" ry="118"/>
-   <path class="fil1 str0" d="m-1399-1215l61 43"/>
-   <path class="fil1 str3" d="m472 29l193 111 192 110v222 222l-192 111-193 111-192-111-192-111v-222-222l192-110 192-111z"/>
-   <path class="fil1 str4" d="m270 593v-249l114 249 115-249-1 249"/>
-   <path class="fil1 str4" d="m710 366c-34-21-81-22-131-22v124 125c50 0 97-1 131-22 79-49 80-156 0-205z"/>
-   <circle class="fil3" cx="184" cy="593" r="22"/>
+   <path class="fil0 str0" d="m472 29l193 111 192 110v222 222l-192 111-193 111-192-111-192-111v-222-222l192-110 192-111z"/>
+   <path class="fil0 str1" d="m270 593v-249l114 249 115-249-1 249"/>
+   <path class="fil0 str1" d="m710 366c-34-21-81-22-131-22v124 125c50 0 97-1 131-22 79-49 80-156 0-205z"/>
+   <circle class="fil1" cx="184" cy="593" r="22"/>
 </svg>
