@@ -1,12 +1,6 @@
 /* jshint ignore:start */
 module.exports = {
-  mode: 'development',
   entry: ['@babel/polyfill', './src/index.js'],
-  output: {
-    path: __dirname + '/build',
-    publicPath: '/dist/',
-    filename: 'bundle.js'
-  },
   module: {
     rules: [
       {
@@ -50,6 +44,5 @@ module.exports = {
         loader: 'file-loader?name=[name].[ext]'
       }
     ]
-  },
-  devtool: 'source-map'
+  }
 };

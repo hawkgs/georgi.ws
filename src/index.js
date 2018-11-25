@@ -1,7 +1,5 @@
 'use strict';
 
-import './favicon.png';
-
 function init() {
   const element = document.createElement('div');
   element.id = 'root';
