@@ -92,15 +92,23 @@ footer {
 
 @media (max-width: 680px) {
   header {
-    display: block;
-  }
-
-  interactive-logo {
-    margin-bottom: 20px;
+    position: fixed;
+    background: var(--app-background);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    margin: 0;
+    padding: 13px 20px;
+    border-bottom: 1px solid var(--app-light-grey);
   }
 
   app-link, a {
     margin: 0 15px 15px 0;
+  }
+
+  .content:not(.home) {
+    margin-top: 50px;
   }
 
   .content.home interactive-logo {
@@ -126,8 +134,8 @@ footer {
     height: 30px;
     padding-top: 5px;
     box-sizing: border-box;
-    right: 0;
-    top: 0;
+    right: 20px;
+    top: 13px;
     display: block;
     z-index: 2;
   }
@@ -140,6 +148,7 @@ footer {
     margin: 5px 0;
     background-color: var(--text-color);
     transform-origin: 69% 50%;
+    transition: transform 0.2s ease;
     display: block;
   }
 
