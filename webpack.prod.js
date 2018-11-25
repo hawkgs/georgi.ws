@@ -20,7 +20,8 @@ module.exports = merge(common, {
     }),
     new CopyWebpackPlugin([
       { from: './src/index.css', to: './' },
-      { from: './src/favicon.png', to: './' }
+      { from: './src/favicon.png', to: './' },
+      { from: './src/noscript.html', to: './' }
     ])
   ],
 });

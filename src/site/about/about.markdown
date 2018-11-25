@@ -19,7 +19,7 @@ You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
 
 ![twitter](https://a.b) [@gserev](https://twitter.com/gserev){target="_blank"} (I rarely use it)
 
-![linkedin](https://a.b) [Georgi Serev](https://linkedin.com){target="_blank"} (I rarely check it 🤯)
+![linkedin](https://a.b) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank"} (I rarely check it 🤯)
 
 ### The website
 

@@ -14,7 +14,6 @@ html, body, #root {
 }
 
 body {
-  /* font-family: 'Montserrat', sans-serif; */
   font-family: 'Karla', sans-serif;
   user-select: none;
   font-size: 18px;
@@ -50,4 +49,8 @@ a::after {
 
 a:hover::after {
   width: 100%;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
 }

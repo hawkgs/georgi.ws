@@ -20,5 +20,5 @@ module.exports = merge(common, {
     }),
     // new BundleAnalyzerPlugin()
   ],
-  devtool: 'inline-source-map'
+  devtool: 'source-map'
 });
