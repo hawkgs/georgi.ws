@@ -35,8 +35,7 @@ export class Scrollbar extends Component {
   }
 
   onComponentDetach() {
-    document.removeEventListener('mousemove', this._docMouseMove);
-    document.removeEventListener('mouseup', this._docMouseUp);
+    this._detachListeners();
   }
 
   onAttributeChange(newAttrs) {
@@ -52,28 +51,30 @@ export class Scrollbar extends Component {
   }
 
   observeElement(el) {
+    this._detachListeners();
+
     this._scrollerPromise.then((scroller) => {
       const scrollerSize = perc(el.offsetHeight, el.scrollHeight);
       scroller.style.height = scrollerSize + '%';
 
-      el.addEventListener('scroll', () => {
+      el.onscroll = () => {
         const scroll = perc(el.scrollTop, el.scrollHeight);
         scroller.style.top = scroll + '%';
-      });
+      };
 
       let startScroll = 0;
       let startY = 0;
       let lock = false;
 
-      scroller.addEventListener('mousedown', (e) => {
+      scroller.onmousedown = (e) => {
         startScroll = el.scrollTop;
         startY = e.pageY;
         lock = true;
 
         DOM.addClasses(this._scrollbar, 'active');
-      });
+      };
 
-      document.addEventListener('mousemove', this._docMouseMove = (e) => {
+      this._docMouseMove = (e) => {
         if (!lock) {
           return;
         }
@@ -81,13 +82,21 @@ export class Scrollbar extends Component {
         const ratio = offset / el.offsetHeight;
 
         el.scrollTop = startScroll + el.scrollHeight * ratio;
-      });
+      };
 
-      document.addEventListener('mouseup', this._docMouseUp = () => {
+      this._docMouseUp = () => {
         lock = false;
         DOM.removeClasses(this._scrollbar, 'active');
-      });
+      };
+
+      document.addEventListener('mousemove', this._docMouseMove);
+      document.addEventListener('mouseup', this._docMouseUp);
     });
+  }
+
+  _detachListeners() {
+    document.removeEventListener('mousemove', this._docMouseMove);
+    document.removeEventListener('mouseup', this._docMouseUp);
   }
 }
 
