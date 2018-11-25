@@ -14,7 +14,8 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       templateParameters: {
-        SOURCE_PATH: 'src'
+        sourcePath: 'src',
+        cssHash: ''
       },
       template: 'index.ejs',
     }),
