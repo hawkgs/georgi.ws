@@ -19,10 +19,10 @@ import { getInjector, ROUTING_SERVICE } from '../di';
 const DEFAULT_TITLE = 'georgi.ws';
 const RouteToTitleMap = {
   '/': DEFAULT_TITLE,
-  '/projects': `${DEFAULT_TITLE} // Projects`,
-  '/stack': `${DEFAULT_TITLE} // Stack`,
-  '/timeline': `${DEFAULT_TITLE} // Timeline`,
-  '/about': `${DEFAULT_TITLE} // About`
+  '/projects': `${DEFAULT_TITLE} / Projects`,
+  '/stack': `${DEFAULT_TITLE} / Stack`,
+  '/timeline': `${DEFAULT_TITLE} / Timeline`,
+  '/about': `${DEFAULT_TITLE} / About`
 };
 
 export default class AppComponent extends Component {
