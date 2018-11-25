@@ -1,5 +1,8 @@
 'use strict';
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
+
 function init() {
   const element = document.createElement('div');
   element.id = 'root';

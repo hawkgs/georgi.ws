@@ -5,6 +5,7 @@ const uglifycss = require('uglifycss');
 const createHash = require('hash-generator');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 const cssHash = '.' + createHash(8);
 
@@ -31,6 +32,15 @@ module.exports = merge(common, {
         to: `./index${cssHash}.css`,
         transform: (c) => uglifycss.processString(c.toString())
       },
-    ])
+    ]),
+    new OfflinePlugin({
+      externals: [
+        '/index.html',
+        `/index${cssHash}.css`,
+        '/noscript.html',
+        '/favicon.png',
+        'https://fonts.googleapis.com/css?family=Montserrat:500,600,800|Karla'
+      ]
+    })
   ],
 });
