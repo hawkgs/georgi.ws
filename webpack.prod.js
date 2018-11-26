@@ -2,12 +2,15 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const uglifycss = require('uglifycss');
-const createHash = require('hash-generator');
+const hashFiles = require('hash-files');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
-const cssHash = '.' + createHash(8);
+const cssHash = '.' + hashFiles.sync({
+  files: './src/index.css',
+  algorithm: 'md5'
+});
 
 module.exports = merge(common, {
   mode: 'production',
