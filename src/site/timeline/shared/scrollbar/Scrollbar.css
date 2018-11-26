@@ -28,7 +28,16 @@
   margin-left: 6px;
 }
 
-.scroller:hover,
+.scroller.show-on-scroll {
+  opacity: 0;
+}
+
+.scrollbar:hover .scroller,
+.scroller.show-on-scroll.show {
+  opacity: 0.5;
+}
+
+.scrollbar:hover .scroller:hover,
 .scrollbar.active .scroller {
   opacity: 1;
 }

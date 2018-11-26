@@ -46,16 +46,16 @@ export default class AppComponent extends Component {
 
     const updateHeaderUI = (url) => {
       if (routingService.path === '/') {
-        DOM.addClasses(this._content, 'home');
+        DOM.addClass(this._content, 'home');
       } else {
-        DOM.removeClasses(this._content, 'home');
+        DOM.removeClass(this._content, 'home');
       }
 
       links.forEach(l => {
         if (l.attr.url === url) {
-          DOM.addClasses(l, 'selected');
+          DOM.addClass(l, 'selected');
         } else {
-          DOM.removeClasses(l, 'selected');
+          DOM.removeClass(l, 'selected');
         }
       });
     };
@@ -86,7 +86,7 @@ export default class AppComponent extends Component {
       if (!DOM.hasClass(nav, 'visible')) {
         clickFlag = true;
       }
-      DOM.addClasses(nav, 'visible');
+      DOM.addClass(nav, 'visible');
       document.body.style.overflow = 'hidden';
     });
 
@@ -94,7 +94,7 @@ export default class AppComponent extends Component {
       if (clickFlag) {
         clickFlag = false;
       } else {
-        DOM.removeClasses(nav, 'visible');
+        DOM.removeClass(nav, 'visible');
         document.body.style.overflow = 'auto';
       }
     });

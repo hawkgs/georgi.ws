@@ -5,13 +5,14 @@ import html from './Scrollbar.html';
 import css from './Scrollbar.css';
 
 import { DOM } from '../../../../utils/DOM';
+import { SingleObserver } from '../../../../utils/SingleObserver';
 
 const perc = (part, total) => Math.round((part / total) * 100);
 
 // Windows-Only
 export class Scrollbar extends Component {
   static get observedAttributes() {
-    return ['top', 'bottom'];
+    return ['top', 'bottom', 'showonhover'];
   }
 
   constructor() {
@@ -19,12 +20,14 @@ export class Scrollbar extends Component {
 
     this._wrapperPromise = new Promise((res) => this._wrapperResolver = res);
     this._scrollerPromise = new Promise((res) => this._scrollerResolver = res);
+    this._attrsObserver = new SingleObserver();
   }
 
   onComponentAttach() {
     this._scrollbar = this.root.querySelector('.scrollbar');
     if (!/windows/.test(navigator.userAgent.toLocaleLowerCase())) {
-      DOM.addClasses(this._scrollbar, 'hide');
+      DOM.addClass(this._scrollbar, 'hide');
+      return;
     }
 
     const wrapper = this.root.querySelector('.wrapper');
@@ -48,55 +51,71 @@ export class Scrollbar extends Component {
         wrapper.style.bottom = bottom + 'px';
       }
     });
+    this._attrsObserver.update(newAttrs);
   }
 
   observeElement(el) {
     this._detachListeners();
 
     this._scrollerPromise.then((scroller) => {
-      const scrollerSize = perc(el.offsetHeight, el.scrollHeight);
-      scroller.style.height = scrollerSize + '%';
-
-      el.onscroll = () => {
-        const scroll = perc(el.scrollTop, el.scrollHeight);
-        scroller.style.top = scroll + '%';
-      };
-
-      let startScroll = 0;
-      let startY = 0;
-      let lock = false;
-
-      scroller.onmousedown = (e) => {
-        startScroll = el.scrollTop;
-        startY = e.pageY;
-        lock = true;
-
-        DOM.addClasses(this._scrollbar, 'active');
-      };
-
-      this._docMouseMove = (e) => {
-        if (!lock) {
-          return;
-        }
-        const offset = e.pageY - startY;
-        const ratio = offset / el.offsetHeight;
-
-        el.scrollTop = startScroll + el.scrollHeight * ratio;
-      };
-
-      this._docMouseUp = () => {
-        lock = false;
-        DOM.removeClasses(this._scrollbar, 'active');
-      };
-
-      document.addEventListener('mousemove', this._docMouseMove);
-      document.addEventListener('mouseup', this._docMouseUp);
+      this._scrolling(el, scroller);
+      this._showOnHover(el, scroller);
     });
   }
 
   _detachListeners() {
     document.removeEventListener('mousemove', this._docMouseMove);
     document.removeEventListener('mouseup', this._docMouseUp);
+  }
+
+  _scrolling(el, scroller) {
+    const scrollerSize = perc(el.offsetHeight, el.scrollHeight);
+    scroller.style.height = scrollerSize + '%';
+
+    el.addEventListener('scroll', () => {
+      const scroll = perc(el.scrollTop, el.scrollHeight);
+      scroller.style.top = scroll + '%';
+    });
+
+    let startScroll = 0;
+    let startY = 0;
+    let lock = false;
+
+    scroller.onmousedown = (e) => {
+      startScroll = el.scrollTop;
+      startY = e.pageY;
+      lock = true;
+
+      DOM.addClass(this._scrollbar, 'active');
+    };
+
+    this._docMouseMove = (e) => {
+      if (!lock) {
+        return;
+      }
+      const offset = e.pageY - startY;
+      const ratio = offset / el.offsetHeight;
+
+      el.scrollTop = startScroll + el.scrollHeight * ratio;
+    };
+
+    this._docMouseUp = () => {
+      lock = false;
+      DOM.removeClass(this._scrollbar, 'active');
+    };
+
+    document.addEventListener('mousemove', this._docMouseMove);
+    document.addEventListener('mouseup', this._docMouseUp);
+  }
+
+  _showOnHover(el, scroller) {
+    this._attrsObserver.subscribe((attrs) => {
+      if (attrs.showonhover === 'true') {
+        DOM.addClass(scroller, 'show-on-scroll');
+        el.addEventListener('mouseenter', () => DOM.addClass(scroller, 'show'));
+        el.addEventListener('mouseleave', () => DOM.removeClass(scroller, 'show'));
+      }
+    });
   }
 }
 

@@ -1,17 +1,16 @@
 'use strict';
 
 export const DOM = {
-  addClasses: (element, classes) => {
-    if (!DOM.hasClass(element, classes)) {
-      element.className += ` ${classes}`;
-    }
+  addClass: (element, className) => {
+    element.classList.add(className);
   },
-  removeClasses: (element, classes) => {
-    if (DOM.hasClass(element, classes)) {
-      element.className = element.className.replace(classes, '').trim();
-    }
+  removeClass: (element, className) => {
+    element.classList.remove(className);
   },
   hasClass: (element, className) => {
-    return element.className.indexOf(className) > -1;
+    element.classList.contains(className);
+  },
+  toggleClass: (element, className) => {
+    element.classList.toggle(className);
   }
 };
