@@ -7,6 +7,7 @@ import common from '../shared/common.css';
 
 import './shared/event/Event';
 import './shared/scrollbar/Scrollbar';
+import '../shared/svg-loader/SvgLoader';
 
 export class Timeline extends Component {
   constructor() {

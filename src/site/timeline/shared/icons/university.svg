@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.0//EN'  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.0" viewBox="0 0 1181 1181" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:var(--text-color);stroke-width:41.6654;stroke-linecap:round;stroke-linejoin:round}
+    .fil0 {fill:none}
+   ]]>
+  </style>
+ </defs>
+   <path class="fil0 str0" d="m791 173c43 35 76 82 96 135h-592c19-53 53-100 96-135h400z"/>
+   <path class="fil0 str0" d="m855 205c-1 11-2 22-5 33 15 21 27 45 37 70h176c-19-30-31-65-33-103h-175z"/>
+   <path class="fil0 str0" d="m151 205c-3 38-15 73-34 103h178c9-25 21-48 35-69-2-11-4-22-5-34h-174z"/>
+   <rect class="fil0 str0" x="96" y="308" width="989.27" height="54.457"/>
+   <rect class="fil0 str0" x="556" y="362" width="68.262" height="393.7"/>
+   <rect class="fil0 str0" x="530" y="756" width="122" height="122"/>
+   <rect class="fil0 str0" x="950" y="362" width="68.262" height="393.7"/>
+   <rect class="fil0 str0" x="923" y="756" width="122" height="122"/>
+   <rect class="fil0 str0" x="163" y="362" width="68.262" height="393.7"/>
+   <rect class="fil0 str0" x="136" y="756" width="122" height="122"/>
+   <rect class="fil0 str0" x="98" y="877" width="984.18" height="63.304"/>
+   <rect class="fil0 str0" x="46" y="941" width="1089" height="63.304"/>
+   <path class="fil0 str0" d="m394 681c40 0 72 32 72 72v124h-144v-124c0-40 32-72 72-72z"/>
+   <path class="fil0 str0" d="m394 415c40 0 72 33 72 72v125h-144v-125c0-39 32-72 72-72z"/>
+   <path class="fil0 str0" d="m288 612h212"/>
+   <path class="fil0 str0" d="m394 415v197"/>
+   <path class="fil0 str0" d="m788 681c40 0 72 32 72 72v124h-144v-124c0-40 32-72 72-72z"/>
+   <path class="fil0 str0" d="m788 415c40 0 72 33 72 72v125h-144v-125c0-39 32-72 72-72z"/>
+   <path class="fil0 str0" d="m682 612h212"/>
+   <path class="fil0 str0" d="m788 415v197"/>
+</svg>
