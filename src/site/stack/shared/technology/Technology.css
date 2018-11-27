@@ -6,7 +6,7 @@
 }
 
 .technology > .logo {
-  background: var(--app-light-grey);
+  /* background: var(--app-light-grey); */
   width: 75px;
   height: 75px;
   border-radius: 50%;

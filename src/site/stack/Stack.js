@@ -6,6 +6,7 @@ import css from './Stack.css';
 import common from '../shared/common.css';
 
 import './shared/technology/Technology';
+import '../shared/svg-loader/SvgLoader';
 
 export class Stack extends Component {
   constructor() {

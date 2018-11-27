@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.0//EN'  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.0" viewBox="0 0 1181 1181" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:var(--text-color);stroke-width:41.6654;stroke-linecap:round;stroke-linejoin:round}
+    .fil0 {fill:none}
+   ]]>
+  </style>
+ </defs>
+   <path class="fil0 str0" d="m401 657c-22 71-80 118-145 118-85 0-154-80-154-180s69-180 154-180 154 80 154 180"/>
+   <path class="fil0 str0" d="m410 597h-308"/>
+   <path class="fil0 str0" d="m450 415l272 358"/>
+   <path class="fil0 str0" d="m712 415l-272 358"/>
+   <path class="fil0 str0" d="m776 415v476"/>
+   <ellipse class="fil0 str0" cx="923" cy="596" rx="147" ry="181"/>
+</svg>
