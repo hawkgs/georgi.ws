@@ -19,3 +19,10 @@ a::after {
 a:hover::after {
   width: 100%;
 }
+
+svg-loader {
+  width: 25px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}

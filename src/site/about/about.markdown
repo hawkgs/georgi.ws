@@ -13,13 +13,13 @@ You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
 
 ### Contacts and social
 
-![email](https://a.b) hawk.dvp at google mail
+!{svg}(about/shared/icons/mail) hawk.dvp at google mail
 
-![github](https://a.b) [hawkgs](https://github.com){target="_blank"}
+!{svg}(about/shared/icons/github) [hawkgs](https://github.com){target="_blank"}
 
-![twitter](https://a.b) [@gserev](https://twitter.com/gserev){target="_blank"} (I rarely use it)
+!{svg}(about/shared/icons/twitter) [@gserev](https://twitter.com/gserev){target="_blank"} (I rarely use it)
 
-![linkedin](https://a.b) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank"} (I rarely check it 🤯)
+!{svg}(about/shared/icons/linkedin) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank"} (I rarely check it 🤯)
 
 ### The website
 
