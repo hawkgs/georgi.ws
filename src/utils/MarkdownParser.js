@@ -14,7 +14,7 @@ const construction = (lexer, parser, cacheInit) => (text) => {
 const replace = (text, witht, from, to) =>
   text.substring(0, from) + witht + text.substring(to, text.length);
 
-// Functionally-inspired parser; Probably not fully compliant with standard
+// Functionally-inspired, custom-flavoured markdown parser; Probably not fully compliant with standard
 // Notable issues: Lists require one additional new line in the end in (regexp)
 // To-dos: Improve content regexp
 export const MarkdownToHTML = md =>
@@ -134,7 +134,15 @@ export const MarkdownToHTML = md =>
       (text, _, idx, raw) => {
         return replace(text, '<p class="br"></p>', idx, idx + raw.length);
       }
-    )
+    ),
+    // SVG loader
+    construction(
+      /!{svg}\(([:/\w%#?&=\.]+)\)({([a-z_=" ]+)})?/gm,
+      (text, token, idx, raw) => {
+        const parsed = `<svg-loader path="${token[1]}"></svg-loader>`;
+        return replace(text, parsed, idx, idx + raw.length);
+      }
+    ),
   ]
   .reduce(
     (prev, next) => next(prev),
