@@ -8,7 +8,7 @@ export const DOM = {
     element.classList.remove(className);
   },
   hasClass: (element, className) => {
-    element.classList.contains(className);
+    return element.classList.contains(className);
   },
   toggleClass: (element, className) => {
     element.classList.toggle(className);
