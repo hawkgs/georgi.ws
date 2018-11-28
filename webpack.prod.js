@@ -6,21 +6,6 @@ const hashFiles = require('hash-files');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
-const write = require('write');
-const path = require('path');
-
-class CreateFile {
-  constructor(ops) {
-    this.options = ops || {};
-  }
-
-  apply(compiler) {
-    compiler.hooks.done.tap('CreateFile', () => {
-      const fullPath = path.join(this.options.path, this.options.name);
-      write.sync(fullPath, this.options.content);
-    });
-  }
-}
 
 const cssHash = '.' + hashFiles.sync({
   files: './src/index.css',
@@ -50,6 +35,7 @@ module.exports = merge(common, {
         to: `./index${cssHash}.css`,
         transform: (c) => uglifycss.processString(c.toString())
       },
+      { from: './heroku.package.json', to: './package.json' }
     ]),
     new OfflinePlugin({
       externals: [
@@ -59,22 +45,6 @@ module.exports = merge(common, {
         '/favicon.png',
         'https://fonts.googleapis.com/css?family=Montserrat:500,600,800|Karla'
       ]
-    }),
-    // Heroku sh*t
-    new CreateFile({
-      path: './build',
-      name: 'index.php',
-      content: '<?php include_once("index.html"); ?>'
-    }),
-    new CreateFile({
-      path: './build',
-      name: 'composer.json',
-      content: '{}'
-    }),
-    new CreateFile({
-      path: './build',
-      name: '.gitignore',
-      content: 'node_modules'
     })
   ],
 });
