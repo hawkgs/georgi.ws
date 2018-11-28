@@ -5,11 +5,11 @@ import html from './Scrollbar.html';
 import css from './Scrollbar.css';
 
 import { DOM } from '../../../../utils/DOM';
-import { SingleObserver } from '../../../../utils/SingleObserver';
+import { BufferedSingleListener } from '../../../../utils/BufferedSingleListener';
 
 const perc = (part, total) => Math.round((part / total) * 100);
 
-// Windows-Only
+// Windows-Only. Doesn't handle window resize
 export class Scrollbar extends Component {
   static get observedAttributes() {
     return ['top', 'bottom', 'showonhover'];
@@ -20,7 +20,7 @@ export class Scrollbar extends Component {
 
     this._wrapperPromise = new Promise((res) => this._wrapperResolver = res);
     this._scrollerPromise = new Promise((res) => this._scrollerResolver = res);
-    this._attrsObserver = new SingleObserver();
+    this._attrsListener = new BufferedSingleListener();
   }
 
   onComponentAttach() {
@@ -51,7 +51,7 @@ export class Scrollbar extends Component {
         wrapper.style.bottom = bottom + 'px';
       }
     });
-    this._attrsObserver.update(newAttrs);
+    this._attrsListener.update(newAttrs);
   }
 
   observeElement(el) {
@@ -109,7 +109,7 @@ export class Scrollbar extends Component {
   }
 
   _showOnHover(el, scroller) {
-    this._attrsObserver.subscribe((attrs) => {
+    this._attrsListener.subscribe((attrs) => {
       if (attrs.showonhover === 'true') {
         DOM.addClass(scroller, 'show-on-scroll');
         el.addEventListener('mouseenter', () => DOM.addClass(scroller, 'show'));

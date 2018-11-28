@@ -14,7 +14,7 @@ const construction = (lexer, parser, cacheInit) => (text) => {
 const replace = (text, witht, from, to) =>
   text.substring(0, from) + witht + text.substring(to, text.length);
 
-// Functionally-inspired, custom-flavoured markdown parser; Probably not fully compliant with standard
+// Functionally-inspired, custom-flavoured markdown parser; Probably not fully compliant with the standard
 // Notable issues: Lists require one additional new line in the end in (regexp)
 // To-dos: Improve content regexp
 export const MarkdownToHTML = md =>

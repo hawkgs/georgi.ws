@@ -1,6 +1,6 @@
 'use strict';
 
-export class SingleObserver {
+export class BufferedSingleListener {
   constructor() {
     this._buffer = [];
   }
