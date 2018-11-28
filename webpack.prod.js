@@ -6,7 +6,6 @@ const hashFiles = require('hash-files');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
-
 const write = require('write');
 const path = require('path');
 
@@ -71,6 +70,6 @@ module.exports = merge(common, {
       path: './build',
       name: 'composer.json',
       content: '{}'
-    }),
+    })
   ],
 });
