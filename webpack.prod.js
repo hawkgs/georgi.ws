@@ -70,6 +70,11 @@ module.exports = merge(common, {
       path: './build',
       name: 'composer.json',
       content: '{}'
+    }),
+    new CreateFile({
+      path: './build',
+      name: '.gitignore',
+      content: 'node_modules'
     })
   ],
 });
