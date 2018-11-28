@@ -65,7 +65,7 @@ module.exports = merge(common, {
     new CreateFile({
       path: './build',
       name: 'index.php',
-      content: '<?php include_once("home.html"); ?>'
+      content: '<?php include_once("index.html"); ?>'
     }),
     new CreateFile({
       path: './build',
