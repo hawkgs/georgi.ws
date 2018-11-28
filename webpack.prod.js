@@ -7,6 +7,22 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
+const write = require('write');
+const path = require('path');
+
+class CreateFile {
+  constructor(ops) {
+    this.options = ops || {};
+  }
+
+  apply(compiler) {
+    compiler.hooks.done.tap('CreateFile', () => {
+      const fullPath = path.join(this.options.path, this.options.name);
+      write.sync(fullPath, this.options.content);
+    });
+  }
+}
+
 const cssHash = '.' + hashFiles.sync({
   files: './src/index.css',
   algorithm: 'md5'
@@ -44,6 +60,17 @@ module.exports = merge(common, {
         '/favicon.png',
         'https://fonts.googleapis.com/css?family=Montserrat:500,600,800|Karla'
       ]
-    })
+    }),
+    // Heroku sh*t
+    new CreateFile({
+      path: './build',
+      name: 'index.php',
+      content: '<?php include_once("home.html"); ?>'
+    }),
+    new CreateFile({
+      path: './build',
+      name: 'composer.json',
+      content: '{}'
+    }),
   ],
 });
