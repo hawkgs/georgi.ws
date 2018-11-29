@@ -34,8 +34,7 @@ module.exports = merge(common, {
         from: './src/index.css',
         to: `./index${cssHash}.css`,
         transform: (c) => uglifycss.processString(c.toString())
-      },
-      { from: './heroku.package.json', to: './package.json' }
+      }
     ]),
     new OfflinePlugin({
       externals: [
