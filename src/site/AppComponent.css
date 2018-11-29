@@ -91,7 +91,7 @@ footer {
 }
 
 @media (max-width: 680px) {
-  header {
+  .content:not(.home) header {
     position: fixed;
     background: var(--app-background);
     top: 0;
