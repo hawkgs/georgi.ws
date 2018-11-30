@@ -25,13 +25,13 @@ interactive-logo {
 .content.home interactive-logo {
   position: absolute;
   transform: translateX(-50%) scale(3);
-  top: 200px;
+  top: calc(50vh - 95px);
   left: 51%;
 }
 
 .content.home nav {
   position: absolute;
-  top: 305px;
+  top: 50vh;
   left: 50%;
   white-space: nowrap;
   transform: translateX(-50%);
@@ -90,6 +90,53 @@ footer {
   text-align: center;
 }
 
+footer > span {
+  position: relative;
+}
+
+footer .text {
+  position: relative;
+  z-index: 1;
+}
+
+.dark-mode,
+.dark-mode::after {
+  position: absolute;
+  background-color: var(--app-grey);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  margin: 1px -20px 0 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.dark-mode {
+  opacity: 0.5;
+}
+
+.dark-mode::after {
+  content: '';
+  background-color: var(--app-background);
+  margin: -2px 6px 0px 0;
+  transition: margin-right 0.2s ease, background-color 0.2s ease;
+}
+
+.dark-mode:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.dark-mode:hover::after {
+  margin-right: 8px;
+}
+
+.dark-mode.activated {
+  background-color: #f7b800;
+}
+
 @media (max-width: 680px) {
   .content:not(.home) header {
     position: fixed;
@@ -112,12 +159,11 @@ footer {
   }
 
   .content.home interactive-logo {
-    top: 150px;
     transform: translateX(-50%) scale(1.5);
   }
 
   .content.home nav {
-    top: 230px;
+    top: calc(50vh - 25px);
   }
 
   .content.home app-link,

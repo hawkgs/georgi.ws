@@ -15,7 +15,7 @@ You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
 
 !{svg}(about/shared/icons/mail) hawk.dvp at google mail
 
-!{svg}(about/shared/icons/github) [hawkgs](https://github.com){target="_blank"}
+!{svg}(about/shared/icons/github) [hawkgs](https://github.com/hawkgs){target="_blank"}
 
 !{svg}(about/shared/icons/twitter) [@gserev](https://twitter.com/gserev){target="_blank"} (I rarely use it)
 

@@ -4,7 +4,6 @@ import { Component, ComponentRef } from '../../../core/component';
 import html from './InteractiveLogo.html';
 import css from './InteractiveLogo.css';
 
-import { setTheme, DARK_THEME, LIGHT_THEME } from '../../../utils/Themes';
 import './shared/auto-typer/AutoTyper';
 
 const SWITCH_INITIAL_STATE_AFTER = 10 * 1000;
@@ -28,23 +27,10 @@ export class InteractiveLogo extends Component {
       this.setState(next);
     };
     this._interval = setInterval(switchInitial, SWITCH_INITIAL_STATE_AFTER);
-
-    this._themeSwitcher();
   }
 
   onComponentDetach() {
     clearInterval(this._interval);
-  }
-
-  _themeSwitcher() {
-    this.root.addEventListener('click', () => {
-      if (this._lightTheme) {
-        setTheme(DARK_THEME);
-      } else {
-        setTheme(LIGHT_THEME);
-      }
-      this._lightTheme = !this._lightTheme;
-    });
   }
 }
 

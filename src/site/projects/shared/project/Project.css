@@ -42,3 +42,11 @@
   font-size: 12px;
   height: 43px;
 }
+
+@media (max-width: 460px) {
+  .project {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto 15px auto;
+  }
+}
