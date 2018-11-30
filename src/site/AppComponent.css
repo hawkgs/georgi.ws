@@ -25,13 +25,13 @@ interactive-logo {
 .content.home interactive-logo {
   position: absolute;
   transform: translateX(-50%) scale(3);
-  top: 200px;
+  top: calc(50vh - 95px);
   left: 51%;
 }
 
 .content.home nav {
   position: absolute;
-  top: 305px;
+  top: 50vh;
   left: 50%;
   white-space: nowrap;
   transform: translateX(-50%);
@@ -112,12 +112,11 @@ footer {
   }
 
   .content.home interactive-logo {
-    top: 150px;
     transform: translateX(-50%) scale(1.5);
   }
 
   .content.home nav {
-    top: 230px;
+    top: calc(50vh - 25px);
   }
 
   .content.home app-link,
