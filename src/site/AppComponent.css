@@ -94,6 +94,11 @@ footer > span {
   position: relative;
 }
 
+footer .text {
+  position: relative;
+  z-index: 1;
+}
+
 .dark-mode,
 .dark-mode::after {
   position: absolute;
@@ -121,6 +126,7 @@ footer > span {
 
 .dark-mode:hover {
   opacity: 1;
+  transform: scale(1.2);
 }
 
 .dark-mode:hover::after {
