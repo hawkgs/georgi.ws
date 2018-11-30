@@ -33,12 +33,13 @@ export default class AppComponent extends Component {
   onComponentAttach() {
     this._copyrightYear();
     this._themeSwitcher();
+    this._mobileNavHandler();
     this._content = this.root.querySelector('.content');
 
     getInjector().subscribe(ROUTING_SERVICE, (routingService) => {
       this._updateHeaderUI(routingService);
       this._updateTitle(routingService);
-      this._mobileNavHandler();
+      this._scrollToTop(routingService);
     });
   }
 
@@ -99,6 +100,10 @@ export default class AppComponent extends Component {
         document.body.style.overflow = 'auto';
       }
     });
+  }
+
+  _scrollToTop(routingService) {
+    routingService.listen(() => window.scrollTo(0, 0));
   }
 
   _themeSwitcher() {
