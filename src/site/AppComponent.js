@@ -5,7 +5,6 @@ import html from './AppComponent.html';
 import css from './AppComponent.css';
 
 import '../core/router';
-import '../utils/Themes';
 
 import './shared/interactive-logo/InteractiveLogo';
 import './projects/Projects';
@@ -15,6 +14,7 @@ import './about/About';
 
 import { DOM } from '../utils/DOM';
 import { getInjector, ROUTING_SERVICE } from '../di';
+import { DARK_THEME, LIGHT_THEME, setTheme } from '../utils/Themes';
 
 const DEFAULT_TITLE = 'georgi.ws';
 const RouteToTitleMap = {
@@ -32,6 +32,7 @@ export default class AppComponent extends Component {
 
   onComponentAttach() {
     this._copyrightYear();
+    this._themeSwitcher();
     this._content = this.root.querySelector('.content');
 
     getInjector().subscribe(ROUTING_SERVICE, (routingService) => {
@@ -97,6 +98,24 @@ export default class AppComponent extends Component {
         DOM.removeClass(nav, 'visible');
         document.body.style.overflow = 'auto';
       }
+    });
+  }
+
+  _themeSwitcher() {
+    let darkMode = false;
+    const darkModeBtn = this.root.querySelector('.dark-mode');
+
+    darkModeBtn.addEventListener('click', () => {
+      if (darkMode) {
+        setTheme(LIGHT_THEME);
+        DOM.removeClass(darkModeBtn, 'activated');
+        darkModeBtn.title = 'Dark mode';
+      } else {
+        setTheme(DARK_THEME);
+        DOM.addClass(darkModeBtn, 'activated');
+        darkModeBtn.title = 'Light mode';
+      }
+      darkMode = !darkMode;
     });
   }
 }
