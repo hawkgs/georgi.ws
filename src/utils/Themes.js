@@ -10,12 +10,12 @@ export const LIGHT_THEME = {
 };
 
 export const DARK_THEME = {
-  '--app-background': '#343434',
+  '--app-background': '#222222',
   '--text-color': '#fafafa',
   '--link-color': '#53abf6',
   '--app-red': '#ea5242',
   '--app-grey': '#8f8f8f',
-  '--app-light-grey': '#3a3a3a'
+  '--app-light-grey': '#2a2a2a'
 };
 
 let meta;
