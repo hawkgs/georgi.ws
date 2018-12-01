@@ -40,11 +40,19 @@ export class TemplateProcessor {
     Object.keys(this._cmp._templateUuids).forEach(s => {
       this._cmp._templateUuids[s].forEach(uuid => {
         const element = this._cmp.root.querySelector(`[data-eid="${uuid}"]`);
+        const nodes = element.childNodes;
+        const fragment = document.createDocumentFragment();
 
+        for (let i = 0; i < nodes.length; i += 1) {
+          fragment.appendChild(nodes[i].cloneNode(true));
+        }
+        while (element.firstChild) {
+          element.removeChild(element.firstChild);
+        }
         if (!this._cmp._stateTemplates[s]) {
           this._cmp._stateTemplates[s] = [];
         }
-        this._cmp._stateTemplates[s].push({ element, html: element.innerHTML || '' });
+        this._cmp._stateTemplates[s].push({ element, fragment });
       });
     });
   }
@@ -57,11 +65,13 @@ export class TemplateProcessor {
 
       if (templateForStateExist && state === s) {
         elements.forEach(elObj => {
-          elObj.element.innerHTML = elObj.html;
+          elObj.element.appendChild(elObj.fragment.cloneNode(true));
         });
       } else {
         elements.forEach(elObj => {
-          elObj.element.innerHTML = '';
+          while (elObj.element.firstChild) {
+            elObj.element.removeChild(elObj.element.firstChild);
+          }
         });
       }
     });
