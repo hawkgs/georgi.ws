@@ -22,19 +22,22 @@ interactive-logo {
   display: block;
 }
 
+.content.home header {
+  height: 100vh;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .content.home interactive-logo {
-  position: absolute;
-  transform: translateX(-50%) scale(3);
-  top: calc(50vh - 95px);
-  left: 51%;
+  transform: translateX(8%) scale(3);
+  margin-top: 15px;
 }
 
 .content.home nav {
-  position: absolute;
-  top: 50vh;
-  left: 50%;
+  margin-top: 60px;
   white-space: nowrap;
-  transform: translateX(-50%);
 }
 
 nav > app-link:first-child {
@@ -159,11 +162,11 @@ footer .text {
   }
 
   .content.home interactive-logo {
-    transform: translateX(-50%) scale(1.5);
+    transform: scale(1.5);
   }
 
   .content.home nav {
-    top: calc(50vh - 25px);
+    margin-top: 35px;
   }
 
   .content.home app-link,
