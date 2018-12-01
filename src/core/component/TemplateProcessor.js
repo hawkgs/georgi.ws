@@ -44,7 +44,7 @@ export class TemplateProcessor {
         if (!this._cmp._stateTemplates[s]) {
           this._cmp._stateTemplates[s] = [];
         }
-        this._cmp._stateTemplates[s].push({ element });
+        this._cmp._stateTemplates[s].push({ element, html: element.innerHTML || '' });
       });
     });
   }
@@ -57,13 +57,10 @@ export class TemplateProcessor {
 
       if (templateForStateExist && state === s) {
         elements.forEach(elObj => {
-          if (elObj.html) {
-            elObj.element.innerHTML = elObj.html;
-          }
+          elObj.element.innerHTML = elObj.html;
         });
       } else {
         elements.forEach(elObj => {
-          elObj.html = elObj.element.innerHTML;
           elObj.element.innerHTML = '';
         });
       }
