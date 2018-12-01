@@ -1,6 +1,7 @@
 .interactive-logo {
   width: 175px;
   font-size: 19px;
+  cursor: pointer;
 }
 
 .interactive-logo .initial {
