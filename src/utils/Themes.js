@@ -1,5 +1,7 @@
 'use strict';
 
+const DARK_THEME_BG = '#222222';
+
 export const LIGHT_THEME = {
   '--app-background': '#fafafa',
   '--text-color': '#343434',
@@ -10,7 +12,7 @@ export const LIGHT_THEME = {
 };
 
 export const DARK_THEME = {
-  '--app-background': '#222222',
+  '--app-background': DARK_THEME_BG,
   '--text-color': '#fafafa',
   '--link-color': '#53abf6',
   '--app-red': '#ea5242',
@@ -31,7 +33,7 @@ export const setTheme = (theme) => {
     meta.setAttribute('name', 'theme-color');
     document.head.appendChild(meta);
   }
-  if (theme['--app-background'] === '#343434') {
+  if (theme['--app-background'] === DARK_THEME_BG) {
     meta.setAttribute('content', theme['--app-background']);
   } else {
     meta.setAttribute('content', 'white');
