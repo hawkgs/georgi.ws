@@ -142,6 +142,17 @@ footer .text {
   background-color: #f7b800;
 }
 
+@media (max-width: 550px) {
+  .dark-mode:hover {
+    opacity: 0.5;
+    transform: unset;
+  }
+
+  .dark-mode:hover::after {
+    margin-right: 6px;
+  }
+}
+
 @media (max-width: 680px) {
   .content:not(.home) header {
     position: fixed;
