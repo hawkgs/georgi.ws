@@ -46,9 +46,7 @@ export class TemplateProcessor {
         for (let i = 0; i < nodes.length; i += 1) {
           fragment.appendChild(nodes[i].cloneNode(true));
         }
-        while (element.firstChild) {
-          element.removeChild(element.firstChild);
-        }
+        this._cleanChildren(element);
         if (!this._cmp._stateTemplates[s]) {
           this._cmp._stateTemplates[s] = [];
         }
@@ -65,15 +63,18 @@ export class TemplateProcessor {
 
       if (templateForStateExist && state === s) {
         elements.forEach(elObj => {
+          this._cleanChildren(elObj.element);
           elObj.element.appendChild(elObj.fragment.cloneNode(true));
         });
       } else {
-        elements.forEach(elObj => {
-          while (elObj.element.firstChild) {
-            elObj.element.removeChild(elObj.element.firstChild);
-          }
-        });
+        elements.forEach(elObj => this._cleanChildren(elObj.element));
       }
     });
+  }
+
+  _cleanChildren(element) {
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
   }
 }
