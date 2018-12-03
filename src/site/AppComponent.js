@@ -18,7 +18,7 @@ import { DARK_THEME, LIGHT_THEME, setTheme } from '../utils/Themes';
 
 const DEFAULT_TITLE = 'georgi.ws';
 const RouteToTitleMap = {
-  '/': DEFAULT_TITLE,
+  '/': `${DEFAULT_TITLE} / Georgi Serev`,
   '/projects': `${DEFAULT_TITLE} / Projects`,
   '/stack': `${DEFAULT_TITLE} / Stack`,
   '/timeline': `${DEFAULT_TITLE} / Timeline`,
