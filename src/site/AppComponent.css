@@ -265,3 +265,11 @@ footer .text {
     clear: left;
   }
 }
+
+@media (max-height: 370px) {
+  .content.home app-link,
+  .content.home a {
+    display: inline-block;
+    margin: 0 5px;
+  }
+}
