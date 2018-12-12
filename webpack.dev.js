@@ -18,6 +18,15 @@ module.exports = merge(common, {
         cssHash: ''
       },
       template: 'index.ejs',
+      filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      templateParameters: {
+        cssHash: ''
+      },
+      template: './src/noscript.ejs',
+      filename: './src/noscript.html',
+      inject: false
     }),
     // new BundleAnalyzerPlugin()
   ],
