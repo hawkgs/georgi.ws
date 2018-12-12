@@ -2,6 +2,7 @@
 
 import { Component } from '../component';
 import { Route } from './Route';
+import { NotFoundRedirect } from './NotFoundRedirect';
 import { getInjector, ROUTING_SERVICE } from '../../di';
 import { Routing } from './Routing';
 
@@ -41,16 +42,22 @@ export class Router extends Component {
   }
 
   _loadRoute() {
-    this._renderRoute(this._routingService.path);
+    const route = this._routingService.path;
+
+    if (this._routes.get(route)) {
+      this._renderRoute(route);
+    } else {
+      this._render.innerHTML = '';
+      this._routingService.push(this._notFoundRedirectUrl);
+    }
   }
 
   _renderRoute(route) {
-    const routeComponent = this._routes.find(r => r.url === route);
+    const routeComponent = this._routes.get(route);
     this._render.innerHTML = '';
 
     if (routeComponent) {
-      const name = routeComponent.component;
-      const component = document.createElement(name);
+      const component = document.createElement(routeComponent);
 
       this._animate(component);
       this._render.appendChild(component);
@@ -62,11 +69,14 @@ export class Router extends Component {
   }
 
   _getRoutes() {
-    this._routes = [];
+    this._routes = new Map();
 
     [].slice.call(this.root.children).forEach(r => {
       if (r instanceof Route) {
-        this._routes.push(r.data);
+        this._routes.set(r.data.url, r.data.component);
+      }
+      if (r instanceof NotFoundRedirect) {
+        this._notFoundRedirectUrl = r.data.url;
       }
     });
   }
