@@ -47,14 +47,14 @@ export class Router extends Component {
     if (this._routes.get(route)) {
       this._renderRoute(route);
     } else {
-      this._render.innerHTML = '';
+      this._cleanRenderElement();
       this._routingService.push(this._notFoundRedirectUrl);
     }
   }
 
   _renderRoute(route) {
     const routeComponent = this._routes.get(route);
-    this._render.innerHTML = '';
+    this._cleanRenderElement();
 
     if (routeComponent) {
       const component = document.createElement(routeComponent);
@@ -82,7 +82,9 @@ export class Router extends Component {
   }
 
   _prepareTemplate() {
-    this.root.innerHTML = '';
+    while (this.root.firstChild) {
+      this.root.removeChild(this.root.firstChild);
+    }
 
     const animationStyles = document.createElement('style');
     animationStyles.innerHTML = animations;
@@ -97,6 +99,12 @@ export class Router extends Component {
       throw new Error('Router: The router already has an instance in the app.');
     }
     instantiated = true;
+  }
+
+  _cleanRenderElement() {
+    while (this._render.firstChild) {
+      this._render.removeChild(this._render.firstChild);
+    }
   }
 }
 
