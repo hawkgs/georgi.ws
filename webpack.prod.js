@@ -26,10 +26,22 @@ module.exports = merge(common, {
         cssHash
       },
       template: 'index.ejs',
+      filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      templateParameters: { cssHash },
+      template: './src/noscript.ejs',
+      filename: 'noscript.html',
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      templateParameters: { cssHash },
+      template: './src/404.ejs',
+      filename: '404.html',
+      inject: false
     }),
     new CopyWebpackPlugin([
       { from: './src/favicon.png', to: './' },
-      { from: './src/noscript.html', to: './' },
       {
         from: './src/index.css',
         to: `./index${cssHash}.css`,
@@ -41,6 +53,7 @@ module.exports = merge(common, {
         '/index.html',
         `/index${cssHash}.css`,
         '/noscript.html',
+        '/404.html',
         '/favicon.png',
         'https://fonts.googleapis.com/css?family=Montserrat:500,600,800|Karla'
       ]

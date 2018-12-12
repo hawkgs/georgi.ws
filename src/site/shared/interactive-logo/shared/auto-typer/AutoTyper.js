@@ -58,7 +58,7 @@ export class AutoTyper extends Component {
         if (this._timeout) {
           clearTimeout(this._timeout);
         }
-        this._content.innerHTML = '';
+        this._content.innerText = '';
         const generator = makeTextGenerator(text);
 
         return new Promise((res) => {
@@ -66,7 +66,7 @@ export class AutoTyper extends Component {
             const next = generator.next();
 
             if (!next.done) {
-              this._content.innerHTML += next.value;
+              this._content.innerText += next.value;
               this._timeout = setTimeout(printLetter, random(TYPE_SPEED.from, TYPE_SPEED.to));
             } else {
               this.setState(State.NoCaret);
@@ -80,13 +80,13 @@ export class AutoTyper extends Component {
 
   _delete() {
     return new Promise((res) => {
-      if (!this._content.innerHTML) {
+      if (!this._content.innerText) {
         return res();
       }
       const deleteLetter = () => {
-        const txt = this._content.innerHTML;
+        const txt = this._content.innerText;
         if (txt) {
-          this._content.innerHTML = txt.substring(0, txt.length - 1);
+          this._content.innerText = txt.substring(0, txt.length - 1);
           setTimeout(deleteLetter, DELETE_SPEED);
         } else {
           setTimeout(res, DELAY_BETWEEN_INPUTS);
