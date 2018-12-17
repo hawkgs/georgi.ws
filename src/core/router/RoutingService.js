@@ -1,32 +1,24 @@
 'use strict';
 
-import { Routing } from './Routing';
-
-const RoutingStrategyType = {
-  HashBased: '/#',
-  PathBased: ''
-};
+import { Routing, RoutingStrategyType } from './common';
 
 export class RoutingService {
-  static get RoutingStrategy() {
-    return RoutingStrategyType.PathBased;
-  }
-
-  constructor(loadRoute) {
+  constructor(loadRoute, routingStrategy) {
     this._loadRoute = loadRoute;
     this._listeners = [];
+    this._routingStrategy = routingStrategy !== undefined ? routingStrategy : RoutingStrategyType.HashBased;
     this._popStateListener();
   }
 
   get path() {
-    if (RoutingService.RoutingStrategy === RoutingStrategyType.HashBased) {
+    if (this._routingStrategy === RoutingStrategyType.HashBased) {
       return document.location.href.split('#')[1] || '/';
     }
     return document.location.pathname;
   }
 
   push(url, pageTitle) {
-    const route = `${RoutingService.RoutingStrategy}${url}`;
+    const route = `${this._routingStrategy}${url}`;
     const fullUrl = `${window.location.protocol}//${window.location.host}${route}`;
 
     if (window.location.href === fullUrl) {
