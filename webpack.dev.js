@@ -23,7 +23,7 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       templateParameters: {
-        sourcePath: `/src`,
+        sourcePath: '/src',
         cssHash: ''
       },
       template: 'index.ejs',
@@ -31,6 +31,7 @@ module.exports = merge(common, {
     }),
     new HtmlWebpackPlugin({
       templateParameters: {
+        sourcePath: '/src',
         cssHash: ''
       },
       template: './src/noscript.ejs',

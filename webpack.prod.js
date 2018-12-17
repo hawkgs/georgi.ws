@@ -29,13 +29,19 @@ module.exports = merge(common, {
       filename: 'index.html'
     }),
     new HtmlWebpackPlugin({
-      templateParameters: { cssHash },
+      templateParameters: {
+        sourcePath: '',
+        cssHash
+      },
       template: './src/noscript.ejs',
       filename: 'noscript.html',
       inject: false
     }),
     new HtmlWebpackPlugin({
-      templateParameters: { cssHash },
+      templateParameters: {
+        sourcePath: '',
+        cssHash
+      },
       template: './src/404.ejs',
       filename: '404.html',
       inject: false
