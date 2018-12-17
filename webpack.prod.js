@@ -64,7 +64,8 @@ module.exports = merge(common, {
         '/404.html',
         '/favicon.png',
         'https://fonts.googleapis.com/css?family=Montserrat:500,600,800|Karla'
-      ]
+      ],
+      excludes: ['/_redirects']
     })
   ],
 });
