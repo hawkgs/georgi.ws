@@ -9,7 +9,7 @@ const RoutingStrategyType = {
 
 export class RoutingService {
   static get RoutingStrategy() {
-    return RoutingStrategyType.HashBased;
+    return RoutingStrategyType.PathBased;
   }
 
   constructor(loadRoute) {

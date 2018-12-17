@@ -46,7 +46,9 @@ module.exports = merge(common, {
         from: './src/index.css',
         to: `./index${cssHash}.css`,
         transform: (c) => uglifycss.processString(c.toString())
-      }
+      },
+      { from: './serve.json', to: './' },
+      { from: './_redirects', to: './' }
     ]),
     new OfflinePlugin({
       externals: [
