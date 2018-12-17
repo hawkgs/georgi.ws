@@ -4,7 +4,7 @@ import { Component } from '../component';
 import { Route } from './Route';
 import { NotFoundRedirect } from './NotFoundRedirect';
 import { getInjector, ROUTING_SERVICE } from '../../di';
-import { Routing } from './Routing';
+import { Routing, RoutingStrategyType } from './common';
 
 import animations from './animations/animations.css';
 import { animateFadeIn } from './animations/Animate';
@@ -18,7 +18,10 @@ export class Router extends Component {
     this._handleInstance();
 
     const injector = getInjector();
-    this._routingService = injector.createInstanceOf(ROUTING_SERVICE, [this._loadRoute.bind(this)]);
+    this._routingService = injector.createInstanceOf(
+      ROUTING_SERVICE,
+      [this._loadRoute.bind(this), RoutingStrategyType.PathBased]
+    );
     injector.addInstanceOf(ROUTING_SERVICE, this._routingService);
   }
 

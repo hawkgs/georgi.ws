@@ -6,6 +6,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
+  devServer: {
+    host: '0.0.0.0',
+    port: 8080,
+    historyApiFallback: {
+      rewrites: [
+        { from: '/p', to: '/index.html' }
+      ]
+    }
+  },
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
@@ -14,7 +23,7 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       templateParameters: {
-        sourcePath: 'src',
+        sourcePath: `/src`,
         cssHash: ''
       },
       template: 'index.ejs',
