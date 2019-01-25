@@ -7,7 +7,7 @@ import css from './InteractiveLogo.css';
 import './shared/auto-typer/AutoTyper';
 import { getInjector, ROUTING_SERVICE } from '../../../di';
 
-const SWITCH_INITIAL_STATE_AFTER = 10 * 1000;
+const SWITCH_INITIALS_AFTER = 8 * 1000;
 const State = {
   InitialG: 'InitialG',
   InitialH: 'InitialH'
@@ -21,12 +21,18 @@ export class InteractiveLogo extends Component {
   onComponentAttach() {
     const autoTyperRef = ComponentRef.get(this.root.querySelector('auto-typer'));
     const switchInitial = () => {
-      autoTyperRef.typeNext();
-
       const next = this.state === State.InitialG ? State.InitialH : State.InitialG;
       this.setState(next);
+
+      autoTyperRef.typeNext()
+        .then(() => {
+          if (this._timeout) {
+            clearTimeout();
+          }
+          this._timeout = setTimeout(switchInitial, SWITCH_INITIALS_AFTER);
+        });
     };
-    this._interval = setInterval(switchInitial, SWITCH_INITIAL_STATE_AFTER);
+    this._timeout = setTimeout(switchInitial, SWITCH_INITIALS_AFTER);
 
     getInjector().subscribe(ROUTING_SERVICE, (routingService) => {
       this._clickHandler(routingService);
@@ -34,7 +40,7 @@ export class InteractiveLogo extends Component {
   }
 
   onComponentDetach() {
-    clearInterval(this._interval);
+    clearTimeout(this._timeout);
   }
 
   _clickHandler(routingService) {

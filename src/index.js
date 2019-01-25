@@ -8,7 +8,7 @@ function init() {
   element.id = 'root';
 
   if ('customElements' in window) {
-    const AppComponent = require('./site/AppComponent').default;
+    const AppComponent = require('./ui/AppComponent').default;
     element.appendChild(new AppComponent());
   } else {
     element.innerHTML = require('./unsupported.html');
