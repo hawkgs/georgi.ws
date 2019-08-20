@@ -6,6 +6,7 @@ My name is Georgi (if that's not obvious yet). Here are some key points about me
 - Interested in things like design, UX and physics
 - A.k.a. "hawk" or "hAWK" in various internet communities
 - Freerunner (ex, kind of) and die-hard Subaru fan
+- Currently part of [thisdot.co](https://thisdot.co)
 
 
 You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
