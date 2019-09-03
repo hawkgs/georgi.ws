@@ -15,6 +15,7 @@ import './about/About';
 import { DOM } from '../utils/DOM';
 import { getInjector, ROUTING_SERVICE } from '../di';
 import { DARK_THEME, LIGHT_THEME, setTheme } from '../utils/Themes';
+import { Storage, DARK_THEME_KEY } from '../utils/Storage';
 
 const DEFAULT_TITLE = 'georgi.ws';
 const RouteToTitleMap = {
@@ -32,7 +33,7 @@ export default class AppComponent extends Component {
 
   onComponentAttach() {
     this._copyrightYear();
-    this._themeSwitcher();
+    this._manageThemes();
     this._mobileNavHandler();
     this._content = this.root.querySelector('.content');
 
@@ -106,9 +107,21 @@ export default class AppComponent extends Component {
     routingService.listen(() => window.scrollTo(0, 0));
   }
 
-  _themeSwitcher() {
-    let darkMode = false;
+  _manageThemes() {
     const darkModeBtn = this.root.querySelector('.dark-mode');
+    const osPreferredDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = Storage.get(DARK_THEME_KEY);
+    let darkMode = storedTheme !== null ? storedTheme : osPreferredDarkMode || false;
+
+    const setDarkTheme = () => {
+      setTheme(DARK_THEME);
+      DOM.addClass(darkModeBtn, 'activated');
+      darkModeBtn.title = 'Light mode';
+    };
+
+    if (darkMode) {
+      setDarkTheme();
+    }
 
     darkModeBtn.addEventListener('click', () => {
       if (darkMode) {
@@ -116,11 +129,10 @@ export default class AppComponent extends Component {
         DOM.removeClass(darkModeBtn, 'activated');
         darkModeBtn.title = 'Dark mode';
       } else {
-        setTheme(DARK_THEME);
-        DOM.addClass(darkModeBtn, 'activated');
-        darkModeBtn.title = 'Light mode';
+        setDarkTheme();
       }
       darkMode = !darkMode;
+      Storage.set(DARK_THEME_KEY, darkMode);
     });
   }
 }
