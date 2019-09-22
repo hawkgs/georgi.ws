@@ -9,6 +9,7 @@ import '../core/router';
 import './shared/interactive-logo/InteractiveLogo';
 import './projects/Projects';
 import './stack/Stack';
+import './articles/Articles';
 import './timeline/Timeline';
 import './about/About';
 
