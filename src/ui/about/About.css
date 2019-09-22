@@ -1,14 +1,14 @@
 a {
   position: relative;
   display: inline-block;
-  color: #3687cc;
+  color: var(--link-color);
   text-decoration: none;
 }
 
 a::after {
   content: '';
   position: absolute;
-  border-bottom: 3px dotted #3687cc;
+  border-bottom: 3px dotted var(--link-color);
   width: 0;
   transition: width 0.2s ease;
   left: 0;
