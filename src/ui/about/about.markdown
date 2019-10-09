@@ -21,6 +21,8 @@ You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
 
 !{svg}(about/shared/icons/linkedin) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank" rel="noopener"} (I rarely check it 🤯)
 
+!{svg}(about/shared/icons/racefacer) [Georgi Serev](https://www.racefacer.com/en/profile/georgi.serev){target="_blank" rel="noopener"} (🏁)
+
 ### The website
 
 During the development of this website I had one rule - don't use libraries apart from Webpack and Babel. This resulted in a small not-so-rich single-page framework. It was purely a test for me, trying to build something without the common and conventional tools and frameworks available nowdays. You can check the whole source code at [GitHub](https://github.com/hawkgs/georgi.ws).
