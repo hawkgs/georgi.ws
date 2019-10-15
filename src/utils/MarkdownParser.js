@@ -86,7 +86,7 @@ export const MarkdownToHTML = md =>
     ),
     // Links and images
     construction(
-      /(!?)\[([@.,()\-\w ]+)\]\(([:/\w%#?&=\.]+)\)({([a-z_=" ]+)})?/gm,
+      /(!?)\[([@.,()\-\w ]+)\]\(([:/\w%#?&=\-\.]+)\)({([a-z_=" ]+)})?/gm,
       (text, token, idx, raw) => {
         let parsed;
         if (token[1]) {
