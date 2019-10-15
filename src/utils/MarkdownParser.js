@@ -21,7 +21,7 @@ export const MarkdownToHTML = md =>
   [
     // Headings
     construction(
-      /^(#+) ?([\w ]+)\n/gm,
+      /^(#+) ?([.()\[\]:/\-\w ]+)\n/gm,
       (text, token, idx, raw) => {
         const type = token[1].length;
         if (0 < type && type < 7) {
@@ -86,7 +86,7 @@ export const MarkdownToHTML = md =>
     ),
     // Links and images
     construction(
-      /(!?)\[([@.\w ]+)\]\(([:/\w%#?&=\.]+)\)({([a-z_=" ]+)})?/gm,
+      /(!?)\[([@.,()\-\w ]+)\]\(([:/\w%#?&=\.]+)\)({([a-z_=" ]+)})?/gm,
       (text, token, idx, raw) => {
         let parsed;
         if (token[1]) {

@@ -6,7 +6,7 @@ My name is Georgi (if that's not obvious yet). Here are some key points about me
 - Interested in things like design, UX and physics
 - A.k.a. "hawk" or "hAWK" in various internet communities
 - Freerunner (ex, kind of) and die-hard Subaru fan
-- Currently part of [thisdot.co](https://thisdot.co)
+- Currently part of [This Dot, Inc](https://thisdot.co). Previously, [Rhyme Softworks LLC](https://rhyme.com)
 
 
 You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
@@ -20,6 +20,8 @@ You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
 !{svg}(about/shared/icons/twitter) [@gserev](https://twitter.com/gserev){target="_blank" rel="noopener"} (I rarely use it)
 
 !{svg}(about/shared/icons/linkedin) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank" rel="noopener"} (I rarely check it 🤯)
+
+!{svg}(about/shared/icons/racefacer) [Georgi Serev](https://www.racefacer.com/en/profile/georgi.serev){target="_blank" rel="noopener"} (🏁)
 
 ### The website
 

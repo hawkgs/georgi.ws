@@ -1,0 +1,26 @@
+a {
+  position: relative;
+  display: inline-block;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--link-color);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border-bottom: 2px dotted var(--app-grey);
+  left: 0;
+  bottom: -2px;
+  transition: border-color 0.2s ease;
+}
+
+a:hover::after {
+  border-color: var(--link-color);
+}
