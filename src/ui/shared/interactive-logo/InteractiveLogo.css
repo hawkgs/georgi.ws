@@ -2,6 +2,17 @@
   width: 175px;
   font-size: 19px;
   cursor: pointer;
+  outline: none;
+  transition: transform 0.2s ease;
+}
+
+.interactive-logo:focus {
+  transform: scale(1.1);
+}
+
+.interactive-logo span,
+.interactive-logo auto-typer {
+  pointer-events: none;
 }
 
 .interactive-logo .initial {

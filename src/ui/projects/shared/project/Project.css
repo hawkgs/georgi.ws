@@ -15,9 +15,11 @@
   padding: 30px 15px 15px 15px;
   text-decoration: none;
   color: var(--text-color);
+  outline: none;
 }
 
-.project:hover {
+.project:hover,
+.project:focus {
   transform: translateY(-5px);
 }
 

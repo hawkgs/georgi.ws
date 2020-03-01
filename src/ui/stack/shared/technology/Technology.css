@@ -3,6 +3,7 @@
   height: 90px;
   transition: transform 0.2s ease;
   text-align: center;
+  outline: none;
 }
 
 .technology > .logo {
@@ -20,11 +21,13 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.technology:hover {
+.technology:hover,
+.technology:focus {
   transform: translateY(-10px);
 }
 
-.technology:hover > .tooltip {
+.technology:hover > .tooltip,
+.technology:focus > .tooltip {
   opacity: 1;
   transform: translateX(0);
 }

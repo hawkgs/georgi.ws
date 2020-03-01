@@ -14,3 +14,11 @@ export const DOM = {
     element.classList.toggle(className);
   }
 };
+
+export const forwardEnterPressToClick = (el) => {
+  el.addEventListener('keypress', (e) => {
+    if (e.keyCode === 13) {
+      el.click();
+    }
+  });
+};
