@@ -5,7 +5,6 @@ My name is Georgi (if that's not obvious yet). Here are some key points about me
 - A developer specializing primarily in web and front-end technologies
 - Interested in things like design, UX and physics
 - A.k.a. "hawk" or "hAWK" in various internet communities
-- Freerunner (ex, kind of) and die-hard Subaru fan
 - Currently part of [This Dot, Inc](https://thisdot.co). Previously, [Rhyme Softworks LLC](https://rhyme.com)
 
 
@@ -16,8 +15,6 @@ You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
 !{svg}(about/shared/icons/mail) hawk.dvp at google mail
 
 !{svg}(about/shared/icons/github) [hawkgs](https://github.com/hawkgs){target="_blank" rel="noopener"}
-
-!{svg}(about/shared/icons/twitter) [@gserev](https://twitter.com/gserev){target="_blank" rel="noopener"} (I rarely use it)
 
 !{svg}(about/shared/icons/linkedin) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank" rel="noopener"} (I rarely check it 🤯)
 
