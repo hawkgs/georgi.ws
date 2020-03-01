@@ -13,7 +13,7 @@ import './articles/Articles';
 import './timeline/Timeline';
 import './about/About';
 
-import { DOM } from '../utils/DOM';
+import { DOM, forwardEnterPressToClick } from '../utils/DOM';
 import { getInjector, ROUTING_SERVICE } from '../di';
 import { DARK_THEME, LIGHT_THEME, setTheme } from '../utils/Themes';
 import { Storage, DARK_THEME_KEY } from '../utils/Storage';
@@ -124,7 +124,7 @@ export default class AppComponent extends Component {
       setDarkTheme();
     }
 
-    darkModeBtn.addEventListener('click', () => {
+    darkModeBtn.addEventListener('click', (e) => {
       if (darkMode) {
         setTheme(LIGHT_THEME);
         DOM.removeClass(darkModeBtn, 'activated');
@@ -134,7 +134,9 @@ export default class AppComponent extends Component {
       }
       darkMode = !darkMode;
       Storage.set(DARK_THEME_KEY, darkMode);
+      e.target.blur();
     });
+    forwardEnterPressToClick(darkModeBtn);
   }
 }
 

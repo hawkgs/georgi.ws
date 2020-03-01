@@ -6,6 +6,7 @@ import css from './InteractiveLogo.css';
 
 import './shared/auto-typer/AutoTyper';
 import { getInjector, ROUTING_SERVICE } from '../../../di';
+import { forwardEnterPressToClick } from '../../../utils/DOM';
 
 const SWITCH_INITIALS_AFTER = 8 * 1000;
 const State = {
@@ -44,9 +45,12 @@ export class InteractiveLogo extends Component {
   }
 
   _clickHandler(routingService) {
-    this.root.addEventListener('click', () => {
+    const container = this.root.querySelector('.interactive-logo');
+    container.addEventListener('click', (e) => {
       routingService.push('/');
+      e.target.blur();
     });
+    forwardEnterPressToClick(container);
   }
 }
 

@@ -122,7 +122,8 @@
     overflow: auto;
   }
 
-  .timeline event-cmp > .event:hover > .wrapper {
+  .timeline event-cmp > .event:hover > .wrapper,
+  .timeline event-cmp > .event:focus > .wrapper {
     transform: none;
   }
 }

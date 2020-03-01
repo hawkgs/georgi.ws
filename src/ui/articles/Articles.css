@@ -4,9 +4,11 @@ a {
   color: var(--text-color);
   text-decoration: none;
   transition: color 0.2s ease;
+  outline: none;
 }
 
-a:hover {
+a:hover,
+a:focus {
   color: var(--link-color);
 }
 
@@ -21,6 +23,7 @@ a::after {
   transition: border-color 0.2s ease;
 }
 
-a:hover::after {
+a:hover::after,
+a:focus::after {
   border-color: var(--link-color);
 }

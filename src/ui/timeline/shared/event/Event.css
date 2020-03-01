@@ -1,3 +1,7 @@
+.event {
+  outline: none;
+}
+
 .event > .wrapper {
   display: flex;
   align-items: center;
@@ -18,11 +22,13 @@
   transition: border-color 0.5s ease;
 }
 
-.event:hover > .wrapper {
+.event:hover > .wrapper,
+.event:focus > .wrapper {
   transform: scale(1.1);
 }
 
-.event:hover::after {
+.event:hover::after,
+.event:focus::after {
   border-color: var(--app-red);
 }
 
@@ -68,7 +74,8 @@
   white-space: nowrap;
 }
 
-.event:hover .description {
+.event:hover .description,
+.event:focus .description {
   max-height: 200px;
   white-space: initial;
 }

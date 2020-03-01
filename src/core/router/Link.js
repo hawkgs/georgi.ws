@@ -2,10 +2,11 @@
 
 import { Component, DOMType } from '../component';
 import { getInjector, ROUTING_SERVICE } from '../../di';
+import { forwardEnterPressToClick } from '../../utils/DOM';
 
 export class Link extends Component {
   constructor() {
-    super('<span class="link"><!--{children}--></span>', [], null, DOMType.Standard);
+    super('<span role="link" tabindex="0" class="link"><!--{children}--></span>', [], null, DOMType.Standard);
 
     this._injector = getInjector();
     this._routingService = null;
@@ -18,11 +19,13 @@ export class Link extends Component {
 
     const link = this.root.children[0];
 
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
       if (this._routingService) {
         this._routingService.push(this.attr.url);
       }
+      e.target.blur();
     });
+    forwardEnterPressToClick(link);
 
     this._injector.subscribe(ROUTING_SERVICE, this._diCb = (i) => {
       this._routingService = i;
