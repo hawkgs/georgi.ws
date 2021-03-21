@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.0//EN'  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.0" viewBox="0 0 1181 1181" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:var(--text-color);stroke-width:41.6654}
+    .fil1 {fill:none}
+    .fil0 {fill:var(--app-background)}
+   ]]>
+  </style>
+ </defs>
+  <path class="fil0 str0" d="m597 57c51 0 92 41 92 92s-41 92-92 92-92-41-92-92 41-92 92-92z"/>
+  <path class="fil0 str0" d="m1051 319c26 44 10 100-34 126-44 25-100 10-125-34-26-44-11-100 33-126 44-25 101-10 126 34z"/>
+  <path class="fil0 str0" d="m1051 843c-25 44-81 59-125 34-44-26-60-82-34-126 25-44 82-59 126-34 44 26 59 82 33 126z"/>
+  <path class="fil0 str0" d="m597 1106c-50 0-92-42-92-93 0-50 42-92 92-92 51 0 93 42 93 92 0 51-42 93-93 93z"/>
+  <path class="fil0 str0" d="m143 844c-25-44-10-101 34-126 44-26 100-11 126 34 25 44 10 100-34 125-44 26-100 11-126-33z"/>
+  <path class="fil0 str0" d="m143 319c25-44 82-59 126-33 44 25 59 81 33 125-25 44-81 60-125 34-44-25-60-82-34-126z"/>
+  <path class="fil1 str0" d="m223 457v248"/>
+  <path class="fil1 str0" d="m303 844 215 123"/>
+  <path class="fil1 str0" d="m677 967 215-124"/>
+  <path class="fil1 str0" d="m972 705-1-248"/>
+  <path class="fil1 str0" d="m892 319-215-124"/>
+  <path class="fil1 str0" d="m517 195-215 124"/>
+  <path class="fil1 str0" d="m315 798 565-1"/>
+  <path class="fil1 str0" d="m926 717-283-488"/>
+  <path class="fil1 str0" d="m551 229-282 489"/>
+</svg>

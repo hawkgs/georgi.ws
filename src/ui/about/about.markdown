@@ -5,10 +5,15 @@ My name is Georgi (if that's not obvious yet). Here are some key points about me
 - A developer specializing primarily in web and front-end technologies
 - Interested in things like design, UX and physics
 - A.k.a. "hawk" or "hAWK" in various internet communities
-- Currently part of [This Dot, Inc](https://thisdot.co). Previously, [Rhyme Softworks LLC](https://rhyme.com)
 
 
-You can find more about how I ended up here in [Timeline](/#/timeline) 🏄‍.
+### Work experience
+
+- [Tell Health, Inc](https://tell.health) (current)
+- [This Dot, Inc](https://thisdot.co)
+- [Rhyme Softworks LLC](https://rhyme.com) (acquired by Coursera)
+
+You can find more about me in [Timeline](/#/timeline) 🏄‍.
 
 ### Contacts and social
 
