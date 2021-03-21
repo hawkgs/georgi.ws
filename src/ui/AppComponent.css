@@ -267,6 +267,7 @@ footer .text {
 
   .content:not(.home) nav.visible::before {
     width: calc(100% - 250px);
+    backdrop-filter: blur(5px);
   }
 
   .content:not(.home) nav app-link,
