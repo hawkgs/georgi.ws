@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.0//EN'  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.0" viewBox="0 0 1181 1181" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style type="text/css">
+    <![CDATA[
+      .str1 {stroke:var(--text-color);stroke-width:41.6654}
+      .str0 {stroke:var(--text-color);stroke-width:41.6654;stroke-linejoin:round}
+      .fil0 {fill:none}
+      .fil1 {fill:none;fill-rule:nonzero}
+    ]]>
+    </style>
+  </defs>
+  <path class="fil0 str0" d="m528 238c-261 31-414 299-250 573-21 42-49 72-73 94 54 27 148 25 208 0 67 34 130 43 188 41 97-4 201-47 271-122 156-169 100-384 6-488"/>
+  <circle class="fil0 str1" cx="580" cy="238" r="52"/>
+  <circle class="fil0 str1" cx="841" cy="301" r="52"/>
+  <path class="fil1 str1" d="m546 472c0-25 20-44 45-44 24 0 44 19 44 44v74h74c25 0 44 20 44 45 0 24-19 44-44 44h-74v74c0 25-20 44-44 44-25 0-45-19-45-44v-74h-74c-25 0-44-20-44-44 0-25 19-45 44-45h74v-74z"/>
+</svg>
