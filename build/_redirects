@@ -1,0 +1,2 @@
+# SPA rewrite
+/p/*   /index.html   200

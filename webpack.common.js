@@ -21,9 +21,6 @@ module.exports = {
         test: /\.html$/,
         use: {
           loader: 'html-loader',
-          options: {
-            attrs: false
-          }
         }
       },
       {
@@ -41,7 +38,14 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|ico)$/i,
-        loader: 'file-loader?name=[name].[ext]'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            },
+          }
+        ]
       }
     ]
   }
