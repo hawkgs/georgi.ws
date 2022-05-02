@@ -5,7 +5,7 @@ const uglifycss = require('uglifycss');
 const hashFiles = require('hash-files');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const OfflinePlugin = require('offline-plugin');
+const OfflinePlugin = require('@lcdp/offline-plugin');
 
 const cssHash = '.' + hashFiles.sync({
   files: './src/index.css',
@@ -58,16 +58,16 @@ module.exports = merge(common, {
         { from: './_redirects', to: './' }
       ]
     }),
-    // new OfflinePlugin({
-    //   externals: [
-    //     '/index.html',
-    //     `/index${cssHash}.css`,
-    //     '/noscript.html',
-    //     '/404.html',
-    //     '/favicon.png',
-    //     'https://fonts.googleapis.com/css?family=Montserrat:500,600,800|Karla'
-    //   ],
-    //   excludes: ['_redirects', 'serve.json']
-    // })
+    new OfflinePlugin({
+      externals: [
+        '/index.html',
+        `/index${cssHash}.css`,
+        '/noscript.html',
+        '/404.html',
+        '/favicon.png',
+        'https://fonts.googleapis.com/css?family=Montserrat:500,600,800|Karla'
+      ],
+      excludes: ['_redirects', 'serve.json']
+    })
   ],
 });
