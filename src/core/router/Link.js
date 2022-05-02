@@ -6,7 +6,7 @@ import { forwardEnterPressToClick } from '../../utils/DOM';
 
 export class Link extends Component {
   constructor() {
-    super('<span role="link" tabindex="0" class="link"><!--{children}--></span>', [], null, DOMType.Standard);
+    super('<span role="link" tabindex="0" class="link"><CHILDREN></span>', [], null, DOMType.Standard);
 
     this._injector = getInjector();
     this._routingService = null;
