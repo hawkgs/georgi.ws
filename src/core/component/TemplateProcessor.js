@@ -10,7 +10,7 @@ export class TemplateProcessor {
   processTemplate(html) {
     let parsedHtml = html;
 
-    const regex = /<IF state="([A-Za-z]+)">((.|\n|\r\n)*?)<ENDIF>/g;
+    const regex = /<IF state="([A-Za-z]+)">((.|\n|\r\n)*?)<\/IF>/g;
     let matches;
 
     while ((matches = regex.exec(html))) {
