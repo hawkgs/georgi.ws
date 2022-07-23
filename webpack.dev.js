@@ -1,5 +1,6 @@
 /* jshint ignore:start */
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
+const path = require('path');
 const common = require('./webpack.common');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -13,17 +14,16 @@ module.exports = merge(common, {
       rewrites: [
         { from: '/p', to: '/index.html' }
       ]
+    },
+    static: {
+      directory: path.resolve(__dirname, 'src'),
+      publicPath: '/'
     }
-  },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
       templateParameters: {
-        sourcePath: '/src',
+        sourcePath: '',
         cssHash: ''
       },
       template: 'index.ejs',
@@ -31,7 +31,7 @@ module.exports = merge(common, {
     }),
     new HtmlWebpackPlugin({
       templateParameters: {
-        sourcePath: '/src',
+        sourcePath: '',
         cssHash: ''
       },
       template: './src/noscript.ejs',

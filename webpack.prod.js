@@ -1,11 +1,11 @@
 /* jshint ignore:start */
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
 const uglifycss = require('uglifycss');
 const hashFiles = require('hash-files');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
+const OfflinePlugin = require('@lcdp/offline-plugin');
 
 const cssHash = '.' + hashFiles.sync({
   files: './src/index.css',
@@ -46,16 +46,18 @@ module.exports = merge(common, {
       filename: '404.html',
       inject: false
     }),
-    new CopyWebpackPlugin([
-      { from: './src/favicon.png', to: './' },
-      {
-        from: './src/index.css',
-        to: `./index${cssHash}.css`,
-        transform: (c) => uglifycss.processString(c.toString())
-      },
-      { from: './serve.json', to: './' },
-      { from: './_redirects', to: './' }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: './src/favicon.png', to: './' },
+        {
+          from: './src/index.css',
+          to: `./index${cssHash}.css`,
+          transform: (c) => uglifycss.processString(c.toString())
+        },
+        { from: './serve.json', to: './' },
+        { from: './_redirects', to: './' }
+      ]
+    }),
     new OfflinePlugin({
       externals: [
         '/index.html',

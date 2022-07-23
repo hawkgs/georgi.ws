@@ -1,6 +1,6 @@
 'use strict';
 
-import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+import * as OfflinePluginRuntime from '@lcdp/offline-plugin/runtime';
 OfflinePluginRuntime.install();
 
 function init() {

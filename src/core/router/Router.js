@@ -13,7 +13,7 @@ let instantiated = false;
 
 export class Router extends Component {
   constructor() {
-    super('<!--{children}-->');
+    super('<CHILDREN>');
 
     this._handleInstance();
 

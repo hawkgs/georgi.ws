@@ -148,7 +148,7 @@ export class Component extends HTMLElement {
   _generateHtml(html, styles) {
     html = html || '';
     if (html) {
-      html = html.replace(/<!--\s*{\s*children\s*}\s*-->/, this._innerHtml);
+      html = html.replace(/<CHILDREN\s*\/?>/, this._innerHtml);
       html = this._processor.processTemplate(html);
     }
 
