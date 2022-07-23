@@ -19,6 +19,13 @@ const replace = (text, witht, from, to) =>
 // To-dos: Improve content regexp
 export const MarkdownToHTML = md =>
   [
+    // Comments
+    construction(
+      /\[\/\/\]:.+(\n|$)/gm,
+      (text, _, idx, raw) => {
+        return replace(text, '', idx, idx + raw.length);
+      }
+    ),
     // Headings
     construction(
       /^(#+) ?([.()\[\]:/\-\w ]+)\n/gm,

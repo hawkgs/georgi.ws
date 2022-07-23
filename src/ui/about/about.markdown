@@ -15,15 +15,13 @@ My name is Georgi (if that's not obvious yet). Here are some key points about me
 
 You can find more about me in [Timeline](/#/timeline) 🏄‍.
 
-### Contacts and social
+### Contact
 
 !{svg}(about/shared/icons/mail) hawk.dvp at google mail
 
 !{svg}(about/shared/icons/github) [hawkgs](https://github.com/hawkgs){target="_blank" rel="noopener"}
 
-!{svg}(about/shared/icons/linkedin) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank" rel="noopener"} (I rarely check it 🤯)
-
-!{svg}(about/shared/icons/racefacer) [Georgi Serev](https://www.racefacer.com/en/profile/georgi.serev){target="_blank" rel="noopener"} (🏁)
+[//]: !{svg}(about/shared/icons/linkedin) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank" rel="noopener"} (I rarely check it 🤯)
 
 ### The website
 
