@@ -23,6 +23,7 @@ const RouteToTitleMap = {
   '/': `${DEFAULT_TITLE} / Georgi Serev`,
   '/p/projects': `${DEFAULT_TITLE} / Projects`,
   '/p/stack': `${DEFAULT_TITLE} / Stack`,
+  '/p/articles': `${DEFAULT_TITLE} / Articles`,
   '/p/timeline': `${DEFAULT_TITLE} / Timeline`,
   '/p/about': `${DEFAULT_TITLE} / About`
 };
