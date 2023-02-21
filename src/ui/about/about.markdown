@@ -1,17 +1,17 @@
 # About
 
-My name is Georgi (if that's not obvious yet). Here are some key points about me:
+My name is Georgi 👋, if that's not obvious yet. Here are some key points about me:
 
-- A developer specializing primarily in web and front-end technologies
-- Interested in things like design, UX and physics
+- A software engineer specializing primarily in, but not limited to, web and front-end technologies
+- Interested in things like design, UX, physics and car racing
 - A.k.a. "hawk" or "hAWK" in various internet communities
 
 
 ### Work experience
 
-- [Tell Health, Inc](https://tell.health) (current)
-- [This Dot, Inc](https://thisdot.co)
-- [Rhyme Softworks LLC](https://rhyme.com) (acquired by Coursera)
+- [Tell Health, Inc](https://tell.health) (current) – **Lead Developer**; In charge of the architectural design, technical supervision and development of an Ionic-based cross-platform mobile application
+- [This Dot, Inc](https://thisdot.co) – **Software Engineer**; Took part in the creation and initial foundation of an Angular-based PWA; architecture and implementation of a LitElement powered app used in areas with poor network; and more
+- [Rhyme Softworks LLC](https://rhyme.com) (acquired by Coursera) – **Frontend Developer**; Involved in the design and development of various parts of a React application for hands-on demos that provided in-browser virtualization.
 
 You can find more about me in [Timeline](/#/timeline) 🏄‍.
 
