@@ -30,13 +30,14 @@
 }
 
 /* Turn off animation for Safari due to blurry effect bug */
-@media not all and (min-resolution: .001dpcm) {
+/* Disabled since this doesn't work as of Monterey */
+/* @media not all and (min-resolution: .001dpcm) {
   @supports (-webkit-appearance: none) {
     .interactive-logo .initial {
       animation: none;
     }
   }
-}
+} */
 
 .interactive-logo .initial.g {
   background-color: var(--app-red);
