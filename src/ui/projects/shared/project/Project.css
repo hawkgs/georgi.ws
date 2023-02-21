@@ -20,7 +20,7 @@
 
 .project:hover,
 .project:focus {
-  transform: translateY(-5px);
+  transform: scale(1.05);
 }
 
 .project > .logo {

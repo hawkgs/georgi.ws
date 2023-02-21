@@ -14,7 +14,7 @@ html, body, #root {
 }
 
 body {
-  font-family: 'Karla', sans-serif;
+  font-family: 'HKGrotesk', sans-serif;
   user-select: none;
   font-size: 18px;
   word-spacing: 0.13em;
@@ -51,8 +51,4 @@ a::after {
 a:hover::after,
 a:focus::after {
   width: 100%;
-}
-
-h1 {
-  font-family: 'Montserrat', sans-serif;
 }

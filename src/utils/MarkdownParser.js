@@ -48,7 +48,7 @@ export const MarkdownToHTML = md =>
     ),
     // Double-symboled
     construction(
-      /(\*\*|__|~~)([\w ]+)(\*\*|__|~~)/gm,
+      /(\*\*|__|~~)([\w- ]+)(\*\*|__|~~)/gm,
       (text, token, idx, raw) => {
         let type;
         switch (token[1]) {
@@ -113,7 +113,7 @@ export const MarkdownToHTML = md =>
     ),
     // Lists
     construction(
-      /(^(-|\*|(\d\.)) ([\w(){}<>:\/="'-. ]+)\n)|(\n\n)/gm,
+      /(^(-|\*|(\d\.)) ([\w(){}<>:\/="'-–;. ]+)\n)|(\n\n)/gm,
       (text, token, idx, raw, cache) => {
         if (token[1]) {
           cache.type = token[2] === '-' || token[2] === '*' ? 'ul' : 'ol';
@@ -151,7 +151,7 @@ export const MarkdownToHTML = md =>
       }
     ),
   ]
-  .reduce(
-    (prev, next) => next(prev),
-    md.replace(/\r\n/g, '\n')
-  );
+    .reduce(
+      (prev, next) => next(prev),
+      md.replace(/\r\n/g, '\n')
+    );

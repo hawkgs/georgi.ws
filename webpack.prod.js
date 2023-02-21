@@ -54,14 +54,21 @@ module.exports = merge(common, {
           to: `./index${cssHash}.css`,
           transform: (c) => uglifycss.processString(c.toString())
         },
+        {
+          from: './src/fonts.css',
+          to: `./fonts${cssHash}.css`,
+          transform: (c) => uglifycss.processString(c.toString())
+        },
         { from: './serve.json', to: './' },
-        { from: './_redirects', to: './' }
+        { from: './_redirects', to: './' },
+        { from: './src/assets/fonts', to: './assets/fonts' }
       ]
     }),
     new OfflinePlugin({
       externals: [
         '/index.html',
         `/index${cssHash}.css`,
+        `/fonts${cssHash}.css`,
         '/noscript.html',
         '/404.html',
         '/favicon.png',
