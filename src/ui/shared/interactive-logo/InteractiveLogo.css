@@ -24,9 +24,9 @@
   color: var(--app-background);
   font-size: 19px;
   box-sizing: border-box;
-  animation: fade-in 1s ease;
+  /* animation: fade-in 1s ease;
   animation-fill-mode: forwards;
-  animation-iteration-count: 1;
+  animation-iteration-count: 1; */
 }
 
 /* Turn off animation for Safari due to blurry effect bug */
