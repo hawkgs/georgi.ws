@@ -61,7 +61,7 @@ module.exports = merge(common, {
         },
         { from: './serve.json', to: './' },
         { from: './_redirects', to: './' },
-        { from: './src/assets/fonts', to: './assets' }
+        { from: './src/assets/fonts', to: './assets/fonts' }
       ]
     }),
     new OfflinePlugin({
