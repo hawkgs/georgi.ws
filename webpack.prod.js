@@ -73,7 +73,7 @@ module.exports = merge(common, {
         '/404.html',
         '/favicon.png',
       ],
-      excludes: ['_redirects', 'serve.json']
+      excludes: ['_redirects', 'serve.json', '*/**/.DS_Store']
     })
   ],
 });
