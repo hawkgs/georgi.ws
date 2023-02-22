@@ -2,6 +2,7 @@
   font-family: 'HKGrotesk';
   src: url('assets/fonts/HKGrotesk-Regular.woff2') format('woff2');
   font-style: normal;
+  font-display: swap;
   font-weight: normal;
 }
 
@@ -9,5 +10,6 @@
   font-family: 'HKGrotesk';
   src: url('assets/fonts/HKGrotesk-SemiBold.woff2') format('woff2');
   font-style: normal;
+  font-display: swap;
   font-weight: 600;
 }
