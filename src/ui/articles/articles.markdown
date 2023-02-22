@@ -1,6 +1,6 @@
 # Articles
 
-A list of the articles that I wrote:
+A list of some of my articles:
 
 <!-- #### [03. Implementing a primitive OCR using k-NN](https://dev.to)
 Oct 1, 2019 &bull; 10 min read &bull; dev.to/thisdotmedia -->
