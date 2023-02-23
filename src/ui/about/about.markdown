@@ -9,8 +9,8 @@ My name is Georgi 👋, if that's not obvious yet. Here are some key points abou
 
 ### Work experience
 
-- [Tell Health, Inc](https://tell.health) (current) – **Lead Developer**; In charge of the architectural design, technical supervision and development of an Ionic-based cross-platform mobile application
-- [This Dot, Inc](https://thisdot.co) – **Software Engineer**; Took part in the creation and initial foundation of an Angular-based PWA; architecture and implementation of a LitElement powered app used in areas with poor network; and more
+- [Tell Health Inc.](https://tell.health) (current) – **Lead Developer**; In charge of the architectural design, technical supervision and development of the front end of an Ionic-based cross-platform mobile application
+- [This Dot Inc.](https://thisdot.co) – **Software Engineer**; Took part in the creation and initial foundation of an Angular-based PWA; architecture and implementation of a LitElement powered app used in areas with poor network; and more
 - [Rhyme Softworks LLC](https://rhyme.com) (acquired by Coursera) – **Front-end Developer**; Involved in the design and development of various parts of a React application for hands-on demos that provided in-browser virtualization.
 
 You can find more about me in [Timeline](/#/timeline) 🏄‍.
