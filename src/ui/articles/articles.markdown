@@ -5,6 +5,9 @@ A list of some of my articles:
 <!-- #### [03. Implementing a primitive OCR using k-NN](https://dev.to)
 Oct 1, 2019 &bull; 10 min read &bull; dev.to/thisdotmedia -->
 
+#### [04. Virtual scrolling of content with variable height with Angular](https://dev.to/georgii/virtual-scrolling-of-content-with-variable-height-with-angular-3a52)
+May 08, 2023 &bull; 21 min read
+
 #### [03. Implementing a primitive OCR using k-NN](https://dev.to/thisdotmedia/implementing-a-primitive-ocr-using-k-nn-1l94)
 Nov 07, 2019 &bull; 11 min read &bull; dev.to/thisdotmedia
 
