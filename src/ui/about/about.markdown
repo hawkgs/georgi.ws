@@ -1,9 +1,9 @@
 # About
 
-My name is Georgi 👋, if that's not obvious yet. Here are some key points about me:
+My name is Georgi 👋, which is probably already obvious. Here are some key points about me:
 
 - A software engineer specializing primarily in, but not limited to, web and front-end technologies
-- Interested in things like design, UX, physics and car racing
+- Interested in software architecture, design/UX, physics, photography and car racing
 - A.k.a. "hawk" or "hAWK" in various internet communities
 
 
@@ -21,8 +21,8 @@ You can find more about me in [Timeline](/#/timeline) 🏄‍.
 
 !{svg}(about/shared/icons/github) [hawkgs](https://github.com/hawkgs){target="_blank" rel="noopener"}
 
-[//]: !{svg}(about/shared/icons/linkedin) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank" rel="noopener"} (I rarely check it 🤯)
+[//]: !{svg}(about/shared/icons/linkedin) [Georgi Serev](https://linkedin.com/in/georgiserev){target="_blank" rel="noopener"} (rarely checked, sorry 🤯)
 
 ### The website
 
-During the development of this website I had one rule - don't use libraries apart from Webpack and Babel. This resulted in a small not-so-rich single-page framework. It was purely a test for me, trying to build something without the common and conventional tools, and frameworks available nowdays. You can check the whole source code at [GitHub](https://github.com/hawkgs/georgi.ws).
+georgi.ws is an experiment to create a front-end app without any frameworks or libraries, apart from Webpack and Babel. This resulted in a small and not-so-sophisticated SPA framework (source code at [GitHub](https://github.com/hawkgs/georgi.ws)).
