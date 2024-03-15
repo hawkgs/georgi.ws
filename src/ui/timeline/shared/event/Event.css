@@ -43,6 +43,7 @@
   flex: 0 0 65px;
   height: 65px;
   margin: 0 15px;
+  cursor: pointer;
 }
 
 .event .data {
@@ -66,7 +67,7 @@
   font-size: 14px;
   position: absolute;
   width: inherit;
-  max-height: 15px;
+  max-height: 18px;
   margin-top: -13px;
   transition: max-height 0.5s ease;
   overflow: hidden;
