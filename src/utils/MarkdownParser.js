@@ -48,7 +48,7 @@ export const MarkdownToHTML = md =>
     ),
     // Double-symboled
     construction(
-      /(\*\*|__|~~)([\w- ]+)(\*\*|__|~~)/gm,
+      /(\*\*|__|~~)([@\d\w\s]+)(\*\*|__|~~)/gm,
       (text, token, idx, raw) => {
         let type;
         switch (token[1]) {
