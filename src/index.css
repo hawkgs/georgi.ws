@@ -6,11 +6,13 @@
   --app-red: #ea5242;
   --app-grey: #8f8f8f;
   --app-light-grey: #f1f1f1;
+  --color-scheme: light
 }
 
 html, body, #root {
   height: 100%;
   margin: 0;
+  color-scheme: var(--color-scheme);
 }
 
 body {
