@@ -8,7 +8,8 @@ export const LIGHT_THEME = {
   '--link-color': '#3687cc',
   '--app-red': '#ea5242',
   '--app-grey': '#8f8f8f',
-  '--app-light-grey': '#f1f1f1'
+  '--app-light-grey': '#f1f1f1',
+  '--color-scheme': 'light'
 };
 
 export const DARK_THEME = {
@@ -17,7 +18,8 @@ export const DARK_THEME = {
   '--link-color': '#53abf6',
   '--app-red': '#ea5242',
   '--app-grey': '#8f8f8f',
-  '--app-light-grey': '#2a2a2a'
+  '--app-light-grey': '#2a2a2a',
+  '--color-scheme': 'dark',
 };
 
 let meta;
