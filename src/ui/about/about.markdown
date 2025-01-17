@@ -9,7 +9,7 @@ My name is Georgi 👋, which is probably already obvious. Here are some key poi
 
 ### Work experience
 
-- TVC at Google (current) – **Contract Engineer @ Angular**; Contract job, as part of Google's extended workforce, for a currently undisclosed project of the Angular team
+- TVC at Google (current) – **Contract Engineer @ Angular**; Contract job, as part of Google's extended workforce; Currently contributing to the documentation infrastructure and Angular DevTools
 - [Tell Health, Inc.](https://tell.health) – **Lead Developer**; In charge of the architectural design, technical supervision and development of the front end of an Ionic-based cross-platform mobile application
 - [This Dot, Inc.](https://thisdot.co) – **Software Engineer**; Took part in the creation and initial foundation of an Angular-based PWA; architecture and implementation of a LitElement powered app used in areas with poor network; and more
 - [Rhyme Softworks LLC](https://rhyme.com) (acquired by Coursera) – **Front-end Developer**; Involved in the design and development of various parts of a React application for hands-on demos that provided in-browser virtualization
