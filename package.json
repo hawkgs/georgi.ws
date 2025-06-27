@@ -1,12 +1,14 @@
 {
   "name": "georgi.ws",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Personal website of Georgi Serev",
   "scripts": {
-    "start": "npx webpack-cli serve --hot --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "serve:ssr:georgi.ws": "node dist/georgi.ws/server/server.mjs"
   },
   "repository": {
     "type": "git",
@@ -18,27 +20,32 @@
     "url": "https://github.com/hawkgs/georgi.ws/issues"
   },
   "homepage": "https://github.com/hawkgs/georgi.ws#readme",
+  "dependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/platform-server": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "@angular/ssr": "^20.0.1",
+    "express": "^5.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.16.11",
-    "@lcdp/offline-plugin": "^5.1.1",
-    "@webpack-cli/serve": "^1.6.1",
-    "babel-loader": "^8.2.3",
-    "copy-webpack-plugin": "^10.2.4",
-    "css-loader": "^6.7.1",
-    "file-loader": "^6.2.0",
-    "hash-files": "^1.1.1",
-    "html-loader": "^3.1.0",
-    "html-webpack-plugin": "^5.5.0",
-    "raw-loader": "^4.0.2",
-    "to-string-loader": "^1.2.0",
-    "uglifycss": "0.0.29",
-    "webpack": "^5.70.0",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4",
-    "webpack-merge": "^5.8.0"
+    "@angular/build": "^20.0.1",
+    "@angular/cli": "^20.0.1",
+    "@angular/compiler-cli": "^20.0.0",
+    "@types/express": "^5.0.1",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^20.17.19",
+    "jasmine-core": "~5.7.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.8.2"
   }
 }
