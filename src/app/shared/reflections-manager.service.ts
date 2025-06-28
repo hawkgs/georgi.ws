@@ -7,6 +7,9 @@ import {
 } from '@angular/core';
 import { WINDOW } from './window.provider';
 
+const HALF_RAD = Math.PI / 2;
+const REFL_ANGLE_VAR = '--refl-angle';
+
 type Coor = { x: number; y: number };
 
 @Injectable({ providedIn: 'root' })
@@ -32,7 +35,7 @@ export class ReflectionsManager {
         const dX = pos.x - e.pageX;
         const dY = pos.y - e.pageY;
         const rad = Math.atan2(dY, dX);
-        el.style.cssText = `--refl-deg: ${rad + 1.57}rad`;
+        el.style.cssText = `${REFL_ANGLE_VAR}: ${rad + HALF_RAD}rad`;
       }
       // }, 20);
     });
@@ -43,8 +46,12 @@ export class ReflectionsManager {
       return;
     }
 
-    const { x, y } = el.getBoundingClientRect();
-    this._elements.set(el, { x, y });
+    const { x, y, width, height } = el.getBoundingClientRect();
+    // Store the central point
+    this._elements.set(el, {
+      x: x + width / 2,
+      y: y + height / 2,
+    });
   }
 
   removeEntry(el: HTMLElement) {
