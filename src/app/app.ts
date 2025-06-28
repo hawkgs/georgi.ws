@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { EdgeReflectionDirective } from './shared/edge-reflection.directive';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
+  selector: 'gs-root',
+  imports: [EdgeReflectionDirective],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected title = 'georgi.ws';

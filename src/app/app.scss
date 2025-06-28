@@ -1,0 +1,91 @@
+@mixin edge-reflection($color) {
+  $light: color-mix(in srgb, $color, white);
+  $dark: color-mix(in srgb, $color, black);
+
+  background: $color; // Fallback
+  background: linear-gradient(
+    var(--refl-deg, 325deg),
+    $light 0%,
+    $dark 33.3%,
+    $dark 66.6%,
+    $light 100%
+  );
+}
+
+@mixin metallic-gradient($color) {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, $color 90%, white 20%),
+    color-mix(in srgb, $color 80%, black 20%)
+  );
+}
+
+@mixin metallic-fx-gradient($color, $border-radius: 2rem) {
+  position: relative;
+  border-radius: $border-radius;
+  box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 $color;
+  color: white;
+  @include metallic-gradient($color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    top: -1px;
+    left: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    @include edge-reflection($color);
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .cont-wrapper {
+    margin-top: 2rem;
+    border-radius: 3rem;
+    padding: 1px;
+    @include edge-reflection(#333);
+
+    .cont {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: inherit;
+      border-radius: 3rem;
+      padding: 0.375rem;
+      gap: 1rem;
+      background-color: #202020;
+      z-index: 1;
+    }
+  }
+}
+
+button {
+  font-size: 0.875rem;
+  padding: 0.325rem 0.75rem;
+  font-family: 'DM Sans';
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 300ms ease;
+  @include metallic-fx-gradient(#5a6673);
+
+  &:hover {
+    @include metallic-fx-gradient(#889bb0);
+  }
+
+  &.selected {
+    @include metallic-fx-gradient(#0062d2);
+
+    &:hover {
+      @include metallic-fx-gradient(#006fed);
+    }
+  }
+}
