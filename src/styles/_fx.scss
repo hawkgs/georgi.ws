@@ -27,6 +27,11 @@
   color: white;
   @include metallic-gradient($color);
 
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -37,5 +42,35 @@
     z-index: -1;
     border-radius: inherit;
     @include edge-reflection($color);
+  }
+}
+
+@mixin metallic-fx-gradient-hover(
+  $main-color,
+  $hover-color,
+  $border-radius: 2rem
+) {
+  @include metallic-fx-gradient($main-color, $border-radius);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    @include metallic-gradient($hover-color);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &:hover::after {
+    @include edge-reflection($hover-color);
   }
 }

@@ -7,17 +7,9 @@ button {
   font-weight: 500;
   border: none;
   cursor: pointer;
-  @include fx.metallic-fx-gradient(#5a6673);
-
-  &:hover {
-    @include fx.metallic-fx-gradient(#79899c);
-  }
+  @include fx.metallic-fx-gradient-hover(#5a6673, #79899c);
 
   &.selected {
-    @include fx.metallic-fx-gradient(#0062d2);
-
-    &:hover {
-      @include fx.metallic-fx-gradient(#006fed);
-    }
+    @include fx.metallic-fx-gradient-hover(#0062d2, #006fed);
   }
 }
