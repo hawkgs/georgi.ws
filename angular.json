@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "gs",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -89,8 +89,23 @@
               "src/styles.scss"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2afe94f9-0802-45d6-b4d5-5299c0695f73",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
