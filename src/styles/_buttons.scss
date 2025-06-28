@@ -1,0 +1,23 @@
+@use './fx' as fx;
+
+button {
+  font-size: 0.875rem;
+  padding: 0.325rem 0.75rem;
+  font-family: 'DM Sans';
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  @include fx.metallic-fx-gradient(#5a6673);
+
+  &:hover {
+    @include fx.metallic-fx-gradient(#889bb0);
+  }
+
+  &.selected {
+    @include fx.metallic-fx-gradient(#0062d2);
+
+    &:hover {
+      @include fx.metallic-fx-gradient(#006fed);
+    }
+  }
+}
