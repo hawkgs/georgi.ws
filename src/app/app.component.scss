@@ -4,12 +4,31 @@
   display: block;
 
   header {
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.75rem 0;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 12.25rem;
+      background: linear-gradient(black 0, black 33%, transparent 100%);
+      z-index: -1;
+      pointer-events: none;
+      mask: linear-gradient(black, black, transparent);
+      backdrop-filter: blur(4px);
+    }
 
     nav {
-      margin-top: 2rem;
       border-radius: 3rem;
       padding: 1px;
       @include fx.edge-reflection(#333);
@@ -27,5 +46,19 @@
         z-index: 1;
       }
     }
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 10rem;
+    margin-top: 10rem;
+  }
+
+  section {
+    font-size: 1.25rem;
+    font-weight: 400;
+    width: 600px;
+    margin: 3rem auto;
   }
 }

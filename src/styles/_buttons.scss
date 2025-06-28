@@ -10,7 +10,7 @@ button {
   @include fx.metallic-fx-gradient(#5a6673);
 
   &:hover {
-    @include fx.metallic-fx-gradient(#889bb0);
+    @include fx.metallic-fx-gradient(#79899c);
   }
 
   &.selected {
