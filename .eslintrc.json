@@ -50,8 +50,7 @@
             ],
             "leadingUnderscore": "require"
           }
-        ],
-        "no-unused-vars": "warn"
+        ]
       }
     },
     {

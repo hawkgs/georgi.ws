@@ -1,19 +1,32 @@
-@mixin edge-reflection($color) {
+@mixin edge-reflection($color, $large-mid: true) {
   $light: color-mix(in srgb, $color, white);
   $dark: color-mix(in srgb, $color, black);
 
   background: $color; // Fallback
-  background: linear-gradient(
-    var(--refl-angle, 325deg),
-    $light 0%,
-    $dark 33.3%,
-    $dark 66.6%,
-    $light 100%
-  );
+
+  @if ($large-mid) {
+    background: linear-gradient(
+      var(--refl-angle, 325deg),
+      $light 0%,
+      $dark 33.3%,
+      $dark 66.6%,
+      $light 100%
+    );
+  } @else {
+    background: linear-gradient(
+      var(--refl-angle, 325deg),
+      $light 0%,
+      $dark 40%,
+      $dark 60%,
+      $light 100%
+    );
+  }
 }
 
-@mixin metallic-gradient($color) {
+@mixin metallic-gradient($color, $rotation: 180deg) {
+  background: $color; // Fallback
   background: linear-gradient(
+    $rotation,
     color-mix(in srgb, $color 90%, white 20%),
     color-mix(in srgb, $color 80%, black 20%)
   );

@@ -45,13 +45,29 @@ export class ReflectionsManager {
     if (!isPlatformBrowser(this._platformId)) {
       return;
     }
+    setTimeout(() => {
+      const { x, y, width, height } = el.getBoundingClientRect();
+      // Store the central point
+      this._elements.set(el, {
+        x: x + width / 2,
+        y: y + height / 2,
+      });
 
-    const { x, y, width, height } = el.getBoundingClientRect();
-    // Store the central point
-    this._elements.set(el, {
-      x: x + width / 2,
-      y: y + height / 2,
-    });
+      const pt = {
+        x: x + width / 2,
+        y: y + height / 2,
+      };
+      const dot = document.createElement('div');
+      dot.style.background = 'red';
+      dot.style.position = 'fixed';
+      dot.style.width = '6px';
+      dot.style.height = '6px';
+      dot.style.transform = 'translate(-3px, -3px)';
+      dot.style.top = pt.y + 'px';
+      dot.style.left = pt.x + 'px';
+      dot.style.zIndex = '99999999';
+      // document.body.appendChild(dot);
+    }, 1000);
   }
 
   removeEntry(el: HTMLElement) {
