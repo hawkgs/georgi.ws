@@ -16,13 +16,15 @@
     font-weight: 600;
     font-size: 8rem;
     margin: 0;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.2rem;
   }
 
   .text {
-    @include fx.metallic-gradient(var(--frost-grey), var(--grad-angle));
+    @include fx.metallic-gradient(var(--frost-grey), var(--grad-angle), 2);
     animation: rotate-gradient 7s infinite linear;
     position: relative;
+    background-size: 100% 75%;
+    background-position-y: 75%;
     background-clip: text;
     color: transparent;
     z-index: 1;

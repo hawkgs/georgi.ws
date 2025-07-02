@@ -1,11 +1,36 @@
 @use 'sass:map';
 
-@mixin metallic-gradient($color, $rotation: 180deg) {
+@mixin metallic-gradient($color, $rotation: 180deg, $light-intensity: 1) {
+  $intensities: (
+    1: (
+      cl-white: 80%,
+      bs-white: 20%,
+      cl-black: 80%,
+      bs-black: 20%,
+    ),
+    2: (
+      cl-white: 70%,
+      bs-white: 30%,
+      cl-black: 90%,
+      bs-black: 10%,
+    ),
+  );
+
+  $li-vals: map.get($intensities, $light-intensity);
+
   background: $color; // Fallback
   background: linear-gradient(
     $rotation,
-    color-mix(in srgb, $color 90%, white 20%),
-    color-mix(in srgb, $color 80%, black 20%)
+    color-mix(
+      in srgb,
+      $color map.get($li-vals, cl-white),
+      white map.get($li-vals, bs-white)
+    ),
+    color-mix(
+      in srgb,
+      $color map.get($li-vals, cl-black),
+      black map.get($li-vals, bs-black)
+    )
   );
 }
 
@@ -28,15 +53,15 @@
     ),
   );
 
-  $lt-vals: map.get($intensities, $light-intensity);
+  $li-vals: map.get($intensities, $light-intensity);
 
   background: $color; // Fallback
   background: linear-gradient(
     var(--refl-angle, 325deg),
-    $light map.get($lt-vals, v1),
-    $dark map.get($lt-vals, v2),
-    $dark map.get($lt-vals, v3),
-    $light map.get($lt-vals, v4)
+    $light map.get($li-vals, v1),
+    $dark map.get($li-vals, v2),
+    $dark map.get($li-vals, v3),
+    $light map.get($li-vals, v4)
   );
 }
 
