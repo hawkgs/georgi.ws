@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 @use './styles/buttons';
+@use './styles/colors';
 
 body {
   font-family: 'DM Sans', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 500;
-  background-color: black;
-  color: white;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }

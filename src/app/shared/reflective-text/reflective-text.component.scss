@@ -1,6 +1,6 @@
 @use '../../../styles/fx' as fx;
 
-@property --rotation {
+@property --grad-angle {
   syntax: '<angle>';
   inherits: false;
   initial-value: 0deg;
@@ -20,9 +20,8 @@
   }
 
   .text {
-    @include fx.metallic-gradient(#5a6673, var(--rotation));
-    animation: rotate-text-gradient 7s infinite linear;
-
+    @include fx.metallic-gradient(var(--frost-grey), var(--grad-angle));
+    animation: rotate-gradient 7s infinite linear;
     position: relative;
     background-clip: text;
     color: transparent;
@@ -37,7 +36,7 @@
     left: 0;
 
     span {
-      @include fx.edge-reflection(#999, false);
+      @include fx.edge-reflection-fx(var(--grey-08), 2);
       background-size: 100% 74%;
       background-position-y: 72%;
       background-clip: text;
@@ -46,11 +45,11 @@
   }
 }
 
-@keyframes rotate-text-gradient {
+@keyframes rotate-gradient {
   from {
-    --rotation: 0deg;
+    --grad-angle: 0deg;
   }
   to {
-    --rotation: 360deg;
+    --grad-angle: 360deg;
   }
 }

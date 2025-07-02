@@ -12,7 +12,7 @@
     left: 0;
     right: 0;
     padding: 1.75rem 0;
-    z-index: 999999;
+    z-index: 99999999;
 
     &::after {
       content: '';
@@ -21,7 +21,11 @@
       left: 0;
       right: 0;
       height: 12.25rem;
-      background: linear-gradient(black 0, black 33%, transparent 100%);
+      background: linear-gradient(
+        var(--color-bg) 0,
+        var(--color-bg) 33%,
+        transparent 100%
+      );
       z-index: -1;
       pointer-events: none;
       mask: linear-gradient(black, black, transparent);
@@ -31,7 +35,7 @@
     nav {
       border-radius: 3rem;
       padding: 1px;
-      @include fx.edge-reflection(#333);
+      @include fx.edge-reflection-fx(var(--grey-02));
 
       .nav-items {
         position: relative;
@@ -42,7 +46,7 @@
         border-radius: 3rem;
         padding: 0.375rem;
         gap: 1rem;
-        background-color: #202020;
+        background-color: var(--grey-01);
         z-index: 1;
       }
     }

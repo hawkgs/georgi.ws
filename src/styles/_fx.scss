@@ -1,27 +1,4 @@
-@mixin edge-reflection($color, $large-mid: true) {
-  $light: color-mix(in srgb, $color, white);
-  $dark: color-mix(in srgb, $color, black);
-
-  background: $color; // Fallback
-
-  @if ($large-mid) {
-    background: linear-gradient(
-      var(--refl-angle, 325deg),
-      $light 0%,
-      $dark 33.3%,
-      $dark 66.6%,
-      $light 100%
-    );
-  } @else {
-    background: linear-gradient(
-      var(--refl-angle, 325deg),
-      $light 0%,
-      $dark 40%,
-      $dark 60%,
-      $light 100%
-    );
-  }
-}
+@use 'sass:map';
 
 @mixin metallic-gradient($color, $rotation: 180deg) {
   background: $color; // Fallback
@@ -32,7 +9,38 @@
   );
 }
 
-@mixin metallic-fx-gradient($color, $border-radius: 2rem) {
+@mixin edge-reflection-fx($color, $light-intensity: 1) {
+  $light: color-mix(in srgb, $color, white);
+  $dark: color-mix(in srgb, $color, black);
+
+  $intensities: (
+    1: (
+      v1: 0,
+      v2: 33.3%,
+      v3: 66.6%,
+      v4: 100%,
+    ),
+    2: (
+      v1: 0,
+      v2: 40%,
+      v3: 60%,
+      v4: 100%,
+    ),
+  );
+
+  $lt-vals: map.get($intensities, $light-intensity);
+
+  background: $color; // Fallback
+  background: linear-gradient(
+    var(--refl-angle, 325deg),
+    $light map.get($lt-vals, v1),
+    $dark map.get($lt-vals, v2),
+    $dark map.get($lt-vals, v3),
+    $light map.get($lt-vals, v4)
+  );
+}
+
+@mixin metallic-fx($color, $border-radius: 2rem) {
   position: relative;
   border-radius: $border-radius;
   box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
@@ -54,16 +62,12 @@
     left: -1px;
     z-index: -1;
     border-radius: inherit;
-    @include edge-reflection($color);
+    @include edge-reflection-fx($color);
   }
 }
 
-@mixin metallic-fx-gradient-hover(
-  $main-color,
-  $hover-color,
-  $border-radius: 2rem
-) {
-  @include metallic-fx-gradient($main-color, $border-radius);
+@mixin metallic-with-hover-fx($main-color, $hover-color, $border-radius: 2rem) {
+  @include metallic-fx($main-color, $border-radius);
 
   &::before {
     content: '';
@@ -84,6 +88,6 @@
   }
 
   &:hover::after {
-    @include edge-reflection($hover-color);
+    @include edge-reflection-fx($hover-color);
   }
 }

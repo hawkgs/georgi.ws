@@ -1,15 +1,21 @@
 @use './fx' as fx;
 
-button {
+.gs-button {
   font-size: 0.875rem;
   padding: 0.325rem 0.75rem;
   font-family: 'DM Sans';
   font-weight: 500;
   border: none;
   cursor: pointer;
-  @include fx.metallic-fx-gradient-hover(#5a6673, #79899c);
+  @include fx.metallic-with-hover-fx(
+    var(--frost-grey),
+    var(--frost-grey-light)
+  );
 
   &.selected {
-    @include fx.metallic-fx-gradient-hover(#0062d2, #006fed);
+    @include fx.metallic-with-hover-fx(
+      var(--azure-blue),
+      var(--azure-blue-light)
+    );
   }
 }
