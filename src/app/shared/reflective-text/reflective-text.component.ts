@@ -17,6 +17,10 @@ type TextType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   selector: 'gs-reflective-text',
   templateUrl: './reflective-text.component.html',
   styleUrl: './reflective-text.component.scss',
+  host: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    '[class.non-selectable]': '!selectable()',
+  },
 })
 export class ReflectiveTextComponent implements OnDestroy {
   private readonly _elRef = inject(ElementRef);
@@ -30,6 +34,7 @@ export class ReflectiveTextComponent implements OnDestroy {
   );
 
   type = input<TextType>('p');
+  selectable = input<boolean>(false);
 
   constructor() {
     afterNextRender({
@@ -43,7 +48,7 @@ export class ReflectiveTextComponent implements OnDestroy {
 
   private _renderText() {
     const text = this._renderer.createElement(this.type());
-    text.innerText = this._text();
+    text.textContent = this._text();
     this._renderer.addClass(text, 'text');
 
     const letters = this._renderer.createElement('p');
@@ -53,7 +58,7 @@ export class ReflectiveTextComponent implements OnDestroy {
 
     for (const letter of this._text()) {
       const letterEl = this._renderer.createElement('span');
-      letterEl.innerText = letter;
+      letterEl.textContent = letter;
       this._renderer.setAttribute(letterEl, 'data-lt', letter);
       this._renderer.appendChild(letters, letterEl);
 

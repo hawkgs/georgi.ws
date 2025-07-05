@@ -1,5 +1,7 @@
 @use '../../../styles/fx' as fx;
 
+$stroke-width: 4px;
+
 @property --grad-angle {
   syntax: '<angle>';
   inherits: false;
@@ -10,6 +12,11 @@
   position: relative;
   display: block;
 
+  &.non-selectable {
+    user-select: none;
+    cursor: default;
+  }
+
   h1,
   .type-h1 {
     text-align: center;
@@ -17,6 +24,7 @@
     font-size: 8rem;
     margin: 0;
     letter-spacing: 0.2rem;
+    white-space: nowrap;
   }
 
   .text {
@@ -42,8 +50,16 @@
       background-size: 100% 74%;
       background-position-y: 72%;
       background-clip: text;
-      -webkit-text-stroke: 3px transparent;
+      -webkit-text-stroke: $stroke-width transparent;
     }
+  }
+}
+
+/* Required for Safari since the `span` elements within the `p` lead to wider text. */
+@supports (hanging-punctuation: first) and (font: -apple-system-body) and
+  (-webkit-appearance: none) {
+  .text {
+    font-kerning: none;
   }
 }
 
