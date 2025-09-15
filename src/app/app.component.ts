@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ReflectiveSurfaceDirective } from './shared/reflective-surface.directive';
 import { ReflectiveTextComponent } from './shared/reflective-text/reflective-text.component';
+import { ReflectionConfig } from './shared/reflections-manager.service';
 
 @Component({
   selector: 'gs-root',
@@ -8,4 +9,9 @@ import { ReflectiveTextComponent } from './shared/reflective-text/reflective-tex
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  hCfg: Partial<ReflectionConfig> = {
+    yOffset: -200,
+    isFixed: true,
+  };
+}

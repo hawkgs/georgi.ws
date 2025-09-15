@@ -6,11 +6,37 @@ import {
   RendererFactory2,
 } from '@angular/core';
 import { WINDOW } from './window.provider';
+import { renderReflectionSurfaceCenter } from './debug-utils/reflections';
 
 const HALF_RAD = Math.PI / 2;
 const REFL_ANGLE_VAR = '--refl-angle';
+const INIT_DELAY = 0;
+
+const DEFAULT_CONFIG: ReflectionConfig = {
+  xOffset: 0,
+  yOffset: 0,
+  isFixed: false,
+};
 
 type Coor = { x: number; y: number };
+
+export interface ReflectionConfig {
+  xOffset: number;
+  yOffset: number;
+  isFixed: boolean;
+}
+
+interface ElementEntry {
+  pos: Coor;
+  config: ReflectionConfig;
+}
+
+function getConfig(config: Partial<ReflectionConfig> | undefined) {
+  return {
+    ...DEFAULT_CONFIG,
+    ...config,
+  };
+}
 
 @Injectable({ providedIn: 'root' })
 export class ReflectionsManager {
@@ -19,55 +45,54 @@ export class ReflectionsManager {
   private readonly _platformId = inject(PLATFORM_ID);
   private readonly _renderer = this._rendererFactory.createRenderer(null, null);
 
-  private readonly _elements: Map<HTMLElement, Coor> = new Map();
+  private readonly _elements: Map<HTMLElement, ElementEntry> = new Map();
 
   constructor() {
     if (!isPlatformBrowser(this._platformId)) {
       return;
     }
 
-    // let to: ReturnType<typeof setTimeout>;
-
     this._renderer.listen(this._win, 'mousemove', (e: MouseEvent) => {
-      // clearTimeout(to);
-      // to = setTimeout(() => {
-      for (const [el, pos] of Array.from(this._elements)) {
-        const dX = pos.x - e.pageX;
-        const dY = pos.y - e.pageY;
+      for (const [el, { pos, config }] of Array.from(this._elements)) {
+        let fixedOffset: Coor = { x: 0, y: 0 };
+        if (config.isFixed) {
+          fixedOffset = {
+            x: this._win.scrollX,
+            y: this._win.scrollY,
+          };
+        }
+
+        const dX = pos.x + fixedOffset.x - e.pageX;
+        const dY = pos.y + fixedOffset.y - e.pageY;
         const rad = Math.atan2(dY, dX);
         el.style.cssText = `${REFL_ANGLE_VAR}: ${rad + HALF_RAD}rad`;
       }
-      // }, 20);
     });
   }
 
-  addEntry(el: HTMLElement) {
+  addEntry(el: HTMLElement, config?: Partial<ReflectionConfig>) {
     if (!isPlatformBrowser(this._platformId)) {
       return;
     }
+
+    const fullCfg = getConfig(config);
+
     setTimeout(() => {
       const { x, y, width, height } = el.getBoundingClientRect();
+
       // Store the central point
+      const pos = {
+        x: x + width / 2 + fullCfg.xOffset,
+        y: y + height / 2 + fullCfg.yOffset,
+      };
       this._elements.set(el, {
-        x: x + width / 2,
-        y: y + height / 2,
+        pos,
+        config: fullCfg,
       });
 
-      const pt = {
-        x: x + width / 2,
-        y: y + height / 2,
-      };
-      const dot = document.createElement('div');
-      dot.style.background = 'red';
-      dot.style.position = 'fixed';
-      dot.style.width = '6px';
-      dot.style.height = '6px';
-      dot.style.transform = 'translate(-3px, -3px)';
-      dot.style.top = pt.y + 'px';
-      dot.style.left = pt.x + 'px';
-      dot.style.zIndex = '99999999';
-      // document.body.appendChild(dot);
-    }, 1000);
+      // DEBUG
+      // renderReflectionSurfaceCenter(pos, fullCfg.isFixed);
+    }, INIT_DELAY);
   }
 
   removeEntry(el: HTMLElement) {

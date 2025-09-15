@@ -1,17 +1,21 @@
 <header>
-  <nav gsReflectiveSurface>
+  <nav [gsReflectiveSurface]="hCfg">
     <div class="nav-items">
-      <button gsReflectiveSurface class="gs-button selected">
+      <button [gsReflectiveSurface]="hCfg" class="gs-button selected">
         <span>Home</span>
       </button>
-      <button gsReflectiveSurface class="gs-button">
+      <button [gsReflectiveSurface]="hCfg" class="gs-button">
         <span>Projects</span>
       </button>
-      <button gsReflectiveSurface class="gs-button">
+      <button [gsReflectiveSurface]="hCfg" class="gs-button">
         <span>Articles</span>
       </button>
-      <button gsReflectiveSurface class="gs-button"><span>GitHub</span></button>
-      <button gsReflectiveSurface class="gs-button"><span>About</span></button>
+      <button [gsReflectiveSurface]="hCfg" class="gs-button">
+        <span>GitHub</span>
+      </button>
+      <button [gsReflectiveSurface]="hCfg" class="gs-button">
+        <span>About</span>
+      </button>
     </div>
   </nav>
 </header>
