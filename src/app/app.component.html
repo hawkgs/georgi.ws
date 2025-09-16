@@ -1,19 +1,41 @@
 <header>
   <nav [gsReflectiveSurface]="hCfg">
-    <div class="nav-items">
-      <button [gsReflectiveSurface]="hCfg" class="gs-button selected">
+    <div class="nav-items" gsLightSurface="color">
+      <button
+        [gsReflectiveSurface]="hCfg"
+        gsLightSurface="color"
+        class="gs-button selected"
+      >
         <span>Home</span>
       </button>
-      <button [gsReflectiveSurface]="hCfg" class="gs-button">
+      <button
+        [gsReflectiveSurface]="hCfg"
+        gsLightSurface="color"
+        class="gs-button"
+      >
         <span>Projects</span>
       </button>
-      <button [gsReflectiveSurface]="hCfg" class="gs-button">
+      <button
+        [gsReflectiveSurface]="hCfg"
+        gsLightSurface="color"
+        class="gs-button"
+      >
         <span>Articles</span>
       </button>
-      <button [gsReflectiveSurface]="hCfg" class="gs-button">
+      <button
+        [gsReflectiveSurface]="hCfg"
+        gsLightSurface="color"
+        class="gs-button"
+        (click)="lights.off()"
+      >
         <span>GitHub</span>
       </button>
-      <button [gsReflectiveSurface]="hCfg" class="gs-button">
+      <button
+        [gsReflectiveSurface]="hCfg"
+        gsLightSurface="color"
+        class="gs-button"
+        (click)="lights.on()"
+      >
         <span>About</span>
       </button>
     </div>

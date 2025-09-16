@@ -1,0 +1,23 @@
+$transition-dur: 2s;
+
+.gs-lights-ready {
+  transition:
+    background $transition-dur ease,
+    color $transition-dur ease,
+    opacity $transition-dur ease;
+}
+
+.gs-lights-color-off {
+  text-shadow: none !important;
+  background: var(--color-bg) !important;
+  color: var(--color-bg) !important;
+
+  &::before {
+    background: var(--color-bg) !important;
+    color: var(--color-bg) !important;
+  }
+}
+
+.gs-lights-transparency-off {
+  opacity: 0 !important;
+}

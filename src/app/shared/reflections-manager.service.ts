@@ -6,10 +6,11 @@ import {
   RendererFactory2,
 } from '@angular/core';
 import { WINDOW } from './window.provider';
+import { appendCssVar } from './dom-utils';
 import { renderReflectionSurfaceCenter } from './debug-utils/reflections';
 
 const HALF_RAD = Math.PI / 2;
-const REFL_ANGLE_VAR = '--refl-angle';
+const REFL_ANGLE_VAR = 'refl-angle';
 const INIT_DELAY = 0;
 
 const DEFAULT_CONFIG: ReflectionConfig = {
@@ -53,20 +54,10 @@ export class ReflectionsManager {
     }
 
     this._renderer.listen(this._win, 'mousemove', (e: MouseEvent) => {
-      for (const [el, { pos, config }] of Array.from(this._elements)) {
-        let fixedOffset: Coor = { x: 0, y: 0 };
-        if (config.isFixed) {
-          fixedOffset = {
-            x: this._win.scrollX,
-            y: this._win.scrollY,
-          };
-        }
-
-        const dX = pos.x + fixedOffset.x - e.pageX;
-        const dY = pos.y + fixedOffset.y - e.pageY;
-        const rad = Math.atan2(dY, dX);
-        el.style.cssText = `${REFL_ANGLE_VAR}: ${rad + HALF_RAD}rad`;
-      }
+      this._setReflectionAngle({
+        x: e.pageX,
+        y: e.pageY,
+      });
     });
   }
 
@@ -101,5 +92,23 @@ export class ReflectionsManager {
     }
 
     this._elements.delete(el);
+  }
+
+  private _setReflectionAngle({ x, y }: Coor) {
+    for (const [el, { pos, config }] of Array.from(this._elements)) {
+      let fixedOffset: Coor = { x: 0, y: 0 };
+      if (config.isFixed) {
+        fixedOffset = {
+          x: this._win.scrollX,
+          y: this._win.scrollY,
+        };
+      }
+
+      const dX = pos.x + fixedOffset.x - x;
+      const dY = pos.y + fixedOffset.y - y;
+      const rad = Math.atan2(dY, dX);
+
+      appendCssVar(el, REFL_ANGLE_VAR, `${rad + HALF_RAD}rad`);
+    }
   }
 }

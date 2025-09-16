@@ -10,6 +10,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { ReflectionsManager } from '../reflections-manager.service';
+import { Lights } from '../lights.service';
 
 type TextType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -26,8 +27,10 @@ export class ReflectiveTextComponent implements OnDestroy {
   private readonly _elRef = inject(ElementRef);
   private readonly _renderer = inject(Renderer2);
   private readonly _reflections = inject(ReflectionsManager);
+  private readonly _lights = inject(Lights);
 
   private _letterEl: HTMLElement[] = [];
+  private _removeLightSurface?: () => void;
   private readonly _content = viewChild.required<ElementRef>('content');
   private readonly _text = computed(
     () => this._content().nativeElement.innerText,
@@ -50,6 +53,8 @@ export class ReflectiveTextComponent implements OnDestroy {
     const text = this._renderer.createElement(this.type());
     text.textContent = this._text();
     this._renderer.addClass(text, 'text');
+    this._lights.addSurface(text, 'transparency');
+    this._removeLightSurface = () => this._lights.removeSurface(text);
 
     const letters = this._renderer.createElement('p');
     this._renderer.addClass(letters, 'reflections');
@@ -75,5 +80,6 @@ export class ReflectiveTextComponent implements OnDestroy {
       this._reflections.removeEntry(letterEl);
     }
     this._letterEl = [];
+    this._removeLightSurface?.();
   }
 }
